@@ -74,8 +74,8 @@ Gerados a partir do original `Logos para camisa - Nexial-01/02.png`:
 ### Fotos dos partners
 
 Ficam em `assets/img/partners/`, uma por pessoa, nomeadas em kebab-case
-(`alex-petermann.jpg`). São 320×320 JPEG — o dobro do tamanho de exibição
-(72px), para ficarem nítidas em telas retina.
+(`alex-petermann.jpg`). São 320×320 JPEG — quase 3× o tamanho de exibição
+(112px), para ficarem nítidas em telas retina.
 
 Para **trocar uma foto**: substitua o arquivo mantendo o nome, em 320×320.
 O recorte circular e o preto e branco são aplicados por CSS, então a imagem

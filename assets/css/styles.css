@@ -534,7 +534,7 @@ h1 em, .statement-text em {
 /* Retrato do partner. As fotos do teaser já são em preto e branco; o filtro
    garante consistência caso alguma seja trocada por uma colorida depois. */
 .portrait {
-  width: 4.5rem; height: 4.5rem;
+  width: 7rem; height: 7rem;
   margin-bottom: 1.25rem;
   border-radius: 50%;
   object-fit: cover;
@@ -548,12 +548,12 @@ h1 em, .statement-text em {
    <span class="monogram" aria-hidden="true">XX</span> com as iniciais. */
 .monogram {
   display: flex; align-items: center; justify-content: center;
-  width: 4.5rem; height: 4.5rem; margin-bottom: 1.25rem;
+  width: 7rem; height: 7rem; margin-bottom: 1.25rem;
   border: 1px solid var(--accent);
   border-radius: 50%;
   background: var(--accent-dim);
   font-family: var(--font-display);
-  font-size: 1.125rem; font-weight: 500; letter-spacing: 0.06em;
+  font-size: 1.5rem; font-weight: 500; letter-spacing: 0.06em;
   color: var(--accent-bright);
 }
 .person h3 { font-size: 1.0625rem; font-weight: 400; margin-bottom: 0.625rem; }
