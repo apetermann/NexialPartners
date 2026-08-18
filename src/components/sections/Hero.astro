@@ -55,6 +55,15 @@ const linhas = t.home.title[lang];
 
   .hero-inner { position: relative; z-index: 1; padding-block: 9rem 7rem; }
 
+  /* A lista de competencias e longa (90 caracteres) para o formato de eyebrow,
+     que foi pensado para 2 a 5 palavras. Sem afinar o tracking e o corpo, ela
+     ocupava 4 linhas em 375px e brigava com a manchete. */
+  .hero .eyebrow {
+    font-size: clamp(0.625rem, 0.54rem + 0.28vw, 0.75rem);
+    letter-spacing: clamp(0.07em, 0.02em + 0.28vw, 0.2em);
+    line-height: 1.85;
+  }
+
   .hero-title {
     margin: 0 0 var(--sp-3);
     font-size: var(--fs-4xl);

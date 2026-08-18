@@ -57,8 +57,8 @@ export const t = {
       en: 'Nexial Partners combines senior engineering and mining specialists with proprietary Artificial Intelligence to deliver smarter, more efficient and more valuable projects.',
     },
     eyebrow: {
-      pt: 'Engenharia · Inteligência Artificial · Mineração',
-      en: 'Engineering · Artificial Intelligence · Mining',
+      pt: 'Engenharia, mineração, infraestrutura, transformação digital e desenvolvimento de negócios',
+      en: 'Engineering, mining, infrastructure, digital transformation and business development',
     },
     title: {
       pt: ['Engenharia de', 'alta performance,', 'potencializada por IA.'],
