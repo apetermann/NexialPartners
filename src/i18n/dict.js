@@ -184,8 +184,8 @@ export const t = {
     eyebrow: { pt: 'O que entregamos', en: 'What we deliver' },
     title:   { pt: 'Quatro frentes, uma só arquitetura.', en: 'Four fronts, one single architecture.' },
     lead: {
-      pt: 'Cada frente resolve um estágio diferente da vida de um ativo — e todas compartilham a mesma base de especialistas, dados e agentes.',
-      en: 'Each front addresses a different stage in the life of an asset — and all share the same base of specialists, data and agents.',
+      pt: 'As quatro frentes atendem estágios diferentes da vida de um ativo, com a mesma equipe e a mesma base técnica por trás.',
+      en: 'The four fronts serve different stages in the life of an asset, backed by the same team and the same technical base.',
     },
     items: [
       {
@@ -237,8 +237,8 @@ export const t = {
     eyebrow: { pt: 'Aplicações na mineração', en: 'Applications in mining' },
     title:   { pt: 'Inteligência em todo o ciclo de vida do ativo.', en: 'Intelligence across the entire asset lifecycle.' },
     lead: {
-      pt: 'Da avaliação do recurso à operação assistida por agentes, cada fase ganha velocidade sem abrir mão do rigor técnico.',
-      en: 'From resource assessment to agent-assisted operation, every phase gains speed without giving up technical rigour.',
+      pt: 'Atuamos nas quatro fases do ciclo de vida do ativo. O que muda entre elas é o tipo de decisão em jogo e o dado que a sustenta.',
+      en: 'We work across the four phases of the asset lifecycle. What changes between them is the kind of decision at stake and the data behind it.',
     },
     phases: [
       {
@@ -321,8 +321,8 @@ export const t = {
     eyebrow: { pt: 'Os partners', en: 'The partners' },
     title:   { pt: 'Experiência com nome e sobrenome.', en: 'Experience with a name attached.' },
     lead: {
-      pt: 'Não é uma pirâmide de horas-homem. São cinco especialistas seniores, cada um com décadas de decisão em campo.',
-      en: 'This is not a man-hour pyramid. It is five senior specialists, each with decades of decisions made in the field.',
+      pt: 'Cinco sócios, cada um com décadas de decisão tomada em obra. Quem conduz o projeto é quem assina.',
+      en: 'Five partners, each with decades of decisions made on site. Whoever leads the project is the one who signs it.',
     },
     /* Ordem alfabética pelo nome como aparece na página. */
     people: [
