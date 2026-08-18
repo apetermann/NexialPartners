@@ -17,7 +17,9 @@ const BASE = process.env.BASE_PATH ?? '/NexialPartners';
 export default defineConfig({
   site: SITE,
   base: BASE,
-  trailingSlash: 'ignore',
+  // As URLs servidas terminam em barra; os links precisam bater com elas,
+  // senao cada navegacao interna paga um 301 e o canonical redireciona.
+  trailingSlash: 'always',
 
   i18n: {
     defaultLocale: 'pt',

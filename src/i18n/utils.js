@@ -7,9 +7,9 @@ const BASE = import.meta.env.BASE_URL.endsWith('/')
 
 /**
  * Monta a URL de uma página numa língua.
- *   url('servicos', 'pt') -> /NexialPartners/servicos
- *   url('servicos', 'en') -> /NexialPartners/en/services
- *   url('home', 'en')     -> /NexialPartners/en
+ *   url('servicos', 'pt') -> /NexialPartners/servicos/
+ *   url('servicos', 'en') -> /NexialPartners/en/services/
+ *   url('home', 'en')     -> /NexialPartners/en/
  */
 export function url(page, lang = DEFAULT_LANG) {
   const slug = ROUTES[page]?.[lang];
@@ -18,8 +18,8 @@ export function url(page, lang = DEFAULT_LANG) {
   const prefix = lang === DEFAULT_LANG ? '' : `${lang}/`;
   const path = `${BASE}${prefix}${slug}`;
 
-  // remove a barra final, exceto quando a URL for só a raiz
-  return path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path;
+  // sempre com barra no fim, para bater com a URL que o servidor entrega
+  return path.endsWith('/') ? path : path + '/';
 }
 
 /** Caminho de um arquivo em /public, já com o prefixo do site. */
