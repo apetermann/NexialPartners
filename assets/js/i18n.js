@@ -157,5 +157,7 @@ window.NEXIAL_EN = {
   'contact.lead': 'The future of your engineering starts with a conversation. Senior experience, proprietary AI and business vision in a single execution model.',
 
   /* -------------------------------------------------------------- rodapé */
+  'footer.address': '479 Augusto de Lima Ave. · Suite 614 · Centro',
+  'footer.address2': 'Belo Horizonte · MG · 30190-005 · Brazil',
   'footer.rights': 'All rights reserved.'
 };

@@ -42,15 +42,34 @@ Se uma chave não existir no dicionário, o site simplesmente mantém o portugu�
 
 ### Paleta da marca
 
-Definida em `assets/css/styles.css`, extraída do logo e do teaser institucional:
+Definida no bloco `:root` de `assets/css/styles.css`, derivada do gradiente do símbolo
+(`#1C213F` indigo → `#2D5C8E` → `#3090C0` azul → `#5DB8B1` verde-água):
 
 | Variável | Valor | Uso |
 | --- | --- | --- |
-| `--navy-deep` | `#03161F` | fundo das seções alternadas |
-| `--navy` | `#04212F` | fundo principal |
-| `--teal` | `#03B0B0` | acento da marca, botões |
-| `--teal-bright` | `#4FD8D8` | destaques e links |
-| `--mist` / `--slate` | `#C3D4DA` / `#8FA7B0` | textos sobre fundo escuro |
+| `--ink-deep` | `#0B0F1E` | fundo das seções alternadas |
+| `--ink` | `#111729` | fundo principal |
+| `--surface` / `--surface-2` | `#1A2238` / `#232D48` | cartões e blocos elevados |
+| `--line` | `#2A3552` | bordas e divisórias |
+| `--accent` | `#3E9FCC` | acento principal, botões |
+| `--accent-bright` | `#6FC7E4` | links e destaques |
+| `--accent-teal` | `#5DB8B1` | acento secundário |
+| `--brand-gradient` | gradiente | número "10×" e barra de resultado |
+| `--mist` / `--slate` / `--muted` | `#C9D6E6` / `#97A9C4` / `#8093B0` | textos sobre fundo escuro |
+
+Todas as cores de texto ficam **acima de 5,7:1** sobre os fundos da marca (WCAG AA exige 4,5:1).
+
+### Arquivos do logo
+
+Gerados a partir do original `Logos para camisa - Nexial-01/02.png`:
+
+| Arquivo | Uso |
+| --- | --- |
+| `logo-nexial-white.png` | lockup com logotipo branco — usado no site (fundo escuro) |
+| `logo-nexial.png` | lockup com logotipo preto — para fundos claros e documentos |
+| `mark-nexial.png` | apenas o símbolo, fundo transparente — rodapé |
+| `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png` | ícones do navegador |
+| `og-image.png` | imagem de compartilhamento em redes sociais (1200×630) |
 
 ## Rodar localmente
 
