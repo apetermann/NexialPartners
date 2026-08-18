@@ -1,0 +1,262 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Nexial Partners — sistema de design
+
+   Registro editorial: escala tipográfica ampla, muito respiro, movimento
+   contido. A cor da marca aparece com parcimônia — em superfície escura,
+   um acento usado demais vira ruído e derruba a percepção de sobriedade.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ───────────────────────────────────────────────────────────────── tokens */
+
+:root {
+  /* Superfícies — família indigo do símbolo (#1C213F) */
+  --ink-deep:  #080B16;
+  --ink:       #0D1122;
+  --ink-soft:  #12172B;
+  --surface:   #171D35;
+  --surface-2: #202843;
+  --line:      #232C4A;
+  --line-soft: #1A2137;
+
+  /* Acento — azul e verde-água do gradiente da marca */
+  --accent:        #4FA8D8;
+  --accent-bright: #7FCDE8;
+  --accent-teal:   #5DB8B1;
+  --accent-dim:    rgba(79, 168, 216, 0.12);
+  --brand-gradient: linear-gradient(135deg, #2D5C8E 0%, #4FA8D8 52%, #5DB8B1 100%);
+
+  /* Texto — todos acima de 4.5:1 sobre --ink */
+  --white: #FFFFFF;
+  --mist:  #D2DCEC;
+  --slate: #9DAFCB;
+  --muted: #8395B4;
+
+  /* Tipografia */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  /* Escala tipográfica fluida (proporção ~1.28 no desktop) */
+  --fs-xs:   0.75rem;
+  --fs-sm:   0.8125rem;
+  --fs-base: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  --fs-md:   clamp(1.0625rem, 1rem + 0.32vw, 1.1875rem);
+  --fs-lg:   clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
+  --fs-xl:   clamp(1.5rem, 1.2rem + 1.4vw, 2.125rem);
+  --fs-2xl:  clamp(1.875rem, 1.35rem + 2.4vw, 3rem);
+  --fs-3xl:  clamp(2.25rem, 1.4rem + 3.9vw, 4rem);
+  --fs-4xl:  clamp(2.75rem, 1.5rem + 5.6vw, 5.5rem);
+
+  /* Ritmo vertical */
+  --sp-1: 0.5rem;
+  --sp-2: 1rem;
+  --sp-3: 1.5rem;
+  --sp-4: 2.5rem;
+  --sp-5: 4rem;
+  --sp-6: 6rem;
+  --sp-section: clamp(5rem, 10vw, 9.5rem);
+
+  /* Layout */
+  --wrap: 1240px;
+  --wrap-narrow: 940px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --radius: 3px;
+
+  /* Movimento */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 0.6s;
+}
+
+/* ────────────────────────────────────────────────────────────────── reset */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 7rem;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--slate);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: 350;
+  line-height: 1.68;
+  font-feature-settings: "kern", "liga", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img, svg, canvas, video { display: block; max-width: 100%; }
+img { height: auto; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+p { margin: 0 0 var(--sp-2); }
+
+a { color: inherit; text-decoration: none; }
+
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection { background: var(--accent); color: var(--ink-deep); }
+
+/* ────────────────────────────────────────────────────────── tipografia */
+
+h1, h2, h3, h4 {
+  margin: 0 0 var(--sp-2);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 40;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--fs-4xl); letter-spacing: -0.03em; }
+h2 { font-size: var(--fs-3xl); letter-spacing: -0.025em; }
+h3 { font-size: var(--fs-lg); letter-spacing: -0.01em; }
+
+/* Itálico da Fraunces tem "wonk" — usado só onde queremos ênfase editorial. */
+em.wonk {
+  font-style: italic;
+  font-variation-settings: "SOFT" 0, "WONK" 1, "opsz" 40;
+  color: var(--accent-bright);
+}
+
+.eyebrow {
+  margin: 0 0 var(--sp-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.lead {
+  max-width: 58ch;
+  font-size: var(--fs-md);
+  font-weight: 300;
+  line-height: 1.62;
+  color: var(--mist);
+  text-wrap: pretty;
+}
+
+.idx {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* ──────────────────────────────────────────────────────────── estrutura */
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.wrap-narrow { max-width: var(--wrap-narrow); }
+
+.section { padding-block: var(--sp-section); }
+.section-alt { background: var(--ink-deep); }
+
+.section-head { max-width: 44rem; margin-bottom: clamp(3rem, 6vw, 5rem); }
+.section-head .lead { margin-bottom: 0; }
+
+/* Régua fina que abre as seções — detalhe editorial recorrente. */
+.rule {
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--line) 22%, transparent 70%);
+  margin-bottom: var(--sp-4);
+}
+
+/* ─────────────────────────────────────────────────────────────── botões */
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.625rem;
+  padding: 1rem 1.875rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease),
+              color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary { background: var(--accent); color: var(--ink-deep); font-weight: 600; }
+.btn-primary:hover { background: var(--accent-bright); }
+
+.btn-ghost { border-color: var(--line); color: var(--mist); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--white); background: var(--accent-dim); }
+
+/* Seta que desliza no hover. */
+.btn .arrow { transition: transform 0.25s var(--ease); }
+.btn:hover .arrow { transform: translateX(4px); }
+
+/* Link de texto com sublinhado que cresce. */
+.link-line {
+  position: relative;
+  color: var(--accent-bright);
+  padding-bottom: 2px;
+}
+.link-line::after {
+  content: ""; position: absolute; left: 0; bottom: 0;
+  width: 100%; height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: right;
+  transition: transform 0.4s var(--ease-out);
+}
+.link-line:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* ─────────────────────────────────────────────── revelação por scroll */
+
+/* Só esconde quando há JS: sem ele, o conteúdo aparece normalmente. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js [data-reveal].is-in { opacity: 1; transform: none; }
+
+/* ───────────────────────────────────────────── preferências do usuário */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js [data-reveal] { opacity: 1; transform: none; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  h1, h2, h3, .lead { color: #000; }
+  .site-header, .hero-canvas, .menu-toggle { display: none !important; }
+}

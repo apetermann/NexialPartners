@@ -1,0 +1,80 @@
+---
+import { t } from '../../i18n/dict.js';
+const { lang = 'pt' } = Astro.props;
+const passos = t.model.flowSteps;
+---
+
+<section class="section section-alt">
+  <div class="wrap">
+    <header class="section-head">
+      <div class="rule" data-reveal></div>
+      <p class="eyebrow" data-reveal>{t.model.flowEyebrow[lang]}</p>
+      <h2 data-reveal style="--reveal-delay:60ms">{t.model.flowTitle[lang]}</h2>
+      <p class="lead" data-reveal style="--reveal-delay:120ms">{t.model.flowLead[lang]}</p>
+    </header>
+
+    <ol class="flow">
+      {passos.map((passo, i) => (
+        <li
+          class:list={['etapa', { final: i === passos.length - 1 }]}
+          data-reveal
+          style={`--reveal-delay:${i * 90}ms`}
+        >
+          <span class="idx">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{passo[lang]}</h3>
+        </li>
+      ))}
+    </ol>
+
+    <p class="nota" data-reveal>
+      {t.model.flowNote[lang]} <strong>{t.model.flowNoteStrong[lang]}</strong>
+    </p>
+  </div>
+</section>
+
+<style>
+  .flow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+    gap: 1.25rem;
+  }
+
+  .etapa {
+    position: relative;
+    padding: 1.5rem 1.25rem 1.75rem;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius);
+    background: var(--ink);
+    transition: border-color 0.4s var(--ease), background 0.4s var(--ease),
+                transform 0.4s var(--ease);
+  }
+  .etapa:hover {
+    border-color: var(--accent);
+    background: var(--ink-soft);
+    transform: translateY(-3px);
+  }
+
+  .etapa .idx { display: block; margin-bottom: 1.25rem; }
+  .etapa h3 {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 450;
+    line-height: 1.4;
+    letter-spacing: 0;
+    color: var(--white);
+  }
+
+  /* A última etapa é o resultado: ganha a cor da marca. */
+  .etapa.final { border-color: var(--accent); background: var(--accent-dim); }
+
+  .nota {
+    margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--accent);
+    max-width: 60ch;
+    color: var(--mist);
+    font-weight: 300;
+  }
+  .nota strong { color: var(--white); font-weight: 500; }
+</style>

@@ -1,0 +1,114 @@
+---
+import HeroCanvas from '../HeroCanvas.astro';
+import { t } from '../../i18n/dict.js';
+import { url } from '../../i18n/utils.js';
+
+const { lang = 'pt' } = Astro.props;
+const linhas = t.home.title[lang];
+---
+
+<section class="hero">
+  <HeroCanvas lang={lang} />
+
+  <div class="wrap hero-inner">
+    <p class="eyebrow" data-reveal>{t.home.eyebrow[lang]}</p>
+
+    <h1 class="hero-title">
+      {linhas.map((linha, i) => (
+        <span class="linha">
+          <span data-reveal style={`--reveal-delay:${120 + i * 130}ms`}>{linha}</span>
+        </span>
+      ))}
+    </h1>
+
+    <p class="lead" data-reveal style={`--reveal-delay:${180 + linhas.length * 130}ms`}>
+      {t.home.lead[lang]}
+    </p>
+
+    <div class="actions" data-reveal style={`--reveal-delay:${280 + linhas.length * 130}ms`}>
+      <a class="btn btn-primary" href={url('contato', lang)}>
+        {t.home.ctaPrimary[lang]}<span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="btn btn-ghost" href={url('modelo', lang)}>{t.home.ctaSecondary[lang]}</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint" data-reveal style="--reveal-delay:1100ms">
+    <span>{t.home.scroll[lang]}</span>
+    <span class="trilho" aria-hidden="true"><i></i></span>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(180deg, var(--ink-deep) 0%, var(--ink) 72%);
+    isolation: isolate;
+  }
+
+  .hero-inner { position: relative; z-index: 1; padding-block: 9rem 7rem; }
+
+  .hero-title {
+    margin: 0 0 var(--sp-3);
+    font-size: var(--fs-4xl);
+    line-height: 1.02;
+  }
+  /* Cada linha é uma máscara: o texto sobe por trás dela ao revelar. */
+  .linha { display: block; overflow: hidden; padding-bottom: 0.08em; }
+  .linha > span { display: block; }
+
+  /* A última linha ganha o gradiente da marca. */
+  .linha:last-child > span {
+    background: var(--brand-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--accent-bright);
+  }
+
+  .hero .lead { margin-bottom: var(--sp-4); max-width: 52ch; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 0.875rem; }
+
+  .scroll-hint {
+    position: absolute; left: 50%; bottom: 2.25rem;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.875rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    z-index: 1;
+  }
+  .trilho {
+    position: relative;
+    width: 1px; height: 3.5rem;
+    background: var(--line);
+    overflow: hidden;
+  }
+  .trilho i {
+    position: absolute; inset: 0 auto auto 0;
+    width: 1px; height: 40%;
+    background: var(--accent);
+    animation: descer 2.6s var(--ease) infinite;
+  }
+  @keyframes descer {
+    0%   { transform: translateY(-100%); opacity: 0; }
+    35%  { opacity: 1; }
+    100% { transform: translateY(250%); opacity: 0; }
+  }
+
+  @media (max-width: 720px) {
+    .hero-inner { padding-block: 8rem 6rem; }
+    .actions { flex-direction: column; align-items: stretch; }
+    .actions .btn { justify-content: center; }
+    .scroll-hint { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .trilho i { animation: none; opacity: 0.6; }
+  }
+</style>

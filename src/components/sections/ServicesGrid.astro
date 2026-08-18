@@ -1,0 +1,74 @@
+---
+import { t } from '../../i18n/dict.js';
+const { lang = 'pt', showHead = true } = Astro.props;
+---
+
+<section class="section">
+  <div class="wrap">
+    {showHead && (
+      <header class="section-head">
+        <div class="rule" data-reveal></div>
+        <p class="eyebrow" data-reveal>{t.services.eyebrow[lang]}</p>
+        <h2 data-reveal style="--reveal-delay:60ms">{t.services.title[lang]}</h2>
+        <p class="lead" data-reveal style="--reveal-delay:120ms">{t.services.lead[lang]}</p>
+      </header>
+    )}
+
+    <div class="svc-grid">
+      {t.services.items.map((item, i) => (
+        <article class="svc" data-reveal style={`--reveal-delay:${i * 90}ms`}>
+          <span class="idx">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{item.title[lang]}</h3>
+          <p>{item.text[lang]}</p>
+          <ul class="tags">
+            {item.tags.map((tag) => <li>{tag[lang]}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .svc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1px;
+    background: var(--line-soft);
+    border: 1px solid var(--line-soft);
+  }
+
+  .svc {
+    display: flex; flex-direction: column;
+    padding: clamp(1.75rem, 2.8vw, 2.5rem);
+    background: var(--ink);
+    transition: background 0.45s var(--ease);
+  }
+  .svc:hover { background: var(--ink-soft); }
+
+  .svc .idx { display: block; margin-bottom: 2.5rem; }
+
+  .svc h3 {
+    margin-bottom: 0.625rem;
+    font-size: var(--fs-lg);
+    letter-spacing: -0.015em;
+  }
+  .svc > p { font-size: 0.9375rem; color: var(--slate); margin-bottom: 2rem; }
+
+  .tags {
+    margin-top: auto;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line-soft);
+  }
+  .tags li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: var(--fs-sm);
+    color: var(--mist);
+  }
+  .tags li::before {
+    content: ""; position: absolute; left: 0; top: 0.72em;
+    width: 5px; height: 1px; background: var(--accent);
+  }
+</style>

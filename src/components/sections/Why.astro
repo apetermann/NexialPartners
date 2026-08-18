@@ -1,0 +1,158 @@
+---
+import { t } from '../../i18n/dict.js';
+const { lang = 'pt' } = Astro.props;
+---
+
+<section class="section">
+  <div class="wrap">
+    <header class="section-head">
+      <div class="rule" data-reveal></div>
+      <p class="eyebrow" data-reveal>{t.why.eyebrow[lang]}</p>
+      <h2 data-reveal style="--reveal-delay:60ms">{t.why.title[lang]}</h2>
+    </header>
+
+    <div class="why-grid">
+      <table class="compare" data-reveal>
+        <caption class="sr-only">{t.why.caption[lang]}</caption>
+        <thead>
+          <tr>
+            <th scope="col">{t.why.colA[lang]}</th>
+            <th scope="col" class="col-b">{t.why.colB[lang]}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {t.why.rows.map((r) => (
+            <tr>
+              <td class="antes">{r.a[lang]}</td>
+              <td class="depois">{r.b[lang]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <aside class="stat" data-reveal style="--reveal-delay:120ms">
+        <p class="stat-num">
+          <span data-contador data-alvo="10">0</span><span class="x">&times;</span>
+        </p>
+        <p class="stat-text">{t.why.statText[lang]}</p>
+        <p class="stat-foot">{t.why.statFoot[lang]}</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.75fr);
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+
+  .compare { width: 100%; border-collapse: collapse; }
+  .compare th {
+    padding: 0 0 1.125rem;
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--line);
+  }
+  .compare th.col-b { color: var(--accent); padding-left: 1.75rem; }
+
+  .compare td {
+    padding: 1.25rem 1.75rem 1.25rem 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 1rem;
+    width: 50%;
+  }
+  .compare .antes { color: var(--muted); }
+  .compare .depois {
+    padding-left: 1.75rem; padding-right: 0;
+    border-left: 1px solid var(--line-soft);
+    color: var(--white);
+    font-weight: 450;
+  }
+  .compare tbody tr:last-child td { border-bottom: 0; }
+
+  .stat {
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: linear-gradient(165deg, var(--surface) 0%, var(--ink-soft) 100%);
+    position: sticky; top: 8rem;
+  }
+  .stat-num {
+    display: flex; align-items: baseline;
+    margin: 0 0 1.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(3.75rem, 2rem + 7vw, 6rem);
+    font-weight: 300;
+    line-height: 0.88;
+    letter-spacing: -0.045em;
+    background: var(--brand-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--accent-bright);
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-num .x { font-size: 0.5em; }
+  .stat-text { color: var(--mist); font-size: 0.9375rem; margin-bottom: 1rem; }
+  .stat-foot { color: var(--muted); font-size: var(--fs-xs); line-height: 1.55; margin: 0; }
+
+  @media (max-width: 900px) {
+    .why-grid { grid-template-columns: 1fr; }
+    .stat { position: static; }
+  }
+
+  /* Em telas estreitas a tabela vira lista: "antes -> depois". */
+  @media (max-width: 560px) {
+    .compare thead { display: none; }
+    .compare, .compare tbody, .compare tr, .compare td { display: block; width: 100%; }
+    .compare tr { padding: 1rem 0; border-bottom: 1px solid var(--line-soft); }
+    .compare td { border: 0; padding: 0.2rem 0; }
+    .compare .antes { text-decoration: line-through; text-decoration-color: var(--line); }
+    .compare .depois { padding-left: 0; border-left: 0; }
+    .compare .depois::before { content: "\2192  "; color: var(--accent); }
+  }
+</style>
+
+<script>
+  /* Contagem do "10x" quando o bloco entra na tela. */
+  function armarContador() {
+    const el = document.querySelector('[data-contador]');
+    if (!el || !('IntersectionObserver' in window)) return;
+
+    const alvo = Number(el.dataset.alvo || 10);
+
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = String(alvo);
+      return;
+    }
+
+    const obs = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      obs.disconnect();
+
+      const dur = 1100;
+      let inicio = 0;
+      const passo = (ts) => {
+        if (!inicio) inicio = ts;
+        const p = Math.min((ts - inicio) / dur, 1);
+        // desaceleração no fim, para o número "assentar"
+        el.textContent = String(Math.round(alvo * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) requestAnimationFrame(passo);
+      };
+      requestAnimationFrame(passo);
+    }, { threshold: 0.5 });
+
+    obs.observe(el);
+  }
+
+  armarContador();
+  document.addEventListener('astro:page-load', armarContador);
+</script>

@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../sections/PageHero.astro';
+import CtaBand from '../sections/CtaBand.astro';
+import Lifecycle from '../sections/Lifecycle.astro';
+import { t } from '../../i18n/dict.js';
+
+const { lang } = Astro.props;
+---
+
+<Base
+  lang={lang}
+  page="mineracao"
+  title={t.mining.metaTitle[lang]}
+  description={t.mining.metaDesc[lang]}
+>
+  <PageHero
+    eyebrow={t.mining.eyebrow[lang]}
+    title={t.mining.title[lang]}
+    lead={t.mining.lead[lang]}
+  />
+  <Lifecycle lang={lang} />
+  <CtaBand lang={lang} />
+</Base>

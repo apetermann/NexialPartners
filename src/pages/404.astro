@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import { t } from '../i18n/dict.js';
+import { url } from '../i18n/utils.js';
+
+/* Uma única 404 serve as duas línguas: o GitHub Pages entrega este arquivo
+   para qualquer caminho inexistente, inclusive sob /en/, então o texto
+   aparece em português com o inglês logo abaixo. */
+const lang = 'pt';
+---
+
+<Base lang={lang} page="home" title={`${t.notFound.title[lang]} — Nexial Partners`}
+      description={t.notFound.text[lang]} noindex={true}>
+  <section class="erro">
+    <div class="wrap wrap-narrow">
+      <p class="codigo">404</p>
+      <h1>{t.notFound.title.pt}</h1>
+      <p class="lead">{t.notFound.text.pt}</p>
+      <p class="lead en" lang="en">{t.notFound.text.en}</p>
+      <a class="btn btn-primary" href={url('home', lang)}>
+        {t.notFound.cta.pt}<span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .erro {
+    min-height: 78svh;
+    display: flex; align-items: center;
+    text-align: center;
+    padding-block: 10rem 6rem;
+    background:
+      radial-gradient(60rem 34rem at 50% 0%, rgba(79, 168, 216, 0.13), transparent 66%),
+      linear-gradient(180deg, var(--ink-deep) 0%, var(--ink) 100%);
+  }
+  .codigo {
+    margin: 0 0 1rem;
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 12vw, 7.5rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    background: var(--brand-gradient);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--accent-bright);
+  }
+  .erro .lead { margin-inline: auto; }
+  .erro .en { color: var(--muted); font-size: 0.9375rem; }
+  .erro .btn { margin-top: var(--sp-4); }
+</style>

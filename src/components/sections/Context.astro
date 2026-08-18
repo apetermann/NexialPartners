@@ -1,0 +1,87 @@
+---
+import { t } from '../../i18n/dict.js';
+const { lang = 'pt' } = Astro.props;
+---
+
+<section class="section section-alt">
+  <div class="wrap ctx-grid">
+    <header class="ctx-head">
+      <div class="rule" data-reveal></div>
+      <p class="eyebrow" data-reveal>{t.context.eyebrow[lang]}</p>
+      <h2 data-reveal style="--reveal-delay:60ms">{t.context.title[lang]}</h2>
+      <p class="lead" data-reveal style="--reveal-delay:120ms">{t.context.lead[lang]}</p>
+
+      <p class="nota" data-reveal style="--reveal-delay:180ms">
+        {t.context.note[lang]}
+        <strong>{t.context.noteStrong[lang]}</strong>
+      </p>
+    </header>
+
+    <ol class="ctx-list">
+      {t.context.items.map((item, i) => (
+        <li data-reveal style={`--reveal-delay:${i * 80}ms`}>
+          <span class="idx">{String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <h3>{item.title[lang]}</h3>
+            <p>{item.text[lang]}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .ctx-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: clamp(3rem, 7vw, 6rem);
+    align-items: start;
+  }
+
+  /* A coluna de texto acompanha a rolagem enquanto a lista corre ao lado. */
+  .ctx-head { position: sticky; top: 8rem; }
+  .ctx-head .lead { margin-bottom: var(--sp-3); }
+
+  .nota {
+    margin: var(--sp-3) 0 0;
+    padding-top: var(--sp-3);
+    border-top: 1px solid var(--line-soft);
+    max-width: 46ch;
+    color: var(--slate);
+    font-size: 0.9375rem;
+  }
+  .nota strong { display: block; margin-top: 0.5rem; color: var(--white); font-weight: 500; }
+
+  .ctx-list { border-top: 1px solid var(--line-soft); }
+
+  .ctx-list li {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 1rem;
+    padding: clamp(1.5rem, 2.6vw, 2.25rem) 0;
+    border-bottom: 1px solid var(--line-soft);
+    transition: border-color 0.4s var(--ease);
+  }
+  .ctx-list li:hover { border-bottom-color: var(--accent); }
+
+  .ctx-list .idx { padding-top: 0.3rem; }
+
+  .ctx-list h3 {
+    margin-bottom: 0.375rem;
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    font-weight: 450;
+    letter-spacing: 0;
+    color: var(--white);
+  }
+  .ctx-list p { margin: 0; font-size: 0.9375rem; color: var(--slate); }
+
+  @media (max-width: 900px) {
+    .ctx-grid { grid-template-columns: 1fr; }
+    .ctx-head { position: static; }
+  }
+  @media (max-width: 520px) {
+    .ctx-list li { grid-template-columns: 2.5rem 1fr; }
+  }
+</style>

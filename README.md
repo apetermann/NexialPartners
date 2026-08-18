@@ -2,129 +2,114 @@
 
 Site institucional da **Nexial Partners**: engenharia de alta performance potencializada por Inteligência Artificial.
 
-Site estático (HTML, CSS e JavaScript, sem dependências e sem etapa de build), bilíngue **PT/EN**, publicado no GitHub Pages.
+Site estático construído com [Astro](https://astro.build), bilíngue **PT/EN** com URLs próprias por idioma, publicado no GitHub Pages.
 
 ---
+
+## Rodar localmente
+
+```bash
+npm install
+npm run dev
+```
+
+O endereço aparece no terminal (normalmente `http://localhost:4321/NexialPartners/`).
+
+| Comando | O que faz |
+| --- | --- |
+| `npm run dev` | servidor de desenvolvimento, com recarga automática |
+| `npm run build` | gera o site estático em `dist/` |
+| `npm run preview` | serve o `dist/` já construído, como ficará em produção |
 
 ## Estrutura
 
 ```
-.
-├── index.html                  # página única — TODO o conteúdo em português
-├── 404.html                    # página de erro
-├── assets/
-│   ├── css/styles.css          # estilos (paleta da marca em variáveis CSS)
-│   ├── js/i18n.js              # dicionário de tradução para o INGLÊS
-│   ├── js/main.js              # troca de idioma, menu, animações
-│   └── img/                    # logos, favicons e imagem de compartilhamento
-├── .github/workflows/deploy.yml # publicação automática no GitHub Pages
-├── robots.txt
-└── sitemap.xml
+src/
+├── i18n/
+│   ├── dict.js          # TODO o conteúdo do site, nas duas línguas
+│   └── utils.js         # montagem de URLs com idioma e caminho base
+├── layouts/Base.astro   # <head>, SEO, hreflang, dados estruturados
+├── components/
+│   ├── Header.astro     # cabeçalho, menu e seletor de idioma
+│   ├── Footer.astro
+│   ├── HeroCanvas.astro # campo de curvas de nível animado
+│   ├── sections/        # blocos reutilizáveis entre páginas
+│   └── pages/           # composição de cada página (uma por idioma)
+├── pages/               # rotas — arquivos finos que só escolhem o idioma
+│   ├── index.astro          → /
+│   ├── modelo.astro         → /modelo
+│   └── en/model.astro       → /en/model
+└── styles/global.css    # tokens e sistema de design
+public/                  # arquivos servidos como estão (imagens, robots.txt)
 ```
 
 ## Como editar o conteúdo
 
-O site funciona com **o português dentro do HTML** e **o inglês em um dicionário à parte**. Isso evita conteúdo duplicado e garante que a página continue legível para o Google e para quem estiver sem JavaScript.
+**Todo o texto vive em `src/i18n/dict.js`**, com as duas línguas lado a lado:
 
-| O que você quer mudar | Onde mexer |
-| --- | --- |
-| Texto em **português** | `index.html` — edite direto, é o texto que está visível no arquivo |
-| Texto em **inglês** | `assets/js/i18n.js` — localize a chave e altere o valor |
-| Cores, espaçamentos, tipografia | `assets/css/styles.css` — bloco `:root` no topo |
-| E-mail, domínio, dados do rodapé | `index.html` (rodapé e seção de contato) |
+```js
+title: {
+  pt: 'A engenharia mudou — e a mineração sente primeiro.',
+  en: 'Engineering has changed — and mining feels it first.',
+},
+```
 
-Cada trecho traduzível no HTML carrega um atributo `data-i18n="chave"`. A mesma chave aparece em `i18n.js` com a versão em inglês. Ao adicionar um texto novo:
+Edite o valor da língua desejada e salve. Não há texto solto dentro dos componentes — assim as duas versões nunca saem de sincronia.
 
-1. escreva o português no `index.html` com um `data-i18n="secao.nome"`;
-2. adicione a mesma chave em `assets/js/i18n.js` com o texto em inglês.
+Diferente da versão anterior do site, cada idioma é uma **página estática própria** (`/servicos` e `/en/services`), com `hreflang` ligando as duas. O Google indexa as duas versões e nada depende de JavaScript para traduzir.
 
-Se uma chave não existir no dicionário, o site simplesmente mantém o português — não quebra.
+### Adicionar uma página
 
-### Paleta da marca
+1. Acrescente as rotas em `ROUTES` no `dict.js` (o slug em cada língua).
+2. Crie o componente em `src/components/pages/`.
+3. Crie os dois arquivos finos de rota: `src/pages/<slug-pt>.astro` e `src/pages/en/<slug-en>.astro`.
 
-Definida no bloco `:root` de `assets/css/styles.css`, derivada do gradiente do símbolo
-(`#1C213F` indigo → `#2D5C8E` → `#3090C0` azul → `#5DB8B1` verde-água):
+### Paleta e tipografia
 
-| Variável | Valor | Uso |
-| --- | --- | --- |
-| `--ink-deep` | `#0B0F1E` | fundo das seções alternadas |
-| `--ink` | `#111729` | fundo principal |
-| `--surface` / `--surface-2` | `#1A2238` / `#232D48` | cartões e blocos elevados |
-| `--line` | `#2A3552` | bordas e divisórias |
-| `--accent` | `#3E9FCC` | acento principal, botões |
-| `--accent-bright` | `#6FC7E4` | links e destaques |
-| `--accent-teal` | `#5DB8B1` | acento secundário |
-| `--brand-gradient` | gradiente | número "10×" e barra de resultado |
-| `--mist` / `--slate` / `--muted` | `#C9D6E6` / `#97A9C4` / `#8093B0` | textos sobre fundo escuro |
+No bloco `:root` de `src/styles/global.css`. A paleta deriva do gradiente do símbolo da marca (`#1C213F` indigo → `#4FA8D8` azul → `#5DB8B1` verde-água). Todas as cores de texto ficam **acima de 6:1** sobre os fundos (WCAG AA exige 4,5:1).
 
-Todas as cores de texto ficam **acima de 5,7:1** sobre os fundos da marca (WCAG AA exige 4,5:1).
+Tipografia: **Fraunces** (serifada variável) nos títulos, **Inter** no texto corrido, **IBM Plex Mono** nos rótulos e numeração.
 
-### Arquivos do logo
+### O herói animado
 
-Gerados a partir do original `Logos para camisa - Nexial-01/02.png`:
+`src/components/HeroCanvas.astro` desenha um campo de curvas de nível — vocabulário visual de carta topográfica e seção de corpo mineral. É gerado por código, sem imagem nem vídeo: o campo escalar é a soma de ondas planas em direções e frequências incomensuráveis, e as isolinhas saem por *marching squares*.
 
-| Arquivo | Uso |
-| --- | --- |
-| `logo-nexial-white.png` | lockup com logotipo branco — usado no site (fundo escuro) |
-| `logo-nexial.png` | lockup com logotipo preto — para fundos claros e documentos |
-| `mark-nexial.png` | apenas o símbolo, fundo transparente — rodapé |
-| `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png` | ícones do navegador |
-| `og-image.png` | imagem de compartilhamento em redes sociais (1200×630) |
+Ele respeita `prefers-reduced-motion` (desenha um quadro estático), pausa quando sai da tela ou a aba vai para segundo plano, e limita o `devicePixelRatio` a 1,5.
+
+Para ajustar o desenho, mexa em `OCT` (o relevo), `NIVEIS` (quantidade de curvas) e `PASSO` (resolução da grade).
 
 ### Fotos dos partners
 
-Ficam em `assets/img/partners/`, uma por pessoa, nomeadas em kebab-case
-(`alex-petermann.jpg`). São 320×320 JPEG — quase 3× o tamanho de exibição
-(112px), para ficarem nítidas em telas retina.
-
-Para **trocar uma foto**: substitua o arquivo mantendo o nome, em 320×320.
-O recorte circular e o preto e branco são aplicados por CSS, então a imagem
-de origem pode ser colorida.
-
-Para **um partner sem foto**, troque a tag no `index.html` por um monograma
-com as iniciais — o estilo já existe:
-
-```html
-<span class="monogram" aria-hidden="true">XX</span>
-```
-
-
-## Rodar localmente
-
-Não há build. Basta servir a pasta:
-
-```bash
-python -m http.server 8000
-```
-
-Depois abra `http://localhost:8000`.
-
-> Abrir o `index.html` com duplo clique também funciona, mas servir por HTTP reproduz melhor o comportamento real (caminhos e cache).
+Em `public/assets/img/partners/`, uma por pessoa, 320×320. O recorte circular e o preto e branco são aplicados por CSS — a imagem de origem pode ser colorida. Para trocar, substitua o arquivo mantendo o nome.
 
 ## Publicação
 
-O workflow `.github/workflows/deploy.yml` publica o site a cada `push` na branch `main`.
+O workflow `.github/workflows/deploy.yml` instala as dependências, roda o build e publica a cada `push` na `main`.
 
 **Configuração única no GitHub:** `Settings` → `Pages` → em *Source*, selecione **GitHub Actions**.
 
 ### Domínio próprio (nexialpartners.com)
 
-1. Crie um arquivo `CNAME` na raiz do repositório contendo apenas:
-   ```
-   www.nexialpartners.com
-   ```
-2. No provedor de DNS do domínio, aponte:
-   - `www` → registro **CNAME** para `<usuario-ou-org>.github.io`
-   - domínio raiz → registros **A** para `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-3. Em `Settings` → `Pages`, informe o domínio e marque **Enforce HTTPS** (o certificado leva alguns minutos para ser emitido).
+Hoje o site vive num subdiretório (`/NexialPartners/`) porque é um GitHub Pages de projeto. Para migrar:
 
-## Acessibilidade e desempenho
+1. No `.github/workflows/deploy.yml`, troque as variáveis do passo de build:
+   ```yaml
+   SITE_URL: https://www.nexialpartners.com
+   BASE_PATH: /
+   ```
+2. Crie `public/CNAME` contendo apenas `www.nexialpartners.com`.
+3. No DNS: `www` → **CNAME** para `apetermann.github.io`; e o domínio raiz → registros **A** para `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`.
+4. Em `Settings` → `Pages`, informe o domínio e marque **Enforce HTTPS**.
 
-- Estrutura semântica com landmarks, hierarquia de títulos e link "pular para o conteúdo".
-- Contraste de texto acima de 4.5:1 sobre os fundos escuros da marca.
-- Navegação completa por teclado, com foco visível.
-- Respeita `prefers-reduced-motion`: sem animações para quem as desativou.
-- Sem frameworks nem dependências de runtime — apenas as fontes do Google Fonts.
+Nenhum link no código precisa mudar: todos são montados a partir de `BASE_PATH`.
+
+## Acessibilidade
+
+- Estrutura semântica, hierarquia de títulos e link "pular para o conteúdo".
+- Contraste de texto acima de 6:1 em todos os pares usados.
+- Navegação completa por teclado, com foco visível e `aria-current` na página ativa.
+- `prefers-reduced-motion` respeitado em toda animação, inclusive no herói.
+- Sem JavaScript, o conteúdo continua legível: o texto é estático e a revelação por scroll só esconde elementos quando o JS está ativo.
 
 ## Licença e uso
 
