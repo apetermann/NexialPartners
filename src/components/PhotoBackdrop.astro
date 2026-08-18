@@ -1,0 +1,84 @@
+---
+import { asset } from '../i18n/utils.js';
+
+/**
+ * Fundo fotográfico com deriva lenta.
+ *
+ * As imagens vêm do teaser institucional da própria Nexial, tratadas para a
+ * paleta indigo da marca. O movimento é um "Ken Burns" contido: a foto nunca
+ * sai da escala 1, então as bordas nunca aparecem, e a duração longa faz o
+ * movimento ser percebido sem chamar atenção para si.
+ *
+ * Props:
+ *   image   — 'rocha' | 'nebula'
+ *   opacity — força da foto (0–1)
+ *   veil    — 'hero' aplica o véu que protege o texto à esquerda;
+ *             'center' escurece as bordas de forma simétrica
+ */
+const { image = 'rocha', opacity = 0.5, veil = 'center' } = Astro.props;
+
+const g = (w) => asset(`assets/img/bg/${image}-${w}.jpg`);
+---
+
+<div class="backdrop" aria-hidden="true">
+  <div
+    class="foto"
+    style={`--img-sm:url('${g(1100)}'); --img-lg:url('${g(1920)}'); --op:${opacity};`}
+  ></div>
+  <div class:list={['veu', veil]}></div>
+  <div class="grao"></div>
+</div>
+
+<style>
+  .backdrop { position: absolute; inset: 0; overflow: hidden; }
+
+  .foto {
+    position: absolute;
+    /* folga além da caixa: a deriva nunca revela borda */
+    inset: -6%;
+    background-image: var(--img-sm);
+    background-size: cover;
+    background-position: center;
+    opacity: var(--op);
+    will-change: transform;
+    animation: deriva 28s ease-in-out infinite alternate;
+  }
+  @media (min-width: 1101px) {
+    .foto { background-image: var(--img-lg); }
+  }
+
+  @keyframes deriva {
+    0%   { transform: translate3d(0, 0, 0) scale(1.04); }
+    50%  { transform: translate3d(1.6%, -1.3%, 0) scale(1.10); }
+    100% { transform: translate3d(-1.3%, 0.9%, 0) scale(1.06); }
+  }
+
+  .veu { position: absolute; inset: 0; }
+
+  /* Herói: abre à direita, fecha à esquerda, onde fica o texto. */
+  .veu.hero {
+    background:
+      radial-gradient(115% 92% at 10% 42%, rgba(13, 17, 34, 0.95) 0%, rgba(13, 17, 34, 0.62) 40%, transparent 72%),
+      linear-gradient(180deg, rgba(8, 11, 22, 0.72) 0%, transparent 26%, rgba(13, 17, 34, 0.94) 100%);
+  }
+
+  /* Faixas internas: escurece as bordas de forma simétrica. */
+  .veu.center {
+    background:
+      radial-gradient(96% 80% at 50% 50%, transparent 0%, rgba(13, 17, 34, 0.55) 62%, rgba(13, 17, 34, 0.94) 100%),
+      linear-gradient(180deg, rgba(8, 11, 22, 0.85) 0%, transparent 22%, transparent 76%, rgba(8, 11, 22, 0.9) 100%);
+  }
+
+  /* Grão fino: tira o aspecto "digital demais" das áreas de gradiente e
+     disfarça o banding nas transições escuras. */
+  .grao {
+    position: absolute; inset: 0;
+    opacity: 0.32;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .foto { animation: none; transform: scale(1.04); }
+  }
+</style>

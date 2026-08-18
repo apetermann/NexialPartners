@@ -78,6 +78,27 @@ Ele respeita `prefers-reduced-motion` (desenha um quadro estático), pausa quand
 
 Para ajustar o desenho, mexa em `OCT` (o relevo), `NIVEIS` (quantidade de curvas) e `PASSO` (resolução da grade).
 
+### Fundos fotográficos
+
+`src/components/PhotoBackdrop.astro` põe uma foto de fundo com deriva lenta
+(um "Ken Burns" contido de 28s), véu para proteger o texto e uma camada de grão
+que disfarça o *banding* nos gradientes escuros.
+
+As imagens vêm do **teaser institucional da própria Nexial** — material que já
+era de vocês — tratadas para a paleta indigo: duotone a 45%, contraste 1,3 e
+brilho 1,35, o que preserva a textura da rocha em vez de achatá-la. Ficam em
+`public/assets/img/bg/`, em duas larguras (1920 e 1100, trocadas por media query).
+
+| Onde | Imagem | Opacidade |
+| --- | --- | --- |
+| Herói da home | `rocha` (sob as curvas de nível) | 0,62 |
+| Faixa "A experiência decide" | `nebula` | 0,55 |
+| Herói das páginas internas | `rocha` | 0,42 |
+
+Para trocar por fotos reais de obra, basta substituir os arquivos em
+`public/assets/img/bg/` mantendo os nomes e as duas larguras. O tratamento de
+cor pode então ser dispensado — imagem real de ativo dispensa estilização.
+
 ### Fotos dos partners
 
 Em `public/assets/img/partners/`, uma por pessoa, 320×320. O recorte circular e o preto e branco são aplicados por CSS — a imagem de origem pode ser colorida. Para trocar, substitua o arquivo mantendo o nome.

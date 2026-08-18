@@ -1,9 +1,12 @@
 ---
+import PhotoBackdrop from '../PhotoBackdrop.astro';
 import { t } from '../../i18n/dict.js';
 const { lang = 'pt' } = Astro.props;
 ---
 
 <section class="statement">
+  <PhotoBackdrop image="nebula" opacity={0.55} veil="center" />
+
   <div class="wrap wrap-narrow">
     <p class="eyebrow" data-reveal>{t.model.eyebrow[lang]}</p>
     <p class="frase">
@@ -15,6 +18,8 @@ const { lang = 'pt' } = Astro.props;
 
 <style>
   .statement {
+    position: relative;
+    isolation: isolate;
     padding-block: clamp(6rem, 13vw, 11rem);
     text-align: center;
     background:
@@ -22,6 +27,8 @@ const { lang = 'pt' } = Astro.props;
       var(--ink-deep);
     border-block: 1px solid var(--line-soft);
   }
+  .statement .wrap { position: relative; z-index: 1; }
+
   .frase {
     margin: 0;
     font-family: var(--font-display);

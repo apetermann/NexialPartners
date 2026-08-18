@@ -10,15 +10,15 @@ const { lang = 'pt' } = Astro.props;
 <p class="sr-only">{t.a11y.heroArt[lang]}</p>
 
 <style>
-  .hero-canvas { position: absolute; inset: 0; overflow: hidden; }
-  .hero-canvas canvas { width: 100%; height: 100%; }
+  .hero-canvas { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
+    /* Sobre a foto, as curvas pedem menos presenca do que sobre o fundo liso. */
+  .hero-canvas canvas { width: 100%; height: 100%; opacity: 0.78; }
 
   /* Escurece as bordas para o texto do herói sempre ganhar do desenho. */
+  /* Veu leve: o escurecimento principal ja vem do PhotoBackdrop. */
   .veil {
     position: absolute; inset: 0;
-    background:
-      radial-gradient(120% 90% at 12% 40%, rgba(13, 17, 34, 0.94) 0%, rgba(13, 17, 34, 0.55) 38%, transparent 68%),
-      linear-gradient(180deg, rgba(8, 11, 22, 0.7) 0%, transparent 28%, rgba(13, 17, 34, 0.9) 100%);
+    background: radial-gradient(105% 85% at 8% 45%, rgba(13, 17, 34, 0.55) 0%, transparent 62%);
   }
 </style>
 

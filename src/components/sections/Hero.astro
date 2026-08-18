@@ -1,5 +1,6 @@
 ---
 import HeroCanvas from '../HeroCanvas.astro';
+import PhotoBackdrop from '../PhotoBackdrop.astro';
 import { t } from '../../i18n/dict.js';
 import { url } from '../../i18n/utils.js';
 
@@ -8,6 +9,9 @@ const linhas = t.home.title[lang];
 ---
 
 <section class="hero">
+  {/* A rocha embaixo, as curvas de nivel por cima: o corpo mineral e o
+      levantamento dele. */}
+  <PhotoBackdrop image="rocha" opacity={0.62} veil="hero" />
   <HeroCanvas lang={lang} />
 
   <div class="wrap hero-inner">
