@@ -17,7 +17,6 @@ const { lang = 'pt' } = Astro.props;
             />
           </div>
           <h3>{p.name}</h3>
-          <p class="papel">{p.role[lang]}</p>
           <span class="divisa" aria-hidden="true"></span>
           <p class="bio">{p.bio[lang]}</p>
         </article>
@@ -74,25 +73,17 @@ const { lang = 'pt' } = Astro.props;
   }
 
   .person h3 {
-    margin-bottom: 0.375rem;
+    margin-bottom: 0;
     font-size: 1.125rem;
     font-weight: 400;
     letter-spacing: -0.012em;
   }
 
-  .papel {
-    margin: 0;
-    font-size: 0.8125rem;
-    font-weight: 400;
-    line-height: 1.4;
-    color: var(--accent-bright);
-  }
-
-  /* Divisória curta entre o cargo e a biografia, como no teaser. */
+  /* Divisória curta entre o nome e a biografia, como no teaser. */
   .divisa {
     display: block;
     width: 2.25rem; height: 1px;
-    margin: 1.25rem 0;
+    margin: 1.125rem 0;
     background: var(--accent);
     opacity: 0.7;
   }
