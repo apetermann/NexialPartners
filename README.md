@@ -71,6 +71,24 @@ Gerados a partir do original `Logos para camisa - Nexial-01/02.png`:
 | `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png` | ícones do navegador |
 | `og-image.png` | imagem de compartilhamento em redes sociais (1200×630) |
 
+### Fotos dos partners
+
+Ficam em `assets/img/partners/`, uma por pessoa, nomeadas em kebab-case
+(`alex-petermann.jpg`). São 320×320 JPEG — o dobro do tamanho de exibição
+(72px), para ficarem nítidas em telas retina.
+
+Para **trocar uma foto**: substitua o arquivo mantendo o nome, em 320×320.
+O recorte circular e o preto e branco são aplicados por CSS, então a imagem
+de origem pode ser colorida.
+
+Para **um partner sem foto**, troque a tag no `index.html` por um monograma
+com as iniciais — o estilo já existe:
+
+```html
+<span class="monogram" aria-hidden="true">XX</span>
+```
+
+
 ## Rodar localmente
 
 Não há build. Basta servir a pasta:
