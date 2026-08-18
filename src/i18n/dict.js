@@ -329,49 +329,57 @@ export const t = {
       {
         name: 'Alex Petermann',
         photo: 'alex-petermann',
-        role: { pt: 'Engenheiro de minas', en: 'Mining engineer' },
+        role: { pt: 'CEO & Presidente', en: 'CEO & President' },
         bio: {
-          pt: '25+ anos · PFS/FS/DFS em 4 continentes · fundador da DeCarbonMine.',
-          en: '25+ years · PFS/FS/DFS across 4 continents · founder of DeCarbonMine.',
+          pt: 'Engenheiro de minas, 20+ anos em quatro continentes. Planejamento de mina, PFS/FS/DFS, avaliação econômica e acesso a capital. Fundador da DeCarbonMine.',
+          en: 'Mining engineer, 20+ years across four continents. Mine planning, PFS/FS/DFS, economic assessment and access to capital. Founder of DeCarbonMine.',
         },
       },
       {
-        name: 'Antonio Neves',
+        name: 'Antonio Neves Santana',
         photo: 'antonio-neves',
-        role: { pt: 'Conselheiro sênior', en: 'Senior advisor' },
+        role: { pt: 'Diretor de Engenharia Mineral', en: 'Director of Mineral Engineering' },
         bio: {
-          pt: 'Ex-Mineração Usiminas · engenharia de processo, M&A e desenvolvimento de ativos.',
-          en: 'Formerly Mineração Usiminas · process engineering, M&A and asset development.',
+          pt: 'Engenheiro de minas, MSc, com MBA em gestão de negócios e passagem pelas principais mineradoras do país. Engenharia de processo, M&A e governança.',
+          en: 'Mining engineer, MSc, with an MBA in business management and experience at the country’s leading mining companies. Process engineering, M&A and governance.',
         },
       },
       {
         name: 'Arley Costa',
         photo: 'arley-costa',
-        role: { pt: 'Transformação digital', en: 'Digital transformation' },
+        role: { pt: 'Diretor de Tecnologia & IA', en: 'Director of Technology & AI' },
         bio: {
-          pt: 'Ex-Diretor Global de Transformação Digital (AtkinsRéalis) · digital twins, BIM 5D e agentes · fundador da Digitallis.',
-          en: 'Former Global Director of Digital Transformation (AtkinsRéalis) · digital twins, BIM 5D and agents · founder of Digitallis.',
+          pt: 'Ex-diretor global de transformação digital da AtkinsRéalis. BIM 3D/4D/5D, gêmeos digitais, LiDAR, LLMs e agentes autônomos. Fundador da Digitallis.',
+          en: 'Former global director of digital transformation at AtkinsRéalis. BIM 3D/4D/5D, digital twins, LiDAR, LLMs and autonomous agents. Founder of Digitallis.',
         },
       },
       {
         name: 'Iran Zan',
         photo: 'iran-zan',
-        role: { pt: 'Geólogo', en: 'Geologist' },
+        role: { pt: 'Diretor de Assuntos Estratégicos', en: 'Director of Strategic Affairs' },
         bio: {
-          pt: 'UNICAMP · Competent Person (AusIMM) · exploração e mercado de capitais · Sigma Lithium.',
-          en: 'UNICAMP · Competent Person (AusIMM) · exploration and capital markets · Sigma Lithium.',
+          pt: 'Geólogo (UNICAMP) e Competent Person AusIMM. Ouro, cobre pórfiro, minerais pesados e lítio desde 2011. Pioneiro na Sigma Lithium.',
+          en: 'Geologist (UNICAMP) and AusIMM Competent Person. Gold, porphyry copper, heavy minerals and lithium since 2011. Pioneer at Sigma Lithium.',
         },
       },
       {
         name: 'Noeber Orsine',
         photo: 'noeber-orsine',
-        role: { pt: 'Greenfield e brownfield', en: 'Greenfield and brownfield' },
+        role: { pt: 'Diretor Financeiro & de Operações', en: 'Chief Financial & Operations Officer' },
         bio: {
-          pt: '30+ anos · CAPEX até US$ 2,1 bi · JORC, NI 43-101, S-K 1300, FEL.',
-          en: '30+ years · CAPEX up to US$ 2.1bn · JORC, NI 43-101, S-K 1300, FEL.',
+          pt: '30+ anos no Brasil, África e Austrália. Greenfield e brownfield com equipes de até 3.000 pessoas e CAPEX de US$ 2,1 bi. JORC, NI 43-101 e S-K 1300.',
+          en: '30+ years across Brazil, Africa and Australia. Greenfield and brownfield with teams of up to 3,000 people and CAPEX of US$ 2.1bn. JORC, NI 43-101 and S-K 1300.',
         },
       },
     ],
+    complementLabel: {
+      pt: 'Como se complementam',
+      en: 'How they complement each other',
+    },
+    complementText: {
+      pt: 'Cobrimos a mesma cadeia de valor de ponta a ponta: recurso, estudo, execução, digitalização e capital. Como as cinco competências decidem juntas desde o primeiro estudo, risco técnico e custo de capital entram na conta ao mesmo tempo, em vez de aparecerem em revisões sucessivas.',
+      en: 'We cover the same value chain end to end: resource, study, execution, digitalisation and capital. Because the five competencies decide together from the very first study, technical risk and cost of capital enter the equation at the same time, instead of surfacing in successive revisions.',
+    },
   },
 
   /* ══════════════════════════════════════════════════════════ contato */

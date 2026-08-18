@@ -78,12 +78,12 @@ const links = ['modelo', 'servicos', 'mineracao', 'partners'];
 
   .header-inner {
     display: flex; align-items: center; gap: 2rem;
-    min-height: 5.25rem;
+    min-height: 6rem;
   }
 
   .brand { margin-right: auto; }
   .brand img {
-    width: auto; height: 1.75rem;
+    width: auto; height: clamp(2.25rem, 1.9rem + 0.9vw, 2.75rem);
     transition: opacity 0.25s var(--ease);
   }
   .brand:hover img { opacity: 0.8; }
