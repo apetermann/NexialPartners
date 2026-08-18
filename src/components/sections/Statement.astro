@@ -1,0 +1,36 @@
+---
+import { t } from '../../i18n/dict.js';
+const { lang = 'pt' } = Astro.props;
+---
+
+<section class="statement">
+  <div class="wrap wrap-narrow">
+    <p class="eyebrow" data-reveal>{t.model.eyebrow[lang]}</p>
+    <p class="frase">
+      <span class="linha"><span data-reveal>{t.model.statementA[lang]}</span></span>
+      <span class="linha"><span data-reveal style="--reveal-delay:140ms"><em class="wonk">{t.model.statementB[lang]}</em></span></span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .statement {
+    padding-block: clamp(6rem, 13vw, 11rem);
+    text-align: center;
+    background:
+      radial-gradient(60rem 34rem at 50% 50%, rgba(79, 168, 216, 0.09), transparent 68%),
+      var(--ink-deep);
+    border-block: 1px solid var(--line-soft);
+  }
+  .frase {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--fs-3xl);
+    font-weight: 300;
+    line-height: 1.14;
+    letter-spacing: -0.028em;
+    color: var(--white);
+  }
+  .linha { display: block; overflow: hidden; padding-bottom: 0.06em; }
+  .linha > span { display: block; }
+</style>

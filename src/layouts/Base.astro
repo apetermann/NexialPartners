@@ -1,0 +1,128 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { url, asset, LOCALE, OG_LOCALE } from '../i18n/utils.js';
+import { CONTACT } from '../i18n/dict.js';
+import '../styles/global.css';
+
+const { lang = 'pt', page = 'home', title, description, noindex = false } = Astro.props;
+
+const canonical = new URL(url(page, lang), Astro.site).href;
+const altPt = new URL(url(page, 'pt'), Astro.site).href;
+const altEn = new URL(url(page, 'en'), Astro.site).href;
+const ogImage = new URL(asset('assets/img/og-image.png'), Astro.site).href;
+---
+<!doctype html>
+<html lang={LOCALE[lang]}>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="theme-color" content="#0D1122" />
+<link rel="canonical" href={canonical} />
+
+{noindex && <meta name="robots" content="noindex" />}
+
+<!-- Cada língua tem URL própria e indexável; o hreflang liga as duas. -->
+<link rel="alternate" hreflang="pt-BR" href={altPt} />
+<link rel="alternate" hreflang="en" href={altEn} />
+<link rel="alternate" hreflang="x-default" href={altPt} />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Nexial Partners" />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={OG_LOCALE[lang]} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href={asset('assets/img/favicon-32.png')} sizes="32x32" />
+<link rel="apple-touch-icon" href={asset('assets/img/apple-touch-icon.png')} />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=IBM+Plex+Mono:wght@400&family=Inter:wght@300..600&display=swap"
+/>
+
+<script is:inline>document.documentElement.classList.add('js');</script>
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Nexial Partners',
+  legalName: CONTACT.legalName,
+  url: Astro.site.href,
+  logo: new URL(asset('assets/img/logo-nexial.png'), Astro.site).href,
+  image: ogImage,
+  email: CONTACT.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Av. Augusto de Lima, 479, Sala 614',
+    addressLocality: 'Belo Horizonte',
+    addressRegion: 'MG',
+    postalCode: '30190-005',
+    addressCountry: 'BR',
+  },
+  areaServed: 'Global',
+})} />
+
+<ClientRouter />
+</head>
+
+<body>
+  <Header lang={lang} page={page} />
+  <main id="conteudo">
+    <slot />
+  </main>
+  <Footer lang={lang} />
+
+  <script>
+    /* Revelação por scroll, aplicada uma vez por elemento.
+       Reexecuta a cada navegação porque o ClientRouter troca o DOM sem recarregar. */
+    function armarReveal() {
+      const alvos = document.querySelectorAll('[data-reveal]');
+      if (!alvos.length) return;
+
+      const semMovimento = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (semMovimento || !('IntersectionObserver' in window)) {
+        alvos.forEach((el) => el.classList.add('is-in'));
+        return;
+      }
+
+      const obs = new IntersectionObserver(
+        (entradas) => {
+          entradas.forEach((e) => {
+            if (!e.isIntersecting) return;
+            e.target.classList.add('is-in');
+            obs.unobserve(e.target);
+          });
+        },
+        { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
+      );
+      alvos.forEach((el) => obs.observe(el));
+
+      /* Rede de segurança: se o observer não for entregue (aba em segundo
+         plano, página não compositada), revela o que já está na janela. */
+      const revelarVisiveis = () => {
+        alvos.forEach((el) => {
+          if (el.classList.contains('is-in')) return;
+          if (el.getBoundingClientRect().top < innerHeight) {
+            el.classList.add('is-in');
+            obs.unobserve(el);
+          }
+        });
+      };
+      addEventListener('load', revelarVisiveis, { once: true });
+      setTimeout(revelarVisiveis, 1200);
+    }
+
+    armarReveal();
+    document.addEventListener('astro:page-load', armarReveal);
+  </script>
+</body>
+</html>

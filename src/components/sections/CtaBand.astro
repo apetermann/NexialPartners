@@ -1,0 +1,29 @@
+---
+import { t, CONTACT } from '../../i18n/dict.js';
+const { lang = 'pt' } = Astro.props;
+---
+
+<section class="cta-band">
+  <div class="wrap wrap-narrow">
+    <p class="eyebrow" data-reveal>{t.contact.eyebrow[lang]}</p>
+    <h2 data-reveal style="--reveal-delay:60ms">{t.contact.title[lang]}</h2>
+    <p class="lead" data-reveal style="--reveal-delay:120ms">{t.contact.lead[lang]}</p>
+    <a class="btn btn-primary btn-lg" href={`mailto:${CONTACT.email}`} data-reveal style="--reveal-delay:180ms">
+      {CONTACT.email}<span class="arrow" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .cta-band {
+    padding-block: clamp(5rem, 11vw, 9rem);
+    text-align: center;
+    background:
+      radial-gradient(52rem 30rem at 50% 122%, rgba(93, 184, 177, 0.15), transparent 66%),
+      radial-gradient(60rem 34rem at 50% -20%, rgba(79, 168, 216, 0.1), transparent 64%),
+      var(--ink);
+    border-top: 1px solid var(--line-soft);
+  }
+  .cta-band .lead { margin: 0 auto var(--sp-4); }
+  .btn-lg { padding: 1.125rem 2.25rem; font-size: 1rem; }
+</style>

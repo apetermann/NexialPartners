@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../sections/PageHero.astro';
+import CtaBand from '../sections/CtaBand.astro';
+import Statement from '../sections/Statement.astro';
+import ModelDetail from '../sections/ModelDetail.astro';
+import Flow from '../sections/Flow.astro';
+import { t } from '../../i18n/dict.js';
+
+const { lang } = Astro.props;
+---
+
+<Base
+  lang={lang}
+  page="modelo"
+  title={t.model.metaTitle[lang]}
+  description={t.model.metaDesc[lang]}
+>
+  <PageHero
+    eyebrow={t.model.eyebrow[lang]}
+    title={t.model.aboutTitle[lang]}
+    lead={t.model.flowLead[lang]}
+  />
+  <Statement lang={lang} />
+  <ModelDetail lang={lang} />
+  <Flow lang={lang} />
+  <CtaBand lang={lang} />
+</Base>

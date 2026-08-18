@@ -1,0 +1,101 @@
+---
+import { t, CONTACT } from '../i18n/dict.js';
+import { url, asset } from '../i18n/utils.js';
+
+const { lang = 'pt' } = Astro.props;
+const links = ['modelo', 'servicos', 'mineracao', 'partners', 'contato'];
+const ano = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src={asset('assets/img/mark-nexial.png')} alt="" width="460" height="481" />
+      <p class="legal">{CONTACT.legalName}</p>
+      <p class="framework">Nexial Performance Framework&trade;</p>
+    </div>
+
+    <nav class="footer-nav" aria-label={t.footer.nav[lang]}>
+      <h2 class="col-title">{t.footer.nav[lang]}</h2>
+      <ul>
+        {links.map((k) => (
+          <li><a class="link-line" href={url(k, lang)}>{t.nav[k][lang]}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="footer-contact">
+      <h2 class="col-title">{t.contact.eyebrow[lang]}</h2>
+      <p><a class="link-line" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></p>
+      <address>
+        {t.footer.addressL1[lang]}<br />
+        {t.footer.addressL2[lang]}
+      </address>
+    </div>
+  </div>
+
+  <div class="wrap footer-base">
+    <p>&copy; {ano} Nexial Partners. {t.footer.rights[lang]}</p>
+    <p><a class="link-line" href={`https://${CONTACT.site}`}>{CONTACT.site}</a></p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink-deep);
+    border-top: 1px solid var(--line-soft);
+    padding-block: clamp(3.5rem, 7vw, 5.5rem) 2.5rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.2fr;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    padding-bottom: 3.5rem;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .footer-brand img { width: auto; height: 3.5rem; margin-bottom: 1.5rem; }
+  .legal { color: var(--mist); font-weight: 400; margin-bottom: 0.25rem; }
+  .framework { color: var(--muted); font-size: var(--fs-sm); margin: 0; }
+
+  .col-title {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-nav ul { display: flex; flex-direction: column; gap: 0.75rem; }
+  .footer-nav a { color: var(--slate); font-size: 0.9375rem; }
+  .footer-nav a:hover { color: var(--white); }
+
+  .footer-contact p { margin-bottom: 1.25rem; }
+  .footer-contact a { color: var(--mist); }
+  address {
+    font-style: normal;
+    color: var(--muted);
+    font-size: var(--fs-sm);
+    line-height: 1.7;
+  }
+
+  .footer-base {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    justify-content: space-between;
+    padding-top: 2rem;
+    font-size: var(--fs-sm);
+    color: var(--muted);
+  }
+  .footer-base p { margin: 0; }
+
+  @media (max-width: 860px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 520px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>

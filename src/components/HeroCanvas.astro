@@ -1,0 +1,254 @@
+---
+import { t } from '../i18n/dict.js';
+const { lang = 'pt' } = Astro.props;
+---
+
+<div class="hero-canvas" aria-hidden="true">
+  <canvas data-contours></canvas>
+  <div class="veil"></div>
+</div>
+<p class="sr-only">{t.a11y.heroArt[lang]}</p>
+
+<style>
+  .hero-canvas { position: absolute; inset: 0; overflow: hidden; }
+  .hero-canvas canvas { width: 100%; height: 100%; }
+
+  /* Escurece as bordas para o texto do herói sempre ganhar do desenho. */
+  .veil {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(120% 90% at 12% 40%, rgba(13, 17, 34, 0.94) 0%, rgba(13, 17, 34, 0.55) 38%, transparent 68%),
+      linear-gradient(180deg, rgba(8, 11, 22, 0.7) 0%, transparent 28%, rgba(13, 17, 34, 0.9) 100%);
+  }
+</style>
+
+<script>
+  /**
+   * Campo de curvas de nível animado.
+   *
+   * Um campo escalar é amostrado numa grade e as isolinhas são extraídas por
+   * marching squares. O resultado lembra uma carta topográfica ou uma seção de
+   * corpo mineral — vocabulário visual de quem trabalha com geologia — em vez
+   * da malha de partículas que aparece em todo site de tecnologia.
+   *
+   * O campo é a soma de poucas senoides em direções e frequências diferentes,
+   * o que dá um relevo orgânico sem custo de uma biblioteca de ruído.
+   */
+  function iniciarContornos() {
+    const canvas = document.querySelector('canvas[data-contours]');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+
+    const semMovimento = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const PASSO = 20;          // distância entre amostras, em px de CSS
+    const NIVEIS = 9;          // quantidade de curvas de nível
+
+    /* Ondas planas em direções e frequências incomensuráveis. Somadas, dão um
+       relevo orgânico e sem repetição aparente — um produto de senoides gera
+       uma treliça periódica que denuncia o truque. */
+    const OCT = [
+      { fx:  0.19, fy:  0.11, a: 1.00 },
+      { fx: -0.14, fy:  0.29, a: 0.68 },
+      { fx:  0.37, fy: -0.32, a: 0.42 },
+      { fx: -0.51, fy: -0.24, a: 0.26 },
+      { fx:  0.73, fy:  0.58, a: 0.14 },
+    ];
+    const DPR_MAX = 1.5;       // acima disso o ganho visual não paga o custo
+
+    let larg = 0, alt = 0, cols = 0, linhas = 0;
+    let campo = new Float32Array(0);
+    let raf = 0, t0 = 0, tempo = 0;
+    let visivel = true;
+
+    // Alvo e posição suavizada do cursor, em coordenadas de grade.
+    const cursor = { x: -999, y: -999, ax: -999, ay: -999, forca: 0, alvoForca: 0 };
+
+    function dimensionar() {
+      const r = canvas.getBoundingClientRect();
+      const dpr = Math.min(devicePixelRatio || 1, DPR_MAX);
+      larg = Math.max(1, Math.round(r.width));
+      alt = Math.max(1, Math.round(r.height));
+      canvas.width = Math.round(larg * dpr);
+      canvas.height = Math.round(alt * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      cols = Math.ceil(larg / PASSO) + 1;
+      linhas = Math.ceil(alt / PASSO) + 1;
+      campo = new Float32Array(cols * linhas);
+    }
+
+    /** Preenche o campo escalar para o instante `tempo`. */
+    function amostrar(tempo) {
+      const k = 0.055;
+      for (let j = 0; j < linhas; j++) {
+        const y = j * PASSO * k;
+        for (let i = 0; i < cols; i++) {
+          const x = i * PASSO * k;
+
+          let v = 0;
+          for (let n = 0; n < OCT.length; n++) {
+            const o = OCT[n];
+            // cada oitava deriva num ritmo próprio: o relevo nunca "trava"
+            v += o.a * Math.sin(x * o.fx + y * o.fy + tempo * (0.1 + 0.03 * n));
+          }
+
+          // Elevação suave sob o cursor: o relevo "responde" ao mouse.
+          if (cursor.forca > 0.001) {
+            const dx = i - cursor.ax;
+            const dy = j - cursor.ay;
+            const d2 = dx * dx + dy * dy;
+            v += cursor.forca * 2.1 * Math.exp(-d2 / 90);
+          }
+
+          campo[j * cols + i] = v;
+        }
+      }
+    }
+
+    /* Interpolação linear na aresta, para a isolinha cair no ponto exato. */
+    const ix = (i, a, b, nivel) => (i + (nivel - a) / (b - a)) * PASSO;
+
+    /** Marching squares: desenha a isolinha de um nível. */
+    function tracarNivel(nivel) {
+      ctx.beginPath();
+      for (let j = 0; j < linhas - 1; j++) {
+        for (let i = 0; i < cols - 1; i++) {
+          const o = j * cols + i;
+          const a = campo[o];            // superior esquerdo
+          const b = campo[o + 1];        // superior direito
+          const c = campo[o + cols + 1]; // inferior direito
+          const d = campo[o + cols];     // inferior esquerdo
+
+          let caso = 0;
+          if (a > nivel) caso |= 8;
+          if (b > nivel) caso |= 4;
+          if (c > nivel) caso |= 2;
+          if (d > nivel) caso |= 1;
+          if (caso === 0 || caso === 15) continue;
+
+          const x0 = i * PASSO, y0 = j * PASSO;
+          const x1 = x0 + PASSO, y1 = y0 + PASSO;
+
+          // Pontos médios interpolados de cada aresta cortada
+          const cima = () => [ix(i, a, b, nivel), y0];
+          const dir = () => [x1, ix(j, b, c, nivel)];
+          const baixo = () => [ix(i, d, c, nivel), y1];
+          const esq = () => [x0, ix(j, a, d, nivel)];
+
+          let seg;
+          switch (caso) {
+            case 1: case 14: seg = [esq(), baixo()]; break;
+            case 2: case 13: seg = [baixo(), dir()]; break;
+            case 3: case 12: seg = [esq(), dir()]; break;
+            case 4: case 11: seg = [cima(), dir()]; break;
+            case 6: case 9:  seg = [cima(), baixo()]; break;
+            case 7: case 8:  seg = [esq(), cima()]; break;
+            /* Casos ambíguos (5 e 10): dois segmentos cruzados. */
+            case 5:  seg = [esq(), cima()]; ctx.moveTo(...baixo()); ctx.lineTo(...dir()); break;
+            case 10: seg = [cima(), dir()]; ctx.moveTo(...esq()); ctx.lineTo(...baixo()); break;
+            default: continue;
+          }
+          ctx.moveTo(seg[0][0], seg[0][1]);
+          ctx.lineTo(seg[1][0], seg[1][1]);
+        }
+      }
+      ctx.stroke();
+    }
+
+    function desenhar() {
+      ctx.clearRect(0, 0, larg, alt);
+      ctx.lineCap = 'round';
+
+      for (let n = 0; n < NIVEIS; n++) {
+        const p = n / (NIVEIS - 1);          // 0 -> 1 ao longo dos níveis
+        const nivel = -1.5 + p * 3.0;
+
+        // Do azul da marca ao verde-água, como no gradiente do símbolo.
+        const r = Math.round(45 + p * 48);
+        const g = Math.round(92 + p * 92);
+        const b = Math.round(142 + p * 35);
+
+        // Curvas centrais mais presentes; extremos quase sumindo.
+        const realce = 1 - Math.abs(p - 0.5) * 1.5;
+        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${(0.12 + realce * 0.34).toFixed(3)})`;
+        // uma a cada três curvas é mestra, como em carta topográfica
+        ctx.lineWidth = n % 3 === 0 ? 1.5 : 0.8;
+        tracarNivel(nivel);
+      }
+    }
+
+    function quadro(ts) {
+      raf = requestAnimationFrame(quadro);
+      if (!visivel) return;
+
+      if (!t0) t0 = ts;
+      tempo = (ts - t0) / 1000;
+
+      // Suaviza a perseguição do cursor para o relevo não "pular".
+      cursor.ax += (cursor.x - cursor.ax) * 0.06;
+      cursor.ay += (cursor.y - cursor.ay) * 0.06;
+      cursor.forca += (cursor.alvoForca - cursor.forca) * 0.05;
+
+      amostrar(tempo);
+      desenhar();
+    }
+
+    function quadroEstatico() {
+      amostrar(4.2);
+      desenhar();
+    }
+
+    /* ─────────────────────────────────────────────────────────── eventos */
+
+    const aoRedimensionar = () => {
+      dimensionar();
+      if (semMovimento) quadroEstatico();
+    };
+
+    const aoMover = (e) => {
+      const r = canvas.getBoundingClientRect();
+      cursor.x = (e.clientX - r.left) / PASSO;
+      cursor.y = (e.clientY - r.top) / PASSO;
+      if (cursor.ax < -900) { cursor.ax = cursor.x; cursor.ay = cursor.y; }
+      cursor.alvoForca = 1;
+    };
+    const aoSair = () => { cursor.alvoForca = 0; };
+
+    dimensionar();
+    addEventListener('resize', aoRedimensionar, { passive: true });
+
+    if (semMovimento) {
+      quadroEstatico();
+    } else {
+      // Só anima com o herói na tela e a aba em primeiro plano.
+      const obs = new IntersectionObserver(
+        ([e]) => { visivel = e.isIntersecting && !document.hidden; },
+        { threshold: 0 }
+      );
+      obs.observe(canvas);
+
+      const aoTrocarAba = () => { visivel = !document.hidden; };
+      document.addEventListener('visibilitychange', aoTrocarAba);
+
+      addEventListener('pointermove', aoMover, { passive: true });
+      canvas.parentElement?.addEventListener('pointerleave', aoSair);
+
+      raf = requestAnimationFrame(quadro);
+
+      // O ClientRouter troca o DOM sem recarregar: sem isso, o loop vazaria.
+      document.addEventListener('astro:before-swap', () => {
+        cancelAnimationFrame(raf);
+        obs.disconnect();
+        removeEventListener('resize', aoRedimensionar);
+        removeEventListener('pointermove', aoMover);
+        document.removeEventListener('visibilitychange', aoTrocarAba);
+      }, { once: true });
+    }
+  }
+
+  iniciarContornos();
+  document.addEventListener('astro:page-load', iniciarContornos);
+</script>

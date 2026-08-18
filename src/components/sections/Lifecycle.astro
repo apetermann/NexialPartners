@@ -1,0 +1,74 @@
+---
+import { t } from '../../i18n/dict.js';
+const { lang = 'pt' } = Astro.props;
+---
+
+<section class="section">
+  <div class="wrap">
+    <div class="lifecycle">
+      {t.mining.phases.map((fase, i) => (
+        <article class="fase" data-reveal style={`--reveal-delay:${i * 90}ms`}>
+          <span class="idx">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{fase.title[lang]}</h3>
+          <ul>
+            {fase.items.map((it) => <li>{it[lang]}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+
+    <p class="nota" data-reveal>
+      {t.mining.note[lang]} <strong>{t.mining.noteStrong[lang]}</strong>
+    </p>
+  </div>
+</section>
+
+<style>
+  .lifecycle {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .fase {
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--line);
+    transition: border-color 0.4s var(--ease);
+  }
+  .fase:hover { border-top-color: var(--accent); }
+
+  .fase .idx { display: block; margin-bottom: 1rem; }
+
+  .fase h3 {
+    margin-bottom: 1.25rem;
+    font-family: var(--font-body);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .fase ul { display: flex; flex-direction: column; gap: 0.75rem; }
+  .fase li {
+    position: relative;
+    padding-left: 1.125rem;
+    font-size: 0.9375rem;
+    color: var(--slate);
+  }
+  .fase li::before {
+    content: ""; position: absolute; left: 0; top: 0.68em;
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent); opacity: 0.7;
+  }
+
+  .nota {
+    margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--accent);
+    max-width: 62ch;
+    color: var(--mist);
+    font-weight: 300;
+  }
+  .nota strong { color: var(--white); font-weight: 500; }
+</style>

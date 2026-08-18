@@ -12,30 +12,51 @@ permissions:
   pages: write
   id-token: write
 
-# Uma publicação por vez; não cancela a que já está em andamento.
+# Uma publicacao por vez; nao cancela a que ja esta em andamento.
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Instalar Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v6
+
+      # Hoje o site vive em apetermann.github.io/NexialPartners/ - um Pages de
+      # projeto, portanto num subdiretorio. Quando o dominio proprio entrar,
+      # troque para SITE_URL: https://www.nexialpartners.com e BASE_PATH: /
+      - name: Build
+        run: npm run build
+        env:
+          SITE_URL: https://apetermann.github.io
+          BASE_PATH: /NexialPartners
+
+      - name: Empacotar site
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-
-      - name: Configurar Pages
-        uses: actions/configure-pages@v6
-
-      # Site estático: publica o repositório inteiro, sem etapa de build.
-      - name: Empacotar site
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: .
-
       - name: Publicar
         id: deployment
         uses: actions/deploy-pages@v5

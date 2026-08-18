@@ -1,0 +1,83 @@
+---
+import { t } from '../../i18n/dict.js';
+const { lang = 'pt' } = Astro.props;
+---
+
+<section class="section">
+  <div class="wrap split">
+    <div class="split-text">
+      <p class="eyebrow" data-reveal>{t.model.aboutEyebrow[lang]}</p>
+      <h2 data-reveal style="--reveal-delay:60ms">{t.model.aboutTitle[lang]}</h2>
+      <p data-reveal style="--reveal-delay:120ms">{t.model.aboutP1[lang]}</p>
+      <p data-reveal style="--reveal-delay:160ms">{t.model.aboutP2[lang]}</p>
+      <p class="fw" data-reveal style="--reveal-delay:200ms">
+        <strong>Nexial Performance Framework&trade;</strong> &middot; {t.model.frameworkTag[lang]}
+      </p>
+    </div>
+
+    <div class="equation" aria-label={t.model.equationLabel[lang]} data-reveal style="--reveal-delay:140ms">
+      {t.model.eq.map((item, i) => (
+        <>
+          {i > 0 && <div class="op" aria-hidden="true">+</div>}
+          <div class="item"><span>{item[lang]}</span></div>
+        </>
+      ))}
+      <div class="op igual" aria-hidden="true">=</div>
+      <div class="resultado">{t.model.eqResult[lang]}</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+  }
+  .split-text p { max-width: 50ch; color: var(--slate); }
+
+  .fw {
+    margin-top: var(--sp-3);
+    padding-top: var(--sp-3);
+    border-top: 1px solid var(--line-soft);
+    font-size: 0.9375rem;
+    color: var(--mist);
+  }
+  .fw strong { color: var(--accent-bright); font-weight: 500; }
+
+  .equation {
+    display: flex; flex-direction: column; align-items: center; gap: 0.625rem;
+    padding: clamp(1.75rem, 3.5vw, 2.75rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: linear-gradient(165deg, var(--surface) 0%, var(--ink-soft) 100%);
+  }
+  .item {
+    width: 100%; text-align: center;
+    padding: 0.9375rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(8, 11, 22, 0.5);
+    color: var(--mist);
+    font-size: 0.9375rem;
+  }
+  .op {
+    font-family: var(--font-display);
+    font-size: 1.25rem; font-weight: 300; line-height: 1;
+    color: var(--accent);
+  }
+  .op.igual { font-size: 1.5rem; }
+  .resultado {
+    width: 100%; text-align: center;
+    padding: 1.125rem 1rem;
+    border-radius: var(--radius);
+    background: var(--brand-gradient);
+    color: var(--ink-deep);
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../sections/PageHero.astro';
+import { t, CONTACT } from '../../i18n/dict.js';
+
+const { lang } = Astro.props;
+---
+
+<Base
+  lang={lang}
+  page="contato"
+  title={t.contact.metaTitle[lang]}
+  description={t.contact.metaDesc[lang]}
+>
+  <PageHero
+    eyebrow={t.contact.eyebrow[lang]}
+    title={t.contact.title[lang]}
+    lead={t.contact.lead[lang]}
+  />
+
+  <section class="section">
+    <div class="wrap contato-grid">
+      <div class="bloco" data-reveal>
+        <h2 class="rotulo">{t.contact.emailLabel[lang]}</h2>
+        <a class="destaque" href={`mailto:${CONTACT.email}`}>
+          {CONTACT.email}<span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+      <div class="bloco" data-reveal style="--reveal-delay:90ms">
+        <h2 class="rotulo">{t.contact.addressLabel[lang]}</h2>
+        <address>
+          {t.footer.addressL1[lang]}<br />
+          {t.footer.addressL2[lang]}
+        </address>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contato-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+
+  .bloco { padding-top: 1.5rem; border-top: 2px solid var(--line); }
+
+  .rotulo {
+    margin-bottom: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .destaque {
+    display: inline-flex; align-items: center; gap: 0.625rem;
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    color: var(--white);
+  }
+  .destaque .arrow { transition: transform 0.25s var(--ease); color: var(--accent); }
+  .destaque:hover .arrow { transform: translateX(5px); }
+
+  address {
+    font-style: normal;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--mist);
+  }
+</style>

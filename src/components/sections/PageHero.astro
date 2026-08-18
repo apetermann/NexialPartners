@@ -1,0 +1,24 @@
+---
+const { eyebrow, title, lead } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="rule" data-reveal></div>
+    <p class="eyebrow" data-reveal>{eyebrow}</p>
+    <h1 data-reveal style="--reveal-delay:60ms">{title}</h1>
+    {lead && <p class="lead" data-reveal style="--reveal-delay:120ms">{lead}</p>}
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    padding-block: clamp(9rem, 16vh, 12rem) clamp(3rem, 6vw, 5rem);
+    background:
+      radial-gradient(64rem 34rem at 78% -10%, rgba(79, 168, 216, 0.13), transparent 64%),
+      radial-gradient(40rem 26rem at 98% 30%, rgba(93, 184, 177, 0.08), transparent 66%),
+      linear-gradient(180deg, var(--ink-deep) 0%, var(--ink) 100%);
+  }
+  .page-hero h1 { max-width: 18ch; font-size: var(--fs-3xl); }
+  .page-hero .lead { margin-top: var(--sp-3); margin-bottom: 0; }
+</style>
