@@ -1,0 +1,150 @@
+---
+/**
+ * Efeitos de ponteiro.
+ *
+ * Três camadas, da mais discreta para a mais evidente:
+ *  1. um halo que segue o cursor pela página, com atraso;
+ *  2. um foco de luz dentro do cartão sob o cursor;
+ *  3. atração magnética nos botões principais.
+ *
+ * Tudo desligado em telas de toque e sob prefers-reduced-motion, e nenhuma
+ * camada intercepta clique (pointer-events: none).
+ */
+---
+
+<div class="halo" aria-hidden="true" data-halo></div>
+
+<style is:global>
+  /* Só faz sentido onde existe um ponteiro de verdade. */
+  @media (hover: hover) and (pointer: fine) {
+    .halo {
+      position: fixed;
+      top: 0; left: 0;
+      width: 46rem; height: 46rem;
+      margin: -23rem 0 0 -23rem;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      mix-blend-mode: screen;
+      background: radial-gradient(
+        closest-side,
+        rgba(79, 168, 216, 0.10) 0%,
+        rgba(93, 184, 177, 0.05) 42%,
+        transparent 72%
+      );
+      transition: opacity 0.7s var(--ease);
+      will-change: transform;
+    }
+    .halo.is-on { opacity: 1; }
+
+    /* Foco de luz que acompanha o cursor dentro do cartão. */
+    [data-foco] { position: relative; }
+    [data-foco]::before {
+      content: "";
+      position: absolute; inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.45s var(--ease);
+      background: radial-gradient(
+        16rem circle at var(--fx, 50%) var(--fy, 50%),
+        rgba(79, 168, 216, 0.13),
+        transparent 68%
+      );
+    }
+    [data-foco]:hover::before { opacity: 1; }
+
+    /* O conteúdo do cartão fica acima do foco. */
+    [data-foco] > * { position: relative; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .halo { display: none; }
+    [data-foco]::before { display: none; }
+  }
+</style>
+
+<script>
+  function armarPonteiro() {
+    const fino = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const semMovimento = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!fino || semMovimento) return;
+
+    const halo = document.querySelector('[data-halo]');
+
+    /* Cartões que recebem o foco de luz. Marcados aqui, e não no HTML de cada
+       componente, para a lista ficar num lugar só. */
+    /* .stat fica de fora de proposito: ele usa position:sticky, e a regra
+       [data-foco]{position:relative} anularia a fixacao ao rolar. */
+    const CARTOES = '.svc, .etapa, .person, .fase, .equation, .bloco, .ctx-list li';
+    document.querySelectorAll(CARTOES).forEach((el) => el.setAttribute('data-foco', ''));
+
+    /* Atração magnética nos botões principais: some quando o cursor sai. */
+    const imas = document.querySelectorAll('.btn-primary, .nav-cta');
+    const RAIO = 90, FORCA = 0.22;
+
+    let alvoX = innerWidth / 2, alvoY = innerHeight / 2;
+    let x = alvoX, y = alvoY;
+    let ativo = false, raf = 0;
+
+    const aoMover = (e) => {
+      alvoX = e.clientX;
+      alvoY = e.clientY;
+      if (!ativo) { ativo = true; x = alvoX; y = alvoY; halo?.classList.add('is-on'); }
+
+      /* Foco do cartão: posição relativa dentro do elemento sob o cursor. */
+      const cartao = e.target instanceof Element ? e.target.closest(CARTOES) : null;
+      if (cartao) {
+        const r = cartao.getBoundingClientRect();
+        cartao.style.setProperty('--fx', `${((e.clientX - r.left) / r.width) * 100}%`);
+        cartao.style.setProperty('--fy', `${((e.clientY - r.top) / r.height) * 100}%`);
+      }
+    };
+
+    const aoSair = () => {
+      ativo = false;
+      halo?.classList.remove('is-on');
+      // sem isto, um botao atraido fica torto depois que o cursor deixa a janela
+      imas.forEach((btn) => { btn.style.transform = ''; });
+    };
+
+    addEventListener('pointermove', aoMover, { passive: true });
+    document.addEventListener('pointerleave', aoSair);
+
+    /* Um único laço para o halo: transform apenas, sem tocar em layout. */
+    const laco = () => {
+      raf = requestAnimationFrame(laco);
+      x += (alvoX - x) * 0.09;
+      y += (alvoY - y) * 0.09;
+      if (halo) halo.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
+    };
+    raf = requestAnimationFrame(laco);
+
+    const puxar = (e) => {
+      imas.forEach((btn) => {
+        const r = btn.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        const dx = e.clientX - cx;
+        const dy = e.clientY - cy;
+        const dist = Math.hypot(dx, dy);
+        if (dist < r.width / 2 + RAIO) {
+          btn.style.transform = `translate(${(dx * FORCA).toFixed(1)}px, ${(dy * FORCA).toFixed(1)}px)`;
+        } else if (btn.style.transform) {
+          btn.style.transform = '';
+        }
+      });
+    };
+    addEventListener('pointermove', puxar, { passive: true });
+
+    document.addEventListener('astro:before-swap', () => {
+      cancelAnimationFrame(raf);
+      removeEventListener('pointermove', aoMover);
+      removeEventListener('pointermove', puxar);
+      document.removeEventListener('pointerleave', aoSair);
+    }, { once: true });
+  }
+
+  armarPonteiro();
+  document.addEventListener('astro:page-load', armarPonteiro);
+</script>

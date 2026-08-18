@@ -78,6 +78,24 @@ Ele respeita `prefers-reduced-motion` (desenha um quadro estático), pausa quand
 
 Para ajustar o desenho, mexa em `OCT` (o relevo), `NIVEIS` (quantidade de curvas) e `PASSO` (resolução da grade).
 
+### Efeitos de ponteiro
+
+`src/components/PointerFx.astro` reúne três camadas, da mais discreta para a
+mais evidente:
+
+1. **Halo** — um brilho difuso segue o cursor pela página com atraso, em
+   `mix-blend-mode: screen`. Levanta o fundo escuro sem alterar o texto.
+2. **Foco no cartão** — uma luz acompanha o cursor dentro do cartão sob ele.
+   A lista de cartões fica na constante `CARTOES`, num lugar só.
+3. **Ímã** — os botões principais são atraídos levemente na direção do cursor.
+
+Tudo desligado em telas de toque (`@media (hover: hover) and (pointer: fine)`)
+e sob `prefers-reduced-motion`. Nenhuma camada intercepta clique.
+
+> `.stat` está deliberadamente fora da lista `CARTOES`: ele usa
+> `position: sticky`, e a regra `[data-foco] { position: relative }`
+> anularia a fixação ao rolar.
+
 ### Fundos fotográficos
 
 `src/components/PhotoBackdrop.astro` põe uma foto de fundo com deriva lenta
