@@ -141,20 +141,29 @@ O workflow `.github/workflows/deploy.yml` instala as dependências, roda o build
 
 **Configuração única no GitHub:** `Settings` → `Pages` → em *Source*, selecione **GitHub Actions**.
 
-### Domínio próprio (nexialpartners.com)
+### Domínio próprio
 
-Hoje o site vive num subdiretório (`/NexialPartners/`) porque é um GitHub Pages de projeto. Para migrar:
+O site é servido em **https://nexialpartners.com** (apex). O `www` e a antiga
+URL de projeto (`apetermann.github.io/NexialPartners/`) redirecionam para lá,
+e o HTTP redireciona para HTTPS.
 
-1. No `.github/workflows/deploy.yml`, troque as variáveis do passo de build:
-   ```yaml
-   SITE_URL: https://www.nexialpartners.com
-   BASE_PATH: /
-   ```
-2. Crie `public/CNAME` contendo apenas `www.nexialpartners.com`.
-3. No DNS: `www` → **CNAME** para `apetermann.github.io`; e o domínio raiz → registros **A** para `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`.
-4. Em `Settings` → `Pages`, informe o domínio e marque **Enforce HTTPS**.
+A configuração vive em dois lugares:
 
-Nenhum link no código precisa mudar: todos são montados a partir de `BASE_PATH`.
+- **`.github/workflows/deploy.yml`** — `SITE_URL: https://nexialpartners.com` e
+  `BASE_PATH: /`. É daí que saem canonical, hreflang, `og:url`, sitemap e
+  dados estruturados.
+- **`Settings` → `Pages`** no GitHub — o domínio e o *Enforce HTTPS*. Com a
+  publicação via GitHub Actions o domínio fica guardado nas configurações do
+  repositório, e **não** existe arquivo `CNAME` no código.
+
+Para mudar de domínio, basta trocar `SITE_URL` no workflow e o domínio nas
+configurações do Pages. Nenhum link no código precisa mudar — todos são
+montados a partir de `BASE_PATH`, e o `robots.txt` é gerado a partir de
+`SITE_URL` (veja `src/pages/robots.txt.js`).
+
+> O apex é o endereço canônico. Se um dia preferirem o `www`, mude
+> `SITE_URL`, o domínio no Pages e `CONTACT.site` no `dict.js` — os três
+> juntos, para não voltar a divergir.
 
 ## Acessibilidade
 

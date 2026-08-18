@@ -419,6 +419,6 @@ export const t = {
 /** Dados de contato — não mudam entre línguas. */
 export const CONTACT = {
   email: 'contato@nexialpartners.com',
-  site: 'www.nexialpartners.com',
+  site: 'nexialpartners.com',   // sem www: e o canonical, o www redireciona
   legalName: 'Nexial Partners Ltda.',
 };
