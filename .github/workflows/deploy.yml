@@ -36,14 +36,12 @@ jobs:
       - name: Configurar Pages
         uses: actions/configure-pages@v6
 
-      # Hoje o site vive em apetermann.github.io/NexialPartners/ - um Pages de
-      # projeto, portanto num subdiretorio. Quando o dominio proprio entrar,
-      # troque para SITE_URL: https://www.nexialpartners.com e BASE_PATH: /
+      # O site e servido na raiz do dominio proprio nexialpartners.com.
       - name: Build
         run: npm run build
         env:
-          SITE_URL: https://apetermann.github.io
-          BASE_PATH: /NexialPartners
+          SITE_URL: https://nexialpartners.com
+          BASE_PATH: /
 
       - name: Empacotar site
         uses: actions/upload-pages-artifact@v5
