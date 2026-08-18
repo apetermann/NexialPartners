@@ -74,7 +74,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-padding-top: 8rem;
+  scroll-padding-top: 8.5rem;
 }
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }

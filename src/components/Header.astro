@@ -78,12 +78,14 @@ const links = ['modelo', 'servicos', 'mineracao', 'partners'];
 
   .header-inner {
     display: flex; align-items: center; gap: 2rem;
-    min-height: 6rem;
+    min-height: 6.5rem;
   }
 
   .brand { margin-right: auto; }
   .brand img {
-    width: auto; height: clamp(2.25rem, 1.9rem + 0.9vw, 2.75rem);
+    /* Proporcao do teaser: o logo ocupa 6,7% da altura do slide,
+       o que em 1440px de viewport equivale a ~54px. */
+    width: auto; height: clamp(2.5rem, 2rem + 1.4vw, 3.5rem);
     transition: opacity 0.25s var(--ease);
   }
   .brand:hover img { opacity: 0.8; }
