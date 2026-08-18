@@ -78,7 +78,7 @@ const links = ['modelo', 'servicos', 'mineracao', 'partners'];
 
   .header-inner {
     display: flex; align-items: center; gap: 2rem;
-    min-height: 6.5rem;
+    min-height: var(--header-h);
   }
 
   .brand { margin-right: auto; }
@@ -138,7 +138,7 @@ const links = ['modelo', 'servicos', 'mineracao', 'partners'];
 
   .menu-toggle {
     display: none;
-    width: 2.5rem; height: 2.5rem;
+    width: 2.75rem; height: 2.75rem;
     flex-direction: column; justify-content: center; align-items: flex-end; gap: 6px;
   }
   .menu-toggle span {
@@ -154,7 +154,9 @@ const links = ['modelo', 'servicos', 'mineracao', 'partners'];
     .menu-toggle { display: flex; }
 
     .nav {
-      position: fixed; inset: 5.25rem 0 auto;
+      /* Ancorado na altura real da barra: com valor fixo, o painel abria
+         sobrepondo o cabecalho quando a barra mudava de altura. */
+      position: fixed; inset: var(--header-h) 0 auto;
       flex-direction: column; align-items: stretch; gap: 0;
       padding: 0.5rem var(--gutter) 2rem;
       background: rgba(8, 11, 22, 0.97);

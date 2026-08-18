@@ -57,6 +57,11 @@
   --sp-section: clamp(5rem, 10vw, 9.5rem);
 
   /* Layout */
+  /* Altura da barra fixa. Fluida: 104px no desktop, 76px no celular — a
+     barra do desktop comeria 13% da tela de um telefone. Tudo que depende
+     dela (painel do menu, scroll das ancoras) le esta variavel. */
+  --header-h: clamp(4.75rem, 3.6rem + 3vw, 6.5rem);
+
   --wrap: 1240px;
   --wrap-narrow: 940px;
   --gutter: clamp(1.25rem, 4vw, 3rem);
@@ -74,7 +79,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-padding-top: 8.5rem;
+  scroll-padding-top: calc(var(--header-h) + 1.5rem);
 }
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
