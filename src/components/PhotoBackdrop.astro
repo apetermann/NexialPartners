@@ -1,5 +1,6 @@
 ---
-import { asset } from '../i18n/utils.js';
+/* Mesmo motivo das fotos dos partners: hash de conteudo no nome. */
+const fundos = import.meta.glob('../assets/bg/*.jpg', { eager: true });
 
 /**
  * Fundo fotográfico com deriva lenta.
@@ -17,7 +18,7 @@ import { asset } from '../i18n/utils.js';
  */
 const { image = 'rocha', opacity = 0.5, veil = 'center' } = Astro.props;
 
-const g = (w) => asset(`assets/img/bg/${image}-${w}.jpg`);
+const g = (w) => fundos[`../assets/bg/${image}-${w}.jpg`].default.src;
 ---
 
 <div class="backdrop" aria-hidden="true">

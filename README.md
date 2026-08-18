@@ -105,7 +105,7 @@ que disfarça o *banding* nos gradientes escuros.
 As imagens vêm do **teaser institucional da própria Nexial** — material que já
 era de vocês — tratadas para a paleta indigo: duotone a 45%, contraste 1,3 e
 brilho 1,35, o que preserva a textura da rocha em vez de achatá-la. Ficam em
-`public/assets/img/bg/`, em duas larguras (1920 e 1100, trocadas por media query).
+`src/assets/bg/`, em duas larguras (1920 e 1100, trocadas por media query).
 
 | Onde | Imagem | Opacidade |
 | --- | --- | --- |
@@ -114,12 +114,26 @@ brilho 1,35, o que preserva a textura da rocha em vez de achatá-la. Ficam em
 | Herói das páginas internas | `rocha` | 0,42 |
 
 Para trocar por fotos reais de obra, basta substituir os arquivos em
-`public/assets/img/bg/` mantendo os nomes e as duas larguras. O tratamento de
+`src/assets/bg/` mantendo os nomes e as duas larguras. O tratamento de
 cor pode então ser dispensado — imagem real de ativo dispensa estilização.
 
 ### Fotos dos partners
 
-Em `public/assets/img/partners/`, uma por pessoa, 320×320. O recorte circular e o preto e branco são aplicados por CSS — a imagem de origem pode ser colorida. Para trocar, substitua o arquivo mantendo o nome.
+Em `src/assets/partners/`, uma por pessoa, 320×320. O recorte circular e o preto e branco são aplicados por CSS — a imagem de origem pode ser colorida. Para trocar, substitua o arquivo mantendo o nome.
+
+### Por que as imagens ficam em `src/assets` e não em `public`
+
+Arquivo em `public/` é servido com o nome exato que você deu. Se você trocar
+a foto mantendo o nome, o navegador de quem já visitou o site continua
+exibindo a **versão antiga** até o cache dele expirar — e isso já aconteceu
+uma vez aqui, com a foto de um partner.
+
+Imagens importadas de `src/assets/` passam pelo pipeline do Astro, que põe um
+hash do conteúdo no nome (`alex-petermann.7MNCtu5v.jpg`). Trocar a imagem
+muda o hash, muda a URL, e o cache nunca serve a versão velha.
+
+Ficam em `public/` só os arquivos cuja **URL precisa ser estável**: favicons,
+`og-image.png` (lida por redes sociais) e os logos.
 
 ## Publicação
 

@@ -1,6 +1,12 @@
 ---
 import { t } from '../../i18n/dict.js';
-import { asset } from '../../i18n/utils.js';
+
+/* As fotos vivem em src/assets, nao em public: assim o Astro poe um hash do
+   conteudo no nome do arquivo. Trocar uma foto gera uma URL nova, e o cache
+   do navegador nunca serve a versao antiga. */
+const fotos = import.meta.glob('../../assets/partners/*.jpg', { eager: true });
+const src = (nome) => fotos[`../../assets/partners/${nome}.jpg`].default.src;
+
 const { lang = 'pt' } = Astro.props;
 ---
 
@@ -12,7 +18,7 @@ const { lang = 'pt' } = Astro.props;
           <div class="retrato">
             {/* alt vazio: o nome vem no <h3> logo abaixo */}
             <img
-              src={asset(`assets/img/partners/${p.photo}.jpg`)}
+              src={src(p.photo)}
               alt="" width="320" height="320" loading="lazy" decoding="async"
             />
           </div>
