@@ -354,8 +354,8 @@ export const t = {
         name: 'Iran Zan',
         photo: 'iran-zan',
         bio: {
-          pt: 'Geólogo (UNICAMP) e Competent Person AusIMM. Ouro, cobre pórfiro, minerais pesados e lítio desde 2011. Exploração, avaliação de recursos e mercado de capitais. Pioneiro na Sigma Lithium.',
-          en: 'Geologist (UNICAMP) and AusIMM Competent Person. Gold, porphyry copper, heavy minerals and lithium since 2011. Exploration, resource assessment and capital markets. Pioneer at Sigma Lithium.',
+          pt: 'Iran Zan é geólogo da UNICAMP, QP pela FAusIMM. Atua desde 2009 em exploração e avaliação de ouro, cobre pórfiro, minerais pesados e lítio. Cofundador pioneiro da Sigma Lithium, une técnica e inovação.',
+          en: 'Iran Zan is a geologist from UNICAMP and a QP through FAusIMM. Since 2009 in exploration and evaluation of gold, porphyry copper, heavy minerals and lithium. Pioneering co-founder of Sigma Lithium.',
         },
       },
       {
