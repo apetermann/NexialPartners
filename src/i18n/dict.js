@@ -458,5 +458,5 @@ export const CONTACT = {
    * aponte o destino para alex.petermann@nexialpartners.com e cole aqui a URL
    * no formato https://formspree.io/f/XXXXXXXX
    */
-  formEndpoint: '',
+  formEndpoint: 'https://formspree.io/f/xljrozqa',
 };
