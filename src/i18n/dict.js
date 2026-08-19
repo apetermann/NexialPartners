@@ -330,8 +330,8 @@ export const t = {
         name: 'Alex Petermann',
         photo: 'alex-petermann',
         bio: {
-          pt: 'Engenheiro de minas, 20+ anos em quatro continentes. Planejamento de mina, PFS/FS/DFS, avaliação econômica e acesso a capital. Fundador da DeCarbonMine.',
-          en: 'Mining engineer, 20+ years across four continents. Mine planning, PFS/FS/DFS, economic assessment and access to capital. Founder of DeCarbonMine.',
+          pt: 'Executivo e engenheiro de minas com 25+ anos de experiência em quatro continentes. Liderou empresas, grandes equipes e projetos complexos, do planejamento e estudos de viabilidade à implantação e estruturação de capital. Ex-VP da Ausenco Brasil e Diretor Regional de Mineração da Hatch. Fundador e CEO da DeCarbonMine.',
+          en: 'Executive and mining engineer with 25+ years of experience across four continents. Has led companies, large teams and complex projects, from planning and feasibility studies through to implementation and capital structuring. Former VP of Ausenco Brazil and Regional Mining Director at Hatch. Founder and CEO of DeCarbonMine.',
         },
       },
       {
