@@ -330,40 +330,40 @@ export const t = {
         name: 'Alex Petermann',
         photo: 'alex-petermann',
         bio: {
-          pt: 'Executivo e engenheiro de minas com 25+ anos de experiência em quatro continentes. Liderou empresas, grandes equipes e projetos complexos, do planejamento e estudos de viabilidade à implantação e estruturação de capital. Ex-VP da Ausenco Brasil e Diretor Regional de Mineração da Hatch. Fundador e CEO da DeCarbonMine.',
-          en: 'Executive and mining engineer with 25+ years of experience across four continents. Has led companies, large teams and complex projects, from planning and feasibility studies through to implementation and capital structuring. Former VP of Ausenco Brazil and Regional Mining Director at Hatch. Founder and CEO of DeCarbonMine.',
+          pt: 'Executivo e engenheiro de minas, 25+ anos em quatro continentes. Do planejamento e da viabilidade à implantação e ao capital. Ex-VP da Ausenco Brasil e diretor regional da Hatch. Fundador da DeCarbonMine.',
+          en: 'Executive and mining engineer, 25+ years across four continents. From planning and feasibility through to implementation and capital. Former VP of Ausenco Brazil and regional director at Hatch. Founder of DeCarbonMine.',
         },
       },
       {
         name: 'Antonio Neves Santana',
         photo: 'antonio-neves',
         bio: {
-          pt: 'Engenheiro de minas, MSc, com MBA em gestão de negócios e passagem pelas principais mineradoras do país. Engenharia de processo, M&A e governança.',
-          en: 'Mining engineer, MSc, with an MBA in business management and experience at the country’s leading mining companies. Process engineering, M&A and governance.',
+          pt: 'Engenheiro de minas, MSc, com MBA em gestão de negócios. Passagem pelas principais mineradoras do país, entre elas a Mineração Usiminas. Engenharia de processo, M&A e governança.',
+          en: 'Mining engineer, MSc, with an MBA in business management. Experience at the country’s leading mining companies, among them Mineração Usiminas. Process engineering, M&A and governance.',
         },
       },
       {
         name: 'Arley Costa',
         photo: 'arley-costa',
         bio: {
-          pt: 'Ex-diretor global de transformação digital da AtkinsRéalis. BIM 3D/4D/5D, gêmeos digitais, LiDAR, LLMs e agentes autônomos. Fundador da Digitallis.',
-          en: 'Former global director of digital transformation at AtkinsRéalis. BIM 3D/4D/5D, digital twins, LiDAR, LLMs and autonomous agents. Founder of Digitallis.',
+          pt: 'Ex-diretor global de transformação digital da AtkinsRéalis. BIM 3D/4D/5D, gêmeos digitais, LiDAR, LLMs e agentes autônomos no ciclo de engenharia. Fundador da Digitallis.',
+          en: 'Former global director of digital transformation at AtkinsRéalis. BIM 3D/4D/5D, digital twins, LiDAR, LLMs and autonomous agents across the engineering cycle. Founder of Digitallis.',
         },
       },
       {
         name: 'Iran Zan',
         photo: 'iran-zan',
         bio: {
-          pt: 'Geólogo (UNICAMP) e Competent Person AusIMM. Ouro, cobre pórfiro, minerais pesados e lítio desde 2011. Pioneiro na Sigma Lithium.',
-          en: 'Geologist (UNICAMP) and AusIMM Competent Person. Gold, porphyry copper, heavy minerals and lithium since 2011. Pioneer at Sigma Lithium.',
+          pt: 'Geólogo (UNICAMP) e Competent Person AusIMM. Ouro, cobre pórfiro, minerais pesados e lítio desde 2011. Exploração, avaliação de recursos e mercado de capitais. Pioneiro na Sigma Lithium.',
+          en: 'Geologist (UNICAMP) and AusIMM Competent Person. Gold, porphyry copper, heavy minerals and lithium since 2011. Exploration, resource assessment and capital markets. Pioneer at Sigma Lithium.',
         },
       },
       {
         name: 'Noeber Orsine',
         photo: 'noeber-orsine',
         bio: {
-          pt: '30+ anos no Brasil, África e Austrália. Greenfield e brownfield com equipes de até 3.000 pessoas e CAPEX de US$ 2,1 bi. JORC, NI 43-101 e S-K 1300.',
-          en: '30+ years across Brazil, Africa and Australia. Greenfield and brownfield with teams of up to 3,000 people and CAPEX of US$ 2.1bn. JORC, NI 43-101 and S-K 1300.',
+          pt: '30+ anos no Brasil, África e Austrália. Greenfield e brownfield com equipes de até 3.000 pessoas e CAPEX de US$ 2,1 bi. Estudos FEL e reporte em JORC, NI 43-101 e S-K 1300.',
+          en: '30+ years across Brazil, Africa and Australia. Greenfield and brownfield with teams of up to 3,000 people and CAPEX of US$ 2.1bn. FEL studies and reporting under JORC, NI 43-101 and S-K 1300.',
         },
       },
     ],
