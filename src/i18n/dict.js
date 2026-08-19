@@ -362,8 +362,8 @@ export const t = {
         name: 'Noeber Orsine',
         photo: 'noeber-orsine',
         bio: {
-          pt: '30+ anos no Brasil, África e Austrália. Greenfield e brownfield com equipes de até 3.000 pessoas e CAPEX de US$ 2,1 bi. Estudos FEL e reporte em JORC, NI 43-101 e S-K 1300.',
-          en: '30+ years across Brazil, Africa and Australia. Greenfield and brownfield with teams of up to 3,000 people and CAPEX of US$ 2.1bn. FEL studies and reporting under JORC, NI 43-101 and S-K 1300.',
+          pt: 'Engenheiro de minas e executivo com mais de 35 anos em projetos de mineração, da viabilidade à operação. Liderou estratégia, implantação e logística em várias commodities no Brasil, África e Austrália.',
+          en: 'Mining engineer and executive with over 35 years in mining projects, from feasibility through to operation. Has led strategy, implementation and logistics across several commodities in Brazil, Africa and Australia.',
         },
       },
     ],
