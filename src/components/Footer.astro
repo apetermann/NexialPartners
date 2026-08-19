@@ -26,7 +26,11 @@ const ano = new Date().getFullYear();
 
     <div class="footer-contact">
       <h2 class="col-title">{t.contact.eyebrow[lang]}</h2>
-      <p><a class="link-line" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></p>
+      <p>
+        <a class="link-line" href={CONTACT.linkedin} target="_blank" rel="noopener">
+          LinkedIn<span class="seta" aria-hidden="true">&nearr;</span>
+        </a>
+      </p>
       <address>
         {t.footer.addressL1[lang]}<br />
         {t.footer.addressL2[lang]}
@@ -74,6 +78,7 @@ const ano = new Date().getFullYear();
   .footer-nav a:hover { color: var(--white); }
 
   .footer-contact p { margin-bottom: 1.25rem; }
+  .seta { margin-left: 0.3rem; color: var(--accent); }
   .footer-contact a { color: var(--mist); }
   address {
     font-style: normal;

@@ -1,9 +1,11 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PageHero from '../sections/PageHero.astro';
+import ContactForm from '../ContactForm.astro';
 import { t, CONTACT } from '../../i18n/dict.js';
 
 const { lang } = Astro.props;
+const temFormulario = Boolean(CONTACT.formEndpoint);
 ---
 
 <Base
@@ -20,20 +22,27 @@ const { lang } = Astro.props;
 
   <section class="section">
     <div class="wrap contato-grid">
-      <div class="bloco" data-reveal>
-        <h2 class="rotulo">{t.contact.emailLabel[lang]}</h2>
-        <a class="destaque" href={`mailto:${CONTACT.email}`}>
-          {CONTACT.email}<span class="arrow" aria-hidden="true">&rarr;</span>
-        </a>
+      <div class="coluna-form" data-reveal>
+        {temFormulario && <h2 class="rotulo">{t.form.eyebrow[lang]}</h2>}
+        <ContactForm lang={lang} />
       </div>
 
-      <div class="bloco" data-reveal style="--reveal-delay:90ms">
-        <h2 class="rotulo">{t.contact.addressLabel[lang]}</h2>
-        <address>
-          {t.footer.addressL1[lang]}<br />
-          {t.footer.addressL2[lang]}
-        </address>
-      </div>
+      <aside class="coluna-lado" data-reveal style="--reveal-delay:90ms">
+        <div class="bloco">
+          <h2 class="rotulo">{t.contact.linkedinLabel[lang]}</h2>
+          <a class="destaque" href={CONTACT.linkedin} target="_blank" rel="noopener">
+            Nexial Partners<span class="arrow" aria-hidden="true">&nearr;</span>
+          </a>
+        </div>
+
+        <div class="bloco">
+          <h2 class="rotulo">{t.contact.addressLabel[lang]}</h2>
+          <address>
+            {t.footer.addressL1[lang]}<br />
+            {t.footer.addressL2[lang]}
+          </address>
+        </div>
+      </aside>
     </div>
   </section>
 </Base>
@@ -41,9 +50,12 @@ const { lang } = Astro.props;
 <style>
   .contato-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
-    gap: clamp(2rem, 5vw, 4rem);
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
   }
+
+  .coluna-lado { display: flex; flex-direction: column; gap: 2.5rem; }
 
   .bloco { padding-top: 1.5rem; border-top: 2px solid var(--line); }
 
@@ -58,20 +70,24 @@ const { lang } = Astro.props;
   }
 
   .destaque {
-    display: inline-flex; align-items: center; gap: 0.625rem;
+    display: inline-flex; align-items: center; gap: 0.5rem;
     font-family: var(--font-display);
     font-size: var(--fs-lg);
     font-weight: 300;
     letter-spacing: -0.015em;
     color: var(--white);
   }
-  .destaque .arrow { transition: transform 0.25s var(--ease); color: var(--accent); }
-  .destaque:hover .arrow { transform: translateX(5px); }
+  .destaque .arrow { color: var(--accent); transition: transform 0.25s var(--ease); }
+  .destaque:hover .arrow { transform: translate(3px, -3px); }
 
   address {
     font-style: normal;
     font-size: 1.0625rem;
     line-height: 1.75;
     color: var(--mist);
+  }
+
+  @media (max-width: 860px) {
+    .contato-grid { grid-template-columns: 1fr; }
   }
 </style>

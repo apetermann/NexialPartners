@@ -96,6 +96,26 @@ e sob `prefers-reduced-motion`. Nenhuma camada intercepta clique.
 > `position: sticky`, e a regra `[data-foco] { position: relative }`
 > anularia a fixação ao rolar.
 
+### Formulário de contato
+
+O site é estático: **não há servidor para enviar e-mail**. O formulário faz POST
+para um serviço externo, que repassa a mensagem para a caixa configurada lá
+dentro. O endereço de destino fica no serviço, não no código — por isso não
+aparece no HTML da página nem é colhido por robô de spam.
+
+O endereço é definido em `CONTACT.formEndpoint`, no `dict.js`:
+
+- **vazio** → a página de contato mostra LinkedIn e endereço, e o formulário
+  não é renderizado. Melhor não ter formulário do que ter um que não envia.
+- **preenchido** → o formulário aparece e passa a enviar.
+
+Para ativar, crie um formulário gratuito em [formspree.io](https://formspree.io),
+aponte o destino para o e-mail desejado e cole a URL (`https://formspree.io/f/XXXXXXXX`)
+em `formEndpoint`.
+
+O formulário valida no navegador antes de enviar, mostra estado de envio, sucesso
+e erro sem recarregar a página, e traz um campo-isca (`_gotcha`) contra robôs.
+
 ### Fundos fotográficos
 
 `src/components/PhotoBackdrop.astro` põe uma foto de fundo com deriva lenta

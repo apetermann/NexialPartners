@@ -1,5 +1,6 @@
 ---
-import { t, CONTACT } from '../../i18n/dict.js';
+import { t } from '../../i18n/dict.js';
+import { url } from '../../i18n/utils.js';
 const { lang = 'pt' } = Astro.props;
 ---
 
@@ -8,8 +9,8 @@ const { lang = 'pt' } = Astro.props;
     <p class="eyebrow" data-reveal>{t.contact.eyebrow[lang]}</p>
     <h2 data-reveal style="--reveal-delay:60ms">{t.contact.title[lang]}</h2>
     <p class="lead" data-reveal style="--reveal-delay:120ms">{t.contact.lead[lang]}</p>
-    <a class="btn btn-primary btn-lg" href={`mailto:${CONTACT.email}`} data-reveal style="--reveal-delay:180ms">
-      {CONTACT.email}<span class="arrow" aria-hidden="true">&rarr;</span>
+    <a class="btn btn-primary btn-lg" href={url('contato', lang)} data-reveal style="--reveal-delay:180ms">
+      {t.nav.cta[lang]}<span class="arrow" aria-hidden="true">&rarr;</span>
     </a>
   </div>
 </section>

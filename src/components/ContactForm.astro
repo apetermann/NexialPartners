@@ -1,0 +1,230 @@
+---
+import { t, CONTACT } from '../i18n/dict.js';
+
+/**
+ * Formulário de contato.
+ *
+ * O site é estático: quem envia o e-mail é um serviço externo, configurado em
+ * CONTACT.formEndpoint. O endereço de destino fica lá, não aqui — por isso ele
+ * não aparece no código-fonte da página nem é colhido por robô de spam.
+ *
+ * Sem endpoint configurado, o formulário não é renderizado: a página mostra o
+ * LinkedIn e o endereço. Melhor não ter formulário do que ter um que não envia.
+ */
+const { lang = 'pt' } = Astro.props;
+const f = t.form;
+const ativo = Boolean(CONTACT.formEndpoint);
+---
+
+{ativo && (
+  <form class="form" method="POST" action={CONTACT.formEndpoint} novalidate data-form>
+    <div class="campos">
+      <p class="campo">
+        <label for="nome">{f.name[lang]}</label>
+        <input id="nome" name="nome" type="text" required autocomplete="name" />
+        <span class="erro" data-erro-de="nome" aria-live="polite"></span>
+      </p>
+
+      <p class="campo">
+        <label for="email">{f.email[lang]}</label>
+        <input id="email" name="email" type="email" required autocomplete="email"
+               inputmode="email" spellcheck="false" />
+        <span class="erro" data-erro-de="email" aria-live="polite"></span>
+      </p>
+
+      <p class="campo campo-largo">
+        <label for="empresa">
+          {f.company[lang]} <span class="opcional">({f.optional[lang]})</span>
+        </label>
+        <input id="empresa" name="empresa" type="text" autocomplete="organization" />
+      </p>
+
+      <p class="campo campo-largo">
+        <label for="mensagem">{f.message[lang]}</label>
+        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+        <span class="erro" data-erro-de="mensagem" aria-live="polite"></span>
+      </p>
+    </div>
+
+    {/* Isca para robô: invisível e fora da ordem de tabulação. Preenchido,
+        o envio é descartado sem chegar ao serviço. */}
+    <p class="isca" aria-hidden="true">
+      <label for="site-url">Não preencha este campo</label>
+      <input id="site-url" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
+    </p>
+
+    <div class="acao">
+      <button type="submit" class="btn btn-primary" data-enviar>
+        <span data-rotulo>{f.submit[lang]}</span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </button>
+      <p class="estado" role="status" aria-live="polite" data-estado></p>
+    </div>
+
+    <template data-msg-enviando>{f.sending[lang]}</template>
+    <template data-msg-sucesso>{f.success[lang]}</template>
+    <template data-msg-erro>{f.error[lang]}</template>
+    <template data-msg-obrigatorio>{f.required[lang]}</template>
+    <template data-msg-email>{f.invalidEmail[lang]}</template>
+  </form>
+)}
+
+<style>
+  .form { max-width: 44rem; }
+
+  .campos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .campo { margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .campo-largo { grid-column: 1 / -1; }
+
+  label {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .opcional { color: var(--muted); text-transform: none; letter-spacing: 0.06em; }
+
+  input, textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(8, 11, 22, 0.55);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+  }
+  textarea { resize: vertical; min-height: 8rem; }
+
+  input:hover, textarea:hover { border-color: var(--surface-2); }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(8, 11, 22, 0.8);
+  }
+  /* O foco visível não pode depender só da cor. */
+  input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--accent-bright);
+    outline-offset: 2px;
+  }
+
+  input[aria-invalid='true'], textarea[aria-invalid='true'] { border-color: #E8836B; }
+
+  .erro {
+    min-height: 1.1em;
+    font-size: var(--fs-sm);
+    color: #F0A18C;   /* 6.3:1 sobre --ink */
+  }
+  .erro:empty { min-height: 0; }
+
+  /* Isca de spam: fora da tela, mas não display:none — robô ignora o que
+     está oculto por completo. */
+  .isca {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .acao {
+    display: flex; align-items: center; gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .acao .btn[disabled] { opacity: 0.6; cursor: progress; transform: none; }
+
+  .estado { margin: 0; font-size: 0.9375rem; color: var(--mist); }
+  .estado[data-tipo='erro'] { color: #F0A18C; }
+  .estado[data-tipo='ok'] { color: var(--accent-bright); }
+
+  @media (max-width: 620px) {
+    .campos { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  function armarFormulario() {
+    const form = document.querySelector('[data-form]');
+    if (!form) return;
+
+    const txt = (nome) => form.querySelector(`[data-msg-${nome}]`)?.innerHTML.trim() ?? '';
+    const estado = form.querySelector('[data-estado]');
+    const botao = form.querySelector('[data-enviar]');
+    const rotulo = form.querySelector('[data-rotulo]');
+    const rotuloInicial = rotulo?.textContent ?? '';
+
+    const mostrarErro = (campo, msg) => {
+      campo.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      const alvo = form.querySelector(`[data-erro-de="${campo.name}"]`);
+      if (alvo) alvo.textContent = msg;
+    };
+
+    const validar = (campo) => {
+      if (!campo.required) return true;
+      const v = campo.value.trim();
+      if (!v) { mostrarErro(campo, txt('obrigatorio')); return false; }
+      if (campo.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) {
+        mostrarErro(campo, txt('email')); return false;
+      }
+      mostrarErro(campo, '');
+      return true;
+    };
+
+    const campos = [...form.querySelectorAll('input[required], textarea[required]')];
+    campos.forEach((c) => {
+      // só valida ao sair do campo: validar a cada tecla acusa erro antes da hora
+      c.addEventListener('blur', () => validar(c));
+      c.addEventListener('input', () => {
+        if (c.getAttribute('aria-invalid') === 'true') validar(c);
+      });
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const ok = campos.map(validar).every(Boolean);
+      if (!ok) {
+        estado.textContent = '';
+        campos.find((c) => c.getAttribute('aria-invalid') === 'true')?.focus();
+        return;
+      }
+
+      botao.disabled = true;
+      if (rotulo) rotulo.textContent = txt('enviando');
+      estado.removeAttribute('data-tipo');
+      estado.textContent = '';
+
+      try {
+        const r = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (!r.ok) throw new Error(String(r.status));
+
+        form.reset();
+        campos.forEach((c) => mostrarErro(c, ''));
+        estado.setAttribute('data-tipo', 'ok');
+        estado.textContent = txt('sucesso');
+      } catch {
+        estado.setAttribute('data-tipo', 'erro');
+        estado.textContent = txt('erro');
+      } finally {
+        botao.disabled = false;
+        if (rotulo) rotulo.textContent = rotuloInicial;
+      }
+    });
+  }
+
+  armarFormulario();
+  document.addEventListener('astro:page-load', armarFormulario);
+</script>

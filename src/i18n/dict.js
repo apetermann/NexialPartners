@@ -338,8 +338,8 @@ export const t = {
         name: 'Antonio Neves Santana',
         photo: 'antonio-neves',
         bio: {
-          pt: 'Engenheiro de minas, MSc, com MBA em gestão de negócios. Passagem pelas principais mineradoras do país, entre elas a Mineração Usiminas. Engenharia de processo, M&A e governança.',
-          en: 'Mining engineer, MSc, with an MBA in business management. Experience at the country’s leading mining companies, among them Mineração Usiminas. Process engineering, M&A and governance.',
+          pt: 'Engenheiro de minas, MSc, com MBA em gestão de negócios. Passagem pelas principais mineradoras do país. Engenharia de processo, M&A, governança e desenvolvimento de ativos.',
+          en: 'Mining engineer, MSc, with an MBA in business management. Experience at the country’s leading mining companies. Process engineering, M&A, governance and asset development.',
         },
       },
       {
@@ -390,8 +390,30 @@ export const t = {
       pt: 'O futuro da sua engenharia começa com uma conversa. Experiência sênior, IA proprietária e visão de negócios em um único modelo de execução.',
       en: 'The future of your engineering starts with a conversation. Senior experience, proprietary AI and business vision in a single execution model.',
     },
-    emailLabel:   { pt: 'E-mail',     en: 'Email' },
+    linkedinLabel: { pt: 'LinkedIn', en: 'LinkedIn' },
     addressLabel: { pt: 'Escritório', en: 'Office' },
+  },
+
+  /* ════════════════════════════════════════════════ formulário */
+  form: {
+    eyebrow:   { pt: 'Envie uma mensagem', en: 'Send a message' },
+    name:      { pt: 'Nome',              en: 'Name' },
+    email:     { pt: 'E-mail',            en: 'Email' },
+    company:   { pt: 'Empresa',           en: 'Company' },
+    optional:  { pt: 'opcional',          en: 'optional' },
+    message:   { pt: 'Mensagem',          en: 'Message' },
+    submit:    { pt: 'Enviar mensagem',   en: 'Send message' },
+    sending:   { pt: 'Enviando…',         en: 'Sending…' },
+    success: {
+      pt: 'Mensagem enviada. Retornaremos em breve.',
+      en: 'Message sent. We will get back to you shortly.',
+    },
+    error: {
+      pt: 'Não foi possível enviar agora. Tente novamente em instantes ou fale conosco pelo LinkedIn.',
+      en: 'We could not send it right now. Please try again shortly, or reach us on LinkedIn.',
+    },
+    required:     { pt: 'Preencha este campo',        en: 'Please fill in this field' },
+    invalidEmail: { pt: 'Informe um e-mail válido',   en: 'Enter a valid email address' },
   },
 
   /* ═══════════════════════════════════════════════════════════ rodapé */
@@ -418,7 +440,23 @@ export const t = {
 
 /** Dados de contato — não mudam entre línguas. */
 export const CONTACT = {
-  email: 'contato@nexialpartners.com',
   site: 'nexialpartners.com',   // sem www: e o canonical, o www redireciona
   legalName: 'Nexial Partners Ltda.',
+  linkedin: 'https://www.linkedin.com/company/nexialpartners',
+
+  /**
+   * Endpoint que recebe o formulario de contato.
+   *
+   * O site e estatico: nao ha servidor para enviar e-mail. Um servico externo
+   * recebe o POST e repassa para a caixa configurada la dentro — assim o
+   * endereco de destino NAO aparece no codigo da pagina.
+   *
+   * Enquanto estiver vazio, a pagina de contato mostra endereco e LinkedIn no
+   * lugar do formulario, em vez de exibir um formulario que nao envia.
+   *
+   * Para ativar: crie um formulario em https://formspree.io (plano gratuito),
+   * aponte o destino para alex.petermann@nexialpartners.com e cole aqui a URL
+   * no formato https://formspree.io/f/XXXXXXXX
+   */
+  formEndpoint: '',
 };
