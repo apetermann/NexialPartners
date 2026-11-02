@@ -64,8 +64,8 @@ export const t = {
       en: 'Engineering, mining, infrastructure, digital transformation and business development',
     },
     title: {
-      pt: ['Engenharia de', 'alta performance,', 'potencializada por IA.'],
-      en: ['High-performance', 'engineering,', 'powered by AI.'],
+      pt: ['Engenharia de', 'alta performance,', 'potencializada por IA'],
+      en: ['High-performance', 'engineering,', 'powered by AI'],
     },
     lead: {
       pt: 'A próxima geração da engenharia combina experiência, tecnologia e visão de negócios para entregar projetos mais inteligentes, eficientes e valiosos.',
@@ -80,8 +80,8 @@ export const t = {
   context: {
     eyebrow: { pt: 'O contexto', en: 'The context' },
     title: {
-      pt: 'A engenharia mudou — e a mineração sente primeiro.',
-      en: 'Engineering has changed — and mining feels it first.',
+      pt: 'A engenharia mudou — e a mineração sente primeiro',
+      en: 'Engineering has changed — and mining feels it first',
     },
     lead: {
       pt: 'A complexidade dos projetos aumentou e os métodos tradicionais já não acompanham essa velocidade.',
@@ -124,11 +124,11 @@ export const t = {
       en: 'The Nexial Performance Framework™ integrates senior specialists, proprietary Artificial Intelligence and business vision into a single execution flow.',
     },
     eyebrow: { pt: 'O modelo Nexial', en: 'The Nexial model' },
-    statementA: { pt: 'A experiência decide.', en: 'Experience decides.' },
-    statementB: { pt: 'A Inteligência Artificial executa.', en: 'Artificial Intelligence executes.' },
+    statementA: { pt: 'A experiência decide', en: 'Experience decides' },
+    statementB: { pt: 'A Inteligência Artificial executa', en: 'Artificial Intelligence executes' },
 
     aboutEyebrow: { pt: 'Quem somos', en: 'Who we are' },
-    aboutTitle:   { pt: 'Experiência potencializada por IA.', en: 'Experience amplified by AI.' },
+    aboutTitle:   { pt: 'Experiência potencializada por IA', en: 'Experience amplified by AI' },
     aboutP1: {
       pt: 'A Nexial reúne cinco especialistas com experiência internacional em engenharia, mineração, infraestrutura, transformação digital e desenvolvimento de negócios.',
       en: 'Nexial brings together five specialists with international experience in engineering, mining, infrastructure, digital transformation and business development.',
@@ -152,8 +152,8 @@ export const t = {
 
     flowEyebrow: { pt: 'Como operamos', en: 'How we operate' },
     flowTitle: {
-      pt: 'Do especialista ao projeto de alta performance.',
-      en: 'From the specialist to the high-performance project.',
+      pt: 'Do especialista ao projeto de alta performance',
+      en: 'From the specialist to the high-performance project',
     },
     flowLead: {
       pt: 'Um único fluxo operacional integra curadoria técnica, arquitetura de IA e automação — o Nexial Performance Framework™.',
@@ -185,7 +185,7 @@ export const t = {
       en: 'Engineering, Artificial Intelligence, Strategy and Capital: four fronts integrated into a single execution architecture.',
     },
     eyebrow: { pt: 'O que entregamos', en: 'What we deliver' },
-    title:   { pt: 'Quatro frentes, uma só arquitetura.', en: 'Four fronts, one single architecture.' },
+    title:   { pt: 'Quatro frentes, uma só arquitetura', en: 'Four fronts, one single architecture' },
     lead: {
       pt: 'As quatro frentes atendem estágios diferentes da vida de um ativo, com a mesma equipe e a mesma base técnica por trás.',
       en: 'The four fronts serve different stages in the life of an asset, backed by the same team and the same technical base.',
@@ -238,7 +238,7 @@ export const t = {
       en: 'Intelligence applied across the entire mineral asset lifecycle: from exploration and resources to agent-assisted operation.',
     },
     eyebrow: { pt: 'Aplicações na mineração', en: 'Applications in mining' },
-    title:   { pt: 'Inteligência em todo o ciclo de vida do ativo.', en: 'Intelligence across the entire asset lifecycle.' },
+    title:   { pt: 'Inteligência em todo o ciclo de vida do ativo', en: 'Intelligence across the entire asset lifecycle' },
     lead: {
       pt: 'Atuamos nas quatro fases do ciclo de vida do ativo. O que muda entre elas é o tipo de decisão em jogo e o dado que a sustenta.',
       en: 'We work across the four phases of the asset lifecycle. What changes between them is the kind of decision at stake and the data behind it.',
@@ -290,7 +290,7 @@ export const t = {
   /* ══════════════════════════════════════════════════════ por que nós */
   why: {
     eyebrow: { pt: 'Por que a Nexial', en: 'Why Nexial' },
-    title:   { pt: 'Muito além da engenharia tradicional.', en: 'Well beyond traditional engineering.' },
+    title:   { pt: 'Muito além da engenharia tradicional', en: 'Well beyond traditional engineering' },
     colA:    { pt: 'Engenharia tradicional', en: 'Traditional engineering' },
     colB:    { pt: 'Nexial', en: 'Nexial' },
     caption: {
@@ -322,16 +322,20 @@ export const t = {
       en: 'Five specialists with international experience in engineering, mining, digital transformation and capital markets.',
     },
     eyebrow: { pt: 'Os partners', en: 'The partners' },
-    title:   { pt: 'Experiência com nome e sobrenome.', en: 'Experience with a name attached.' },
+    title:   { pt: 'Experiência com nome e sobrenome', en: 'Experience with a name attached' },
     lead: {
       pt: 'Cinco sócios, cada um com décadas de decisão tomada em obra. Quem conduz o projeto é quem assina.',
       en: 'Five partners, each with decades of decisions made on site. Whoever leads the project is the one who signs it.',
     },
-    /* Ordem alfabética pelo nome como aparece na página. */
+    /* Ordem alfabética pelo nome como aparece na página.
+       `linkedin` vazio não renderiza link: preencher com a URL do perfil
+       de cada sócio. Apontar para o perfil errado seria pior do que não
+       ter link, então nada aqui foi adivinhado. */
     people: [
       {
         name: 'Alex Petermann',
         photo: 'alex-petermann',
+        linkedin: '',
         bio: {
           pt: 'Executivo e engenheiro de minas, 25+ anos em quatro continentes. Do planejamento e da viabilidade à implantação e ao capital. Ex-VP da Ausenco Brasil e diretor regional da Hatch. Fundador da DeCarbonMine.',
           en: 'Executive and mining engineer, 25+ years across four continents. From planning and feasibility through to implementation and capital. Former VP of Ausenco Brazil and regional director at Hatch. Founder of DeCarbonMine.',
@@ -340,6 +344,7 @@ export const t = {
       {
         name: 'Antonio Neves Santana',
         photo: 'antonio-neves',
+        linkedin: '',
         bio: {
           pt: 'Engenheiro de minas, MSc, com MBA em gestão de negócios. Passagem pelas principais mineradoras do país. Engenharia de processo, M&A, governança e desenvolvimento de ativos.',
           en: 'Mining engineer, MSc, with an MBA in business management. Experience at the country’s leading mining companies. Process engineering, M&A, governance and asset development.',
@@ -348,6 +353,7 @@ export const t = {
       {
         name: 'Arley Costa',
         photo: 'arley-costa',
+        linkedin: '',
         bio: {
           pt: 'Ex-diretor global de transformação digital da AtkinsRéalis. BIM 3D/4D/5D, gêmeos digitais, LiDAR, LLMs e agentes autônomos no ciclo de engenharia. Fundador da Digitallis.',
           en: 'Former global director of digital transformation at AtkinsRéalis. BIM 3D/4D/5D, digital twins, LiDAR, LLMs and autonomous agents across the engineering cycle. Founder of Digitallis.',
@@ -356,6 +362,7 @@ export const t = {
       {
         name: 'Iran Zan',
         photo: 'iran-zan',
+        linkedin: '',
         bio: {
           pt: 'Iran Zan é geólogo da UNICAMP, QP pela FAusIMM. Atua desde 2009 em exploração e avaliação de ouro, cobre pórfiro, minerais pesados e lítio. Cofundador pioneiro da Sigma Lithium, une técnica e inovação.',
           en: 'Iran Zan is a geologist from UNICAMP and a QP through FAusIMM. Since 2009 in exploration and evaluation of gold, porphyry copper, heavy minerals and lithium. Pioneering co-founder of Sigma Lithium.',
@@ -364,12 +371,14 @@ export const t = {
       {
         name: 'Noeber Orsine',
         photo: 'noeber-orsine',
+        linkedin: '',
         bio: {
           pt: 'Engenheiro de minas e executivo com mais de 35 anos em projetos de mineração, da viabilidade à operação. Liderou estratégia, implantação e logística em várias commodities no Brasil, África e Austrália.',
           en: 'Mining engineer and executive with over 35 years in mining projects, from feasibility through to operation. Has led strategy, implementation and logistics across several commodities in Brazil, Africa and Australia.',
         },
       },
     ],
+    linkedinCta: { pt: 'Perfil no LinkedIn', en: 'LinkedIn profile' },
     complementLabel: {
       pt: 'Como se complementam',
       en: 'How they complement each other',
@@ -384,8 +393,8 @@ export const t = {
   clients: {
     eyebrow: { pt: 'Parceiros e clientes', en: 'Partners and clients' },
     title: {
-      pt: 'Com quem trabalhamos.',
-      en: 'Who we work with.',
+      pt: 'Com quem trabalhamos',
+      en: 'Who we work with',
     },
     /* Sem rótulo de "cliente" ou "parceiro" em cada logo: a natureza de cada
        relação é informação comercial, e marcá-la errado seria pior do que
@@ -404,7 +413,7 @@ export const t = {
       en: 'Nexial Partners projects in mining and infrastructure, carried out in the field alongside client teams.',
     },
     eyebrow: { pt: 'Projetos', en: 'Projects' },
-    title:   { pt: 'O trabalho em campo.', en: 'The work in the field.' },
+    title:   { pt: 'O trabalho em campo', en: 'The work in the field' },
     lead: {
       pt: 'Cada projeto reúne especialistas seniores da Nexial e a equipe do cliente no próprio ativo.',
       en: 'Each project brings Nexial senior specialists together with the client team at the asset itself.',
@@ -461,7 +470,7 @@ export const t = {
       en: 'Talk to Nexial Partners. Senior experience, proprietary AI and business vision in a single execution model.',
     },
     eyebrow: { pt: 'Contato', en: 'Contact' },
-    title:   { pt: 'Vamos conversar.', en: "Let's talk." },
+    title:   { pt: 'Vamos conversar', en: "Let's talk" },
     lead: {
       pt: 'O futuro da sua engenharia começa com uma conversa. Experiência sênior, IA proprietária e visão de negócios em um único modelo de execução.',
       en: 'The future of your engineering starts with a conversation. Senior experience, proprietary AI and business vision in a single execution model.',

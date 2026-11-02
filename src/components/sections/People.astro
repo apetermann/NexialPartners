@@ -25,6 +25,19 @@ const { lang = 'pt' } = Astro.props;
           <h3>{p.name}</h3>
           <span class="divisa" aria-hidden="true"></span>
           <p class="bio">{p.bio[lang]}</p>
+
+          {/* Só aparece quando a URL existe: link vazio seria pior que nenhum. */}
+          {p.linkedin && (
+            <a
+              class="linkedin"
+              href={p.linkedin}
+              target="_blank"
+              rel="noopener"
+              aria-label={`${t.partners.linkedinCta[lang]} — ${p.name}`}
+            >
+              LinkedIn<span class="seta" aria-hidden="true">&nearr;</span>
+            </a>
+          )}
         </article>
       ))}
     </div>
@@ -94,8 +107,25 @@ const { lang = 'pt' } = Astro.props;
     opacity: 0.7;
   }
 
+  /* O link fica colado no rodape do cartao, entao os cinco se alinham
+     mesmo com biografias de alturas diferentes. */
+  .linkedin {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    margin-top: auto;
+    padding-top: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate);
+    transition: color 0.25s var(--ease);
+  }
+  .linkedin:hover { color: var(--accent-bright); }
+  .linkedin .seta { color: var(--accent); transition: transform 0.25s var(--ease); }
+  .linkedin:hover .seta { transform: translate(2px, -2px); }
+
   .bio {
-    margin: 0;
+    margin: 0 0 0.5rem;
     font-size: 0.875rem;
     line-height: 1.62;
     color: var(--slate);
