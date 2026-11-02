@@ -328,14 +328,14 @@ export const t = {
       en: 'Five partners, each with decades of decisions made on site. Whoever leads the project is the one who signs it.',
     },
     /* Ordem alfabética pelo nome como aparece na página.
-       `linkedin` vazio não renderiza link: preencher com a URL do perfil
-       de cada sócio. Apontar para o perfil errado seria pior do que não
-       ter link, então nada aqui foi adivinhado. */
+       `linkedin` vazio não renderiza link. As URLs vieram do teaser
+       institucional de set/26, onde cada sócio tem um slide próprio —
+       o pareamento é do próprio documento, não inferido do nome. */
     people: [
       {
         name: 'Alex Petermann',
         photo: 'alex-petermann',
-        linkedin: '',
+        linkedin: 'https://www.linkedin.com/in/alexpetermann',
         bio: {
           pt: 'Executivo e engenheiro de minas, 25+ anos em quatro continentes. Do planejamento e da viabilidade à implantação e ao capital. Ex-VP da Ausenco Brasil e diretor regional da Hatch. Fundador da DeCarbonMine.',
           en: 'Executive and mining engineer, 25+ years across four continents. From planning and feasibility through to implementation and capital. Former VP of Ausenco Brazil and regional director at Hatch. Founder of DeCarbonMine.',
@@ -344,7 +344,7 @@ export const t = {
       {
         name: 'Antonio Neves Santana',
         photo: 'antonio-neves',
-        linkedin: '',
+        linkedin: 'https://www.linkedin.com/in/ansantana',
         bio: {
           pt: 'Engenheiro de minas, MSc, com MBA em gestão de negócios. Passagem pelas principais mineradoras do país. Engenharia de processo, M&A, governança e desenvolvimento de ativos.',
           en: 'Mining engineer, MSc, with an MBA in business management. Experience at the country’s leading mining companies. Process engineering, M&A, governance and asset development.',
@@ -353,7 +353,7 @@ export const t = {
       {
         name: 'Arley Costa',
         photo: 'arley-costa',
-        linkedin: '',
+        linkedin: 'https://www.linkedin.com/in/arley-costa',
         bio: {
           pt: 'Ex-diretor global de transformação digital da AtkinsRéalis. BIM 3D/4D/5D, gêmeos digitais, LiDAR, LLMs e agentes autônomos no ciclo de engenharia. Fundador da Digitallis.',
           en: 'Former global director of digital transformation at AtkinsRéalis. BIM 3D/4D/5D, digital twins, LiDAR, LLMs and autonomous agents across the engineering cycle. Founder of Digitallis.',
@@ -362,7 +362,7 @@ export const t = {
       {
         name: 'Iran Zan',
         photo: 'iran-zan',
-        linkedin: '',
+        linkedin: 'https://www.linkedin.com/in/iran-zan',
         bio: {
           pt: 'Iran Zan é geólogo da UNICAMP, QP pela FAusIMM. Atua desde 2009 em exploração e avaliação de ouro, cobre pórfiro, minerais pesados e lítio. Cofundador pioneiro da Sigma Lithium, une técnica e inovação.',
           en: 'Iran Zan is a geologist from UNICAMP and a QP through FAusIMM. Since 2009 in exploration and evaluation of gold, porphyry copper, heavy minerals and lithium. Pioneering co-founder of Sigma Lithium.',
@@ -371,7 +371,7 @@ export const t = {
       {
         name: 'Noeber Orsine',
         photo: 'noeber-orsine',
-        linkedin: '',
+        linkedin: 'https://www.linkedin.com/in/noeber-orsine',
         bio: {
           pt: 'Engenheiro de minas e executivo com mais de 35 anos em projetos de mineração, da viabilidade à operação. Liderou estratégia, implantação e logística em várias commodities no Brasil, África e Austrália.',
           en: 'Mining engineer and executive with over 35 years in mining projects, from feasibility through to operation. Has led strategy, implementation and logistics across several commodities in Brazil, Africa and Australia.',
