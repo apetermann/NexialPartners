@@ -26,7 +26,12 @@ const projetos = [
             <span class="texto">
               <span class="cliente">{t.projects.clientLabel[lang]} · {dados.client}</span>
               <span class="nome">{dados.name[lang]}</span>
-              {dados.resumo && <span class="resumo">{dados.resumo[lang]}</span>}
+              {dados.resumo && (
+                <span class="resumo">
+                  {dados.resumo[lang]}
+                  {dados.ficha?.[0] && ` · ${dados.ficha[0].valor[lang]}`}
+                </span>
+              )}
               <span class="ver">{t.projects.verMais[lang]}<span class="arrow" aria-hidden="true">&rarr;</span></span>
             </span>
           </a>

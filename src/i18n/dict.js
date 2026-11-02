@@ -424,35 +424,37 @@ export const t = {
     lagoaAzul: {
       metaTitle: { pt: 'Projeto Lagoa Azul — Nexial Partners', en: 'Lagoa Azul Project — Nexial Partners' },
       metaDesc: {
-        pt: 'Avaliação econômica preliminar integrada para projeto de nióbio e estanho em Itapuã do Oeste (RO), conduzida pela Nexial Partners junto ao Grupo GVS.',
-        en: 'Integrated preliminary economic assessment for a niobium and tin project in Itapuã do Oeste (Rondônia, Brazil), carried out by Nexial Partners with Grupo GVS.',
+        pt: 'Assessoria técnica e estratégica independente em projeto de nióbio e estanho aluvionar na Amazônia: avaliação de portfólio, diagnóstico de rota de processo e gerência de estudos.',
+        en: 'Independent technical and strategic advisory on an alluvial niobium and tin project in the Amazon: portfolio assessment, process route diagnosis and study management.',
       },
       name:   { pt: 'Projeto Lagoa Azul', en: 'Lagoa Azul Project' },
       client: 'Grupo GVS',
       resumo: {
-        pt: 'Itapuã do Oeste (RO) · Columbita e cassiterita aluvionar',
-        en: 'Itapuã do Oeste (Rondônia, Brazil) · Alluvial columbite and cassiterite',
+        pt: 'Projeto de nióbio e estanho aluvionar',
+        en: 'Alluvial niobium and tin project',
       },
+      /* Dois parágrafos: a atuação contínua e a avaliação de quatro semanas. */
       descricao: {
-        pt: 'Avaliação econômica preliminar integrada para um projeto de nióbio e estanho com implantação modular de até 1.200 t/h. A Nexial estruturou o modelo econômico, os cenários e as análises de sensibilidade e risco, e mapeou as premissas que precisam ser confirmadas para a próxima etapa. O trabalho subsidiou a apresentação do projeto a investidores e indicou o caminho para o estudo de pré-viabilidade. A assessoria técnica à GVS em rota de processo e scale-up segue em andamento.',
-        en: 'Integrated preliminary economic assessment for a niobium and tin project with modular implementation of up to 1,200 t/h. Nexial structured the economic model, the scenarios and the sensitivity and risk analyses, and mapped the assumptions that must be confirmed for the next stage. The work supported the presentation of the project to investors and set out the path to the pre-feasibility study. Technical advisory to GVS on process route and scale-up is ongoing.',
+        pt: [
+          'A Nexial atua como assessora técnica e estratégica independente de um grupo minerador com portfólio de direitos minerários na Amazônia. O trabalho está organizado em três frentes: avaliação do portfólio mineral em base comparável de maturidade e risco; diagnóstico da rota de processo do principal projeto do grupo, uma operação de concentração gravimétrica com planta piloto em funcionamento, incluindo reconciliação de balanços, mapa de perdas e roadmap de scale-up; e gerência de estudos, com Technical Advisory Board e preparação do projeto para reporte segundo padrões internacionais.',
+          'Em paralelo, a pedido do cliente e com prazo definido pelo cronograma de um investidor, a Nexial realizou em quatro semanas a avaliação preliminar técnica e financeira do projeto. A equipe rastreou cada premissa do modelo financeiro até sua fonte e atribuiu grau de confiança a cada uma, revisou a base técnica (recurso, recuperação metalúrgica, ramp-up e Opex), construiu cenários e sensibilidades e estimou de forma conceitual o potencial adicional do depósito.',
+        ],
+        en: [
+          'Nexial acts as independent technical and strategic advisor to a mining group with a portfolio of mineral rights in the Amazon. The work is organised into three fronts: assessment of the mineral portfolio on a comparable basis of maturity and risk; diagnosis of the process route of the group’s main project, a gravity concentration operation with a pilot plant in operation, including reconciliation of balances, a loss map and a scale-up roadmap; and study management, with a Technical Advisory Board and preparation of the project for reporting under international standards.',
+          'In parallel, at the client’s request and to a deadline set by an investor’s schedule, Nexial carried out the preliminary technical and financial assessment of the project in four weeks. The team traced every assumption in the financial model back to its source and assigned a confidence level to each, reviewed the technical basis (resource, metallurgical recovery, ramp-up and Opex), built scenarios and sensitivities, and made a conceptual estimate of the deposit’s additional potential.',
+        ],
       },
-      /* Ficha técnica: só são exibidas as linhas preenchidas. */
       ficha: [
-        { rotulo: { pt: 'Local',      en: 'Location' },
-          valor:  { pt: 'Itapuã do Oeste · Rondônia', en: 'Itapuã do Oeste · Rondônia, Brazil' } },
-        { rotulo: { pt: 'Minério',    en: 'Ore' },
-          valor:  { pt: 'Columbita e cassiterita aluvionar · nióbio e estanho',
-                    en: 'Alluvial columbite and cassiterite · niobium and tin' } },
-        { rotulo: { pt: 'Escopo',     en: 'Scope' },
-          valor:  { pt: 'Avaliação econômica preliminar integrada',
-                    en: 'Integrated preliminary economic assessment' } },
-        { rotulo: { pt: 'Capacidade', en: 'Capacity' },
-          valor:  { pt: 'Implantação modular de até 1.200 t/h',
-                    en: 'Modular implementation of up to 1,200 t/h' } },
-        { rotulo: { pt: 'Status',     en: 'Status' },
-          valor:  { pt: 'Assessoria técnica em rota de processo e scale-up, em andamento',
-                    en: 'Technical advisory on process route and scale-up, ongoing' } },
+        { rotulo: { pt: 'Local',     en: 'Location' },
+          valor:  { pt: 'Região Norte do Brasil', en: 'Northern Brazil' } },
+        { rotulo: { pt: 'Commodity', en: 'Commodity' },
+          valor:  { pt: 'Columbita e cassiterita', en: 'Columbite and cassiterite' } },
+        { rotulo: { pt: 'Período',   en: 'Period' },
+          valor:  { pt: 'Desde setembro de 2026, em andamento',
+                    en: 'Since September 2026, ongoing' } },
+        { rotulo: { pt: 'Status',    en: 'Status' },
+          valor:  { pt: 'Avaliação preliminar concluída e entregue em outubro de 2026, com recomendação de avanço à etapa de pré-viabilidade. A assessoria contínua segue em andamento.',
+                    en: 'Preliminary assessment completed and delivered in October 2026, with a recommendation to advance to the pre-feasibility stage. Ongoing advisory continues.' } },
       ],
       galeriaLegenda: {
         pt: 'Equipes da Nexial e do Grupo GVS no site do projeto.',

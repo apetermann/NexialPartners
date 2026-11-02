@@ -36,7 +36,7 @@ const img = (nome, w) => fotos[`../../assets/projetos/${nome}-${w}.jpg`].default
       <div class="corpo">
         {p.descricao && (
           <div class="texto" data-reveal>
-            <p>{p.descricao[lang]}</p>
+            {p.descricao[lang].map((paragrafo) => <p>{paragrafo}</p>)}
           </div>
         )}
 
@@ -89,13 +89,14 @@ const img = (nome, w) => fotos[`../../assets/projetos/${nome}-${w}.jpg`].default
     margin-bottom: clamp(2.5rem, 5vw, 4rem);
   }
   .texto p {
-    margin: 0;
+    margin: 0 0 1.25rem;
     font-size: var(--fs-md);
     font-weight: 300;
     line-height: 1.68;
     color: var(--mist);
     text-wrap: pretty;
   }
+  .texto p:last-child { margin-bottom: 0; }
 
   .ficha {
     margin: 0;
