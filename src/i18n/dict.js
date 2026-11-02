@@ -433,15 +433,15 @@ export const t = {
         pt: 'Projeto de nióbio e estanho aluvionar',
         en: 'Alluvial niobium and tin project',
       },
-      /* Dois parágrafos: a atuação contínua e a avaliação de quatro semanas. */
+      /* Dois parágrafos: a atuação contínua e a avaliação de três semanas. */
       descricao: {
         pt: [
           'A Nexial atua como assessora técnica e estratégica independente de um grupo minerador com portfólio de direitos minerários na Amazônia. O trabalho está organizado em três frentes: avaliação do portfólio mineral em base comparável de maturidade e risco; diagnóstico da rota de processo do principal projeto do grupo, uma operação de concentração gravimétrica com planta piloto em funcionamento, incluindo reconciliação de balanços, mapa de perdas e roadmap de scale-up; e gerência de estudos, com Technical Advisory Board e preparação do projeto para reporte segundo padrões internacionais.',
-          'Em paralelo, a pedido do cliente e com prazo definido pelo cronograma de um investidor, a Nexial realizou em quatro semanas a avaliação preliminar técnica e financeira do projeto. A equipe rastreou cada premissa do modelo financeiro até sua fonte e atribuiu grau de confiança a cada uma, revisou a base técnica (recurso, recuperação metalúrgica, ramp-up e Opex), construiu cenários e sensibilidades e estimou de forma conceitual o potencial adicional do depósito.',
+          'Em paralelo, a pedido do cliente e com prazo definido pelo cronograma de um investidor, a Nexial realizou em três semanas a avaliação preliminar técnica e financeira do projeto. A equipe rastreou cada premissa do modelo financeiro até sua fonte e atribuiu grau de confiança a cada uma, revisou a base técnica (recurso, recuperação metalúrgica, ramp-up e Opex), construiu cenários e sensibilidades e estimou de forma conceitual o potencial adicional do depósito.',
         ],
         en: [
           'Nexial acts as independent technical and strategic advisor to a mining group with a portfolio of mineral rights in the Amazon. The work is organised into three fronts: assessment of the mineral portfolio on a comparable basis of maturity and risk; diagnosis of the process route of the group’s main project, a gravity concentration operation with a pilot plant in operation, including reconciliation of balances, a loss map and a scale-up roadmap; and study management, with a Technical Advisory Board and preparation of the project for reporting under international standards.',
-          'In parallel, at the client’s request and to a deadline set by an investor’s schedule, Nexial carried out the preliminary technical and financial assessment of the project in four weeks. The team traced every assumption in the financial model back to its source and assigned a confidence level to each, reviewed the technical basis (resource, metallurgical recovery, ramp-up and Opex), built scenarios and sensitivities, and made a conceptual estimate of the deposit’s additional potential.',
+          'In parallel, at the client’s request and to a deadline set by an investor’s schedule, Nexial carried out the preliminary technical and financial assessment of the project in three weeks. The team traced every assumption in the financial model back to its source and assigned a confidence level to each, reviewed the technical basis (resource, metallurgical recovery, ramp-up and Opex), built scenarios and sensitivities, and made a conceptual estimate of the deposit’s additional potential.',
         ],
       },
       ficha: [
