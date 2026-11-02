@@ -26,6 +26,7 @@ const projetos = [
             <span class="texto">
               <span class="cliente">{t.projects.clientLabel[lang]} · {dados.client}</span>
               <span class="nome">{dados.name[lang]}</span>
+              {dados.resumo && <span class="resumo">{dados.resumo[lang]}</span>}
               <span class="ver">{t.projects.verMais[lang]}<span class="arrow" aria-hidden="true">&rarr;</span></span>
             </span>
           </a>
@@ -84,6 +85,11 @@ const projetos = [
     font-weight: 300;
     letter-spacing: -0.015em;
     color: var(--white);
+  }
+  .resumo {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--slate);
   }
   .ver {
     display: inline-flex; align-items: center; gap: 0.5rem;

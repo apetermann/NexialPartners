@@ -415,18 +415,35 @@ export const t = {
     lagoaAzul: {
       metaTitle: { pt: 'Projeto Lagoa Azul — Nexial Partners', en: 'Lagoa Azul Project — Nexial Partners' },
       metaDesc: {
-        pt: 'Projeto Lagoa Azul, conduzido pela Nexial Partners junto ao Grupo GVS.',
-        en: 'Lagoa Azul Project, carried out by Nexial Partners together with Grupo GVS.',
+        pt: 'Avaliação econômica preliminar integrada para projeto de nióbio e estanho em Itapuã do Oeste (RO), conduzida pela Nexial Partners junto ao Grupo GVS.',
+        en: 'Integrated preliminary economic assessment for a niobium and tin project in Itapuã do Oeste (Rondônia, Brazil), carried out by Nexial Partners with Grupo GVS.',
       },
       name:   { pt: 'Projeto Lagoa Azul', en: 'Lagoa Azul Project' },
       client: 'Grupo GVS',
-      /* Ficha técnica: só são exibidas as linhas preenchidas. Acrescente
-         local, commodity, escopo e período quando a informação chegar. */
+      resumo: {
+        pt: 'Itapuã do Oeste (RO) · Columbita e cassiterita aluvionar',
+        en: 'Itapuã do Oeste (Rondônia, Brazil) · Alluvial columbite and cassiterite',
+      },
+      descricao: {
+        pt: 'Avaliação econômica preliminar integrada para um projeto de nióbio e estanho com implantação modular de até 1.200 t/h. A Nexial estruturou o modelo econômico, os cenários e as análises de sensibilidade e risco, e mapeou as premissas que precisam ser confirmadas para a próxima etapa. O trabalho subsidiou a apresentação do projeto a investidores e indicou o caminho para o estudo de pré-viabilidade. A assessoria técnica à GVS em rota de processo e scale-up segue em andamento.',
+        en: 'Integrated preliminary economic assessment for a niobium and tin project with modular implementation of up to 1,200 t/h. Nexial structured the economic model, the scenarios and the sensitivity and risk analyses, and mapped the assumptions that must be confirmed for the next stage. The work supported the presentation of the project to investors and set out the path to the pre-feasibility study. Technical advisory to GVS on process route and scale-up is ongoing.',
+      },
+      /* Ficha técnica: só são exibidas as linhas preenchidas. */
       ficha: [
-        // { rotulo: { pt: 'Local',     en: 'Location' },  valor: { pt: '', en: '' } },
-        // { rotulo: { pt: 'Commodity', en: 'Commodity' }, valor: { pt: '', en: '' } },
-        // { rotulo: { pt: 'Escopo',    en: 'Scope' },     valor: { pt: '', en: '' } },
-        // { rotulo: { pt: 'Período',   en: 'Period' },    valor: { pt: '', en: '' } },
+        { rotulo: { pt: 'Local',      en: 'Location' },
+          valor:  { pt: 'Itapuã do Oeste · Rondônia', en: 'Itapuã do Oeste · Rondônia, Brazil' } },
+        { rotulo: { pt: 'Minério',    en: 'Ore' },
+          valor:  { pt: 'Columbita e cassiterita aluvionar · nióbio e estanho',
+                    en: 'Alluvial columbite and cassiterite · niobium and tin' } },
+        { rotulo: { pt: 'Escopo',     en: 'Scope' },
+          valor:  { pt: 'Avaliação econômica preliminar integrada',
+                    en: 'Integrated preliminary economic assessment' } },
+        { rotulo: { pt: 'Capacidade', en: 'Capacity' },
+          valor:  { pt: 'Implantação modular de até 1.200 t/h',
+                    en: 'Modular implementation of up to 1,200 t/h' } },
+        { rotulo: { pt: 'Status',     en: 'Status' },
+          valor:  { pt: 'Assessoria técnica em rota de processo e scale-up, em andamento',
+                    en: 'Technical advisory on process route and scale-up, ongoing' } },
       ],
       galeriaLegenda: {
         pt: 'Equipes da Nexial e do Grupo GVS no site do projeto.',

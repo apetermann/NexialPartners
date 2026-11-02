@@ -22,6 +22,7 @@ const img = (nome, w) => fotos[`../../assets/projetos/${nome}-${w}.jpg`].default
   <PageHero
     eyebrow={`${t.projects.clientLabel[lang]} · ${p.client}`}
     title={p.name[lang]}
+    lead={p.resumo[lang]}
   />
 
   <section class="section">
@@ -32,18 +33,25 @@ const img = (nome, w) => fotos[`../../assets/projetos/${nome}-${w}.jpg`].default
         </a>
       </p>
 
-      {/* A ficha só mostra as linhas que têm conteúdo: enquanto os dados do
-          projeto não chegam, ela não aparece em vez de exibir campos vazios. */}
-      {p.ficha.length > 0 && (
-        <dl class="ficha" data-reveal>
-          {p.ficha.map((linha) => (
-            <div class="linha">
-              <dt>{linha.rotulo[lang]}</dt>
-              <dd>{linha.valor[lang]}</dd>
-            </div>
-          ))}
-        </dl>
-      )}
+      <div class="corpo">
+        {p.descricao && (
+          <div class="texto" data-reveal>
+            <p>{p.descricao[lang]}</p>
+          </div>
+        )}
+
+        {/* A ficha só mostra as linhas que têm conteúdo. */}
+        {p.ficha.length > 0 && (
+          <dl class="ficha" data-reveal style="--reveal-delay:90ms">
+            {p.ficha.map((linha) => (
+              <div class="linha">
+                <dt>{linha.rotulo[lang]}</dt>
+                <dd>{linha.valor[lang]}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+      </div>
 
       <figure class="galeria" data-reveal style="--reveal-delay:90ms">
         <div class="fotos">
@@ -72,16 +80,32 @@ const img = (nome, w) => fotos[`../../assets/projetos/${nome}-${w}.jpg`].default
   .voltar .arrow { color: var(--accent); transition: transform 0.25s var(--ease); }
   .voltar a:hover .arrow { transform: translateX(-4px); }
 
+  /* Texto e ficha lado a lado: a ficha e consulta, o texto e leitura. */
+  .corpo {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(2.5rem, 5vw, 4rem);
+    align-items: start;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .texto p {
+    margin: 0;
+    font-size: var(--fs-md);
+    font-weight: 300;
+    line-height: 1.68;
+    color: var(--mist);
+    text-wrap: pretty;
+  }
+
   .ficha {
-    margin: 0 0 clamp(2.5rem, 5vw, 4rem);
+    margin: 0;
     border-top: 1px solid var(--line);
-    max-width: 44rem;
   }
   .linha {
     display: grid;
-    grid-template-columns: minmax(7rem, 0.3fr) 1fr;
-    gap: 1.5rem;
-    padding: 1.0625rem 0;
+    grid-template-columns: minmax(6.5rem, 0.32fr) 1fr;
+    gap: 1.25rem;
+    padding: 0.9375rem 0;
     border-bottom: 1px solid var(--line-soft);
   }
   dt {
@@ -94,10 +118,13 @@ const img = (nome, w) => fotos[`../../assets/projetos/${nome}-${w}.jpg`].default
   dd { margin: 0; color: var(--mist); }
 
   .galeria { margin: 0; }
+  /* Duas colunas fixas e largura maxima: com auto-fit as duas fotos em
+     retrato esticavam em telas largas e dominavam a pagina. */
   .fotos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: clamp(1rem, 2vw, 1.5rem);
+    max-width: 54rem;
   }
   .fotos img {
     width: 100%; height: auto;
@@ -110,7 +137,11 @@ const img = (nome, w) => fotos[`../../assets/projetos/${nome}-${w}.jpg`].default
     color: var(--muted);
   }
 
+  @media (max-width: 880px) {
+    .corpo { grid-template-columns: 1fr; }
+  }
   @media (max-width: 560px) {
     .linha { grid-template-columns: 1fr; gap: 0.375rem; }
+    .fotos { grid-template-columns: 1fr; }
   }
 </style>
