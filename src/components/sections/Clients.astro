@@ -1,0 +1,80 @@
+---
+import { t } from '../../i18n/dict.js';
+
+/**
+ * Faixa de parceiros e clientes.
+ *
+ * Os logos ficam em placas claras, e não soltos sobre o fundo escuro. O logo
+ * do Grupo GVS tem elementos em navy (#000050) que somem contra o #0D1122 do
+ * site — e o mesmo valeria para qualquer marca escura acrescentada depois.
+ * A placa resolve o caso geral e ainda exibe cada logo na cor original.
+ */
+const { lang = 'pt' } = Astro.props;
+
+const logos = import.meta.glob('../../assets/clientes/*.png', { eager: true });
+const src = (nome) => logos[`../../assets/clientes/${nome}.png`].default.src;
+---
+
+<section class="section section-alt">
+  <div class="wrap">
+    <header class="section-head" data-reveal>
+      <div class="rule"></div>
+      <p class="eyebrow">{t.clients.eyebrow[lang]}</p>
+      <h2>{t.clients.title[lang]}</h2>
+    </header>
+
+    <ul class="marcas">
+      {t.clients.items.map((item, i) => {
+        const conteudo = (
+          <img src={src(item.logo)} alt={item.name} width="440" height="120" loading="lazy" decoding="async" />
+        );
+        return (
+          <li class="marca" data-reveal style={`--reveal-delay:${i * 90}ms`}>
+            {item.url
+              ? <a href={item.url} target="_blank" rel="noopener" aria-label={item.name}>{conteudo}</a>
+              : <span role="img" aria-label={item.name}>{conteudo}</span>}
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .marcas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+    max-width: 56rem;
+  }
+
+  .marca > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 7.5rem;
+    padding: 1.75rem 2rem;
+    border: 1px solid var(--line-soft);
+    border-radius: 6px;
+    /* Placa clara: garante contraste para logos de qualquer cor. */
+    background: #F4F7FB;
+    transition: background 0.35s var(--ease), border-color 0.35s var(--ease),
+                transform 0.35s var(--ease);
+  }
+  .marca a:hover {
+    background: #FFFFFF;
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  .marca img {
+    width: auto;
+    max-width: 100%;
+    max-height: 2.75rem;
+    object-fit: contain;
+  }
+
+  @media (max-width: 420px) {
+    .marcas { grid-template-columns: 1fr; }
+  }
+</style>

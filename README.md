@@ -137,6 +137,34 @@ Para trocar por fotos reais de obra, basta substituir os arquivos em
 `src/assets/bg/` mantendo os nomes e as duas larguras. O tratamento de
 cor pode então ser dispensado — imagem real de ativo dispensa estilização.
 
+### Projetos e faixa de parceiros
+
+**Projetos** vive em `/projetos/` (PT) e `/en/projects/`, com uma página por
+projeto em `/projetos/<slug>/`. A lista fica em `ProjectList.astro`; para
+acrescentar um projeto:
+
+1. adicione a rota em `ROUTES` no `dict.js` (`pt: 'projetos/<slug>'`);
+2. descreva o projeto em `t.projects.<slug>`;
+3. crie o componente em `src/components/pages/` e os dois arquivos de rota;
+4. acrescente o projeto ao array `projetos` em `ProjectList.astro`.
+
+O menu acende "Projetos" também nas páginas filhas: a comparação é feita pela
+rota, então qualquer projeto novo já entra certo sem tocar no `Header.astro`.
+
+A **ficha técnica** da página de projeto só renderiza as linhas preenchidas em
+`ficha: []`. Enquanto o array estiver vazio, a ficha não aparece — em vez de
+exibir campos em branco.
+
+**Parceiros e clientes** é a faixa em `Clients.astro`, presente na home, na
+lista de projetos e na página de cada projeto. Os logos ficam em
+`src/assets/clientes/` e são exibidos em placas claras.
+
+> As placas são claras de propósito. O logo do Grupo GVS tem elementos em navy
+> que somem contra o fundo escuro do site, e o mesmo valeria para qualquer marca
+> escura futura. Em compensação, logos com texto branco precisam de uma variante
+> de texto escuro — foi o caso da DeCarbonMine, cujo texto foi recolorido para
+> navy mantendo o símbolo colorido.
+
 ### Fotos dos partners
 
 Em `src/assets/partners/`, uma por pessoa, 320×320. O recorte circular e o preto e branco são aplicados por CSS — a imagem de origem pode ser colorida. Para trocar, substitua o arquivo mantendo o nome.

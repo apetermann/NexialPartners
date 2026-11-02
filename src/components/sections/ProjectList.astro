@@ -1,0 +1,96 @@
+---
+import { t } from '../../i18n/dict.js';
+import { url } from '../../i18n/utils.js';
+
+const { lang = 'pt' } = Astro.props;
+
+const fotos = import.meta.glob('../../assets/projetos/*.jpg', { eager: true });
+const capa = (nome) => fotos[`../../assets/projetos/${nome}-600.jpg`].default.src;
+
+/* Por ora há um projeto. A lista é um array para a página crescer sem
+   mexer no componente. */
+const projetos = [
+  { rota: 'lagoaAzul', dados: t.projects.lagoaAzul },
+];
+---
+
+<section class="section">
+  <div class="wrap">
+    <ul class="projetos">
+      {projetos.map(({ rota, dados }, i) => (
+        <li class="projeto" data-reveal style={`--reveal-delay:${i * 90}ms`}>
+          <a href={url(rota, lang)}>
+            <span class="moldura">
+              <img src={capa(dados.fotos[0])} alt="" width="600" height="800" loading="lazy" decoding="async" />
+            </span>
+            <span class="texto">
+              <span class="cliente">{t.projects.clientLabel[lang]} · {dados.client}</span>
+              <span class="nome">{dados.name[lang]}</span>
+              <span class="ver">{t.projects.verMais[lang]}<span class="arrow" aria-hidden="true">&rarr;</span></span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .projetos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 22rem));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .projeto a {
+    display: flex; flex-direction: column;
+    border: 1px solid var(--line-soft);
+    border-radius: 6px;
+    overflow: hidden;
+    background: linear-gradient(170deg, var(--surface) 0%, var(--ink-soft) 100%);
+    transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+  }
+  .projeto a:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+  .moldura {
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--ink-deep);
+  }
+  .moldura img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    /* o enquadramento em retrato corta melhor pelo topo, onde está a equipe */
+    object-position: 50% 32%;
+    transition: transform 0.7s var(--ease-out);
+  }
+  .projeto a:hover .moldura img { transform: scale(1.04); }
+
+  .texto {
+    display: flex; flex-direction: column; gap: 0.5rem;
+    padding: 1.5rem;
+  }
+  .cliente {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .nome {
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    color: var(--white);
+  }
+  .ver {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.9375rem;
+    color: var(--mist);
+  }
+  .ver .arrow { color: var(--accent); transition: transform 0.25s var(--ease); }
+  .projeto a:hover .ver .arrow { transform: translateX(4px); }
+</style>

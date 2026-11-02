@@ -5,7 +5,13 @@ import { url, asset, otherLang } from '../i18n/utils.js';
 const { lang = 'pt', page = 'home' } = Astro.props;
 const outra = otherLang(lang);
 
-const links = ['modelo', 'servicos', 'mineracao', 'partners'];
+const links = ['modelo', 'servicos', 'mineracao', 'projetos', 'partners'];
+
+/* Uma pagina filha marca o item pai no menu: /projetos/lagoa-azul/ acende
+   "Projetos". Derivado da propria rota, entao vale para qualquer projeto
+   que entrar depois, sem tocar aqui. */
+const rotaAtual = ROUTES[page]?.pt ?? '';
+const ehSecaoAtual = (k) => page === k || (ROUTES[k] && rotaAtual.startsWith(ROUTES[k].pt + '/'));
 ---
 
 <a class="skip-link" href="#conteudo">{t.a11y.skip[lang]}</a>
@@ -25,8 +31,8 @@ const links = ['modelo', 'servicos', 'mineracao', 'partners'];
       {links.map((k) => (
         <a
           href={url(k, lang)}
-          class:list={['nav-link', { 'is-current': page === k }]}
-          aria-current={page === k ? 'page' : undefined}
+          class:list={['nav-link', { 'is-current': ehSecaoAtual(k) }]}
+          aria-current={ehSecaoAtual(k) ? 'page' : undefined}
         >
           {t.nav[k][lang]}
         </a>

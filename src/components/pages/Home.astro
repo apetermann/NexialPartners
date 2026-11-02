@@ -5,6 +5,7 @@ import Context from '../sections/Context.astro';
 import Statement from '../sections/Statement.astro';
 import ServicesGrid from '../sections/ServicesGrid.astro';
 import Why from '../sections/Why.astro';
+import Clients from '../sections/Clients.astro';
 import CtaBand from '../sections/CtaBand.astro';
 import { t } from '../../i18n/dict.js';
 
@@ -22,5 +23,6 @@ const { lang } = Astro.props;
   <Statement lang={lang} />
   <ServicesGrid lang={lang} />
   <Why lang={lang} />
+  <Clients lang={lang} />
   <CtaBand lang={lang} />
 </Base>

@@ -18,6 +18,8 @@ export const ROUTES = {
   modelo:    { pt: 'modelo',     en: 'model' },
   servicos:  { pt: 'servicos',   en: 'services' },
   mineracao: { pt: 'mineracao',  en: 'mining' },
+  projetos:  { pt: 'projetos',   en: 'projects' },
+  lagoaAzul: { pt: 'projetos/lagoa-azul', en: 'projects/lagoa-azul' },
   partners:  { pt: 'partners',   en: 'partners' },
   contato:   { pt: 'contato',    en: 'contact' },
 };
@@ -30,6 +32,7 @@ export const t = {
     modelo:    { pt: 'O Modelo',   en: 'The Model' },
     servicos:  { pt: 'Serviços',   en: 'Services' },
     mineracao: { pt: 'Mineração',  en: 'Mining' },
+    projetos:  { pt: 'Projetos',   en: 'Projects' },
     partners:  { pt: 'Partners',   en: 'Partners' },
     contato:   { pt: 'Contato',    en: 'Contact' },
     cta:       { pt: 'Fale conosco', en: 'Get in touch' },
@@ -374,6 +377,62 @@ export const t = {
     complementText: {
       pt: 'Cobrimos a mesma cadeia de valor de ponta a ponta: recurso, estudo, execução, digitalização e capital. Como as cinco competências decidem juntas desde o primeiro estudo, risco técnico e custo de capital entram na conta ao mesmo tempo, em vez de aparecerem em revisões sucessivas.',
       en: 'We cover the same value chain end to end: resource, study, execution, digitalisation and capital. Because the five competencies decide together from the very first study, technical risk and cost of capital enter the equation at the same time, instead of surfacing in successive revisions.',
+    },
+  },
+
+  /* ═════════════════════════════════════════ parceiros e clientes */
+  clients: {
+    eyebrow: { pt: 'Parceiros e clientes', en: 'Partners and clients' },
+    title: {
+      pt: 'Com quem trabalhamos.',
+      en: 'Who we work with.',
+    },
+    /* Sem rótulo de "cliente" ou "parceiro" em cada logo: a natureza de cada
+       relação é informação comercial, e marcá-la errado seria pior do que
+       não marcar. */
+    items: [
+      { name: 'Grupo GVS',    logo: 'gvs',          url: null },
+      { name: 'DeCarbonMine', logo: 'decarbonmine', url: 'https://decarbonmine.com' },
+    ],
+  },
+
+  /* ═════════════════════════════════════════════════════════ projetos */
+  projects: {
+    metaTitle: { pt: 'Projetos — Nexial Partners', en: 'Projects — Nexial Partners' },
+    metaDesc: {
+      pt: 'Projetos da Nexial Partners em mineração e infraestrutura, conduzidos em campo junto às equipes dos clientes.',
+      en: 'Nexial Partners projects in mining and infrastructure, carried out in the field alongside client teams.',
+    },
+    eyebrow: { pt: 'Projetos', en: 'Projects' },
+    title:   { pt: 'O trabalho em campo.', en: 'The work in the field.' },
+    lead: {
+      pt: 'Cada projeto reúne especialistas seniores da Nexial e a equipe do cliente no próprio ativo.',
+      en: 'Each project brings Nexial senior specialists together with the client team at the asset itself.',
+    },
+    clientLabel: { pt: 'Cliente', en: 'Client' },
+    verMais:     { pt: 'Ver projeto', en: 'View project' },
+
+    lagoaAzul: {
+      metaTitle: { pt: 'Projeto Lagoa Azul — Nexial Partners', en: 'Lagoa Azul Project — Nexial Partners' },
+      metaDesc: {
+        pt: 'Projeto Lagoa Azul, conduzido pela Nexial Partners junto ao Grupo GVS.',
+        en: 'Lagoa Azul Project, carried out by Nexial Partners together with Grupo GVS.',
+      },
+      name:   { pt: 'Projeto Lagoa Azul', en: 'Lagoa Azul Project' },
+      client: 'Grupo GVS',
+      /* Ficha técnica: só são exibidas as linhas preenchidas. Acrescente
+         local, commodity, escopo e período quando a informação chegar. */
+      ficha: [
+        // { rotulo: { pt: 'Local',     en: 'Location' },  valor: { pt: '', en: '' } },
+        // { rotulo: { pt: 'Commodity', en: 'Commodity' }, valor: { pt: '', en: '' } },
+        // { rotulo: { pt: 'Escopo',    en: 'Scope' },     valor: { pt: '', en: '' } },
+        // { rotulo: { pt: 'Período',   en: 'Period' },    valor: { pt: '', en: '' } },
+      ],
+      galeriaLegenda: {
+        pt: 'Equipes da Nexial e do Grupo GVS no site do projeto.',
+        en: 'Nexial and Grupo GVS teams at the project site.',
+      },
+      fotos: ['lagoa-azul-1', 'lagoa-azul-2'],
     },
   },
 

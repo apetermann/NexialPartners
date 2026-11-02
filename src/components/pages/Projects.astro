@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../sections/PageHero.astro';
+import ProjectList from '../sections/ProjectList.astro';
+import Clients from '../sections/Clients.astro';
+import CtaBand from '../sections/CtaBand.astro';
+import { t } from '../../i18n/dict.js';
+
+const { lang } = Astro.props;
+---
+
+<Base
+  lang={lang}
+  page="projetos"
+  title={t.projects.metaTitle[lang]}
+  description={t.projects.metaDesc[lang]}
+>
+  <PageHero
+    eyebrow={t.projects.eyebrow[lang]}
+    title={t.projects.title[lang]}
+    lead={t.projects.lead[lang]}
+  />
+  <ProjectList lang={lang} />
+  <Clients lang={lang} />
+  <CtaBand lang={lang} />
+</Base>
