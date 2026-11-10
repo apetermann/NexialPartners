@@ -137,6 +137,34 @@ Para trocar por fotos reais de obra, basta substituir os arquivos em
 `src/assets/bg/` mantendo os nomes e as duas larguras. O tratamento de
 cor pode então ser dispensado — imagem real de ativo dispensa estilização.
 
+### Soluções (GeoIntelligence AI e ValuePath)
+
+As duas landings são **páginas estáticas autônomas**, não rotas do Astro. Ficam
+em `public/geointelligence/` e `public/valuepath/`, com CSS, script e navegação
+próprios — foram desenhadas para campanha e já usam a tipografia da marca.
+
+O Astro copia `public/` sem tocar, então elas são servidas em
+`nexialpartners.com/geointelligence/` e `/valuepath/`.
+
+Para atualizar, substitua o `index.html` da pasta correspondente. Duas coisas
+precisam ser refeitas a cada substituição, porque não estavam no arquivo
+original:
+
+1. trocar `nexialpartners.com/#contato` por `nexialpartners.com/contato/` — a
+   âncora `#contato` não existe na home, o link não leva a lugar nenhum;
+2. injetar no `<head>` o `canonical`, as tags `og:*` e o `twitter:card`. **Sem
+   elas o LinkedIn publica o link sem cartão de preview**, que é justamente o
+   que a campanha precisa.
+
+As imagens de preview ficam em `public/assets/img/og-<slug>.png`, 1200×630.
+
+A página `/solucoes/` (e `/en/solutions/`) é uma rota normal do Astro e serve
+de porta de entrada para as duas, aparecendo no menu. A seção `Solutions.astro`
+também entra na home e na página de serviços.
+
+> As landings existem **só em português** por ora. A versão em inglês do site
+> leva aos mesmos arquivos.
+
 ### Projetos e faixa de parceiros
 
 **Projetos** vive em `/projetos/` (PT) e `/en/projects/`, com uma página por

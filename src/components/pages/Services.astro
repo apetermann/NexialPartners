@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import PageHero from '../sections/PageHero.astro';
 import CtaBand from '../sections/CtaBand.astro';
 import ServicesGrid from '../sections/ServicesGrid.astro';
+import Solutions from '../sections/Solutions.astro';
 import Why from '../sections/Why.astro';
 import { t } from '../../i18n/dict.js';
 
@@ -21,6 +22,7 @@ const { lang } = Astro.props;
     lead={t.services.lead[lang]}
   />
   <ServicesGrid lang={lang} showHead={false} />
+  <Solutions lang={lang} />
   <Why lang={lang} />
   <CtaBand lang={lang} />
 </Base>

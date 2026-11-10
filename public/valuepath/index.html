@@ -1,0 +1,1165 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexial ValuePath — Inteligência técnica para investimentos minerais</title>
+<meta name="description" content="Nexial ValuePath: inteligência técnica para fundos, mineradoras e proprietários selecionarem, desenvolverem e acompanharem investimentos minerais com base em evidência. Comece pelo QuickCheck gratuito.">
+<link rel="canonical" href="https://nexialpartners.com/valuepath/">
+<link rel="icon" href="https://nexialpartners.com/assets/img/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="https://nexialpartners.com/assets/img/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nexial Partners">
+<meta property="og:url" content="https://nexialpartners.com/valuepath/">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Nexial ValuePath — Inteligência técnica para investimentos minerais">
+<meta property="og:description" content="Nexial ValuePath: inteligência técnica para fundos, mineradoras e proprietários selecionarem, desenvolverem e acompanharem investimentos minerais com base em evidência. Comece pelo QuickCheck gratuito.">
+<meta property="og:image" content="https://nexialpartners.com/assets/img/og-valuepath.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0D1122">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Tokens alinhados a nexialpartners.com */
+:root{
+  --ink:#0d1122; --ink-deep:#080b16; --ink-soft:#12172b;
+  --surface:#171d35; --surface-2:#202843;
+  --line:#232c4a; --line-soft:#1a2137;
+  --white:#fff; --mist:#d2dcec; --slate:#9dafcb; --muted:#8395b4;
+  --accent:#4fa8d8; --accent-bright:#7fcde8; --accent-teal:#5db8b1; --accent-dim:#4fa8d81f;
+  --brand-gradient:linear-gradient(135deg,#2d5c8e 0%,#4fa8d8 52%,#5db8b1 100%);
+  --ok:#5db8b1; --partial:#d8b04f; --fail:#e0705c; --none:#8395b4;
+  --font-body:"Inter",-apple-system,"Segoe UI",system-ui,sans-serif;
+  --font-display:"Fraunces",Georgia,"Times New Roman",serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+  --fs-xs:.75rem; --fs-sm:.8125rem;
+  --fs-base:clamp(1rem,.97rem + .15vw,1.0625rem);
+  --fs-md:clamp(1.0625rem,1rem + .32vw,1.1875rem);
+  --fs-lg:clamp(1.25rem,1.1rem + .7vw,1.5rem);
+  --fs-xl:clamp(1.5rem,1.2rem + 1.4vw,2.125rem);
+  --fs-2xl:clamp(1.875rem,1.35rem + 2.4vw,3rem);
+  --fs-3xl:clamp(2.25rem,1.4rem + 3.9vw,4rem);
+  --fs-4xl:clamp(2.6rem,1.5rem + 5.2vw,5.25rem);
+  --gutter:clamp(1rem,4vw,3rem);
+  --wrap:1240px; --radius:3px;
+  --sp-section:clamp(5rem,10vw,9rem);
+  --ease:cubic-bezier(.22,.61,.36,1); --ease-out:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--slate);font-family:var(--font-body);font-size:var(--fs-base);font-weight:350;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;color:var(--white);font-weight:300}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
+.mono{font-family:var(--font-mono);font-size:var(--fs-xs);letter-spacing:.1em;text-transform:uppercase}
+.eyebrow{font-family:var(--font-mono);font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-bright);display:inline-flex;align-items:center;gap:.75rem}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--accent)}
+.display{font-family:var(--font-display);font-weight:300;letter-spacing:-.03em;line-height:1.04}
+.grad{background:var(--brand-gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:var(--fs-md);color:var(--slate);max-width:60ch}
+section{position:relative}
+.sec{padding:var(--sp-section) 0}
+.sec--deep{background:var(--ink-deep)}
+.sec-head{display:grid;gap:1.25rem;max-width:760px;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.sec-head h2{font-family:var(--font-display);font-size:var(--fs-2xl);letter-spacing:-.025em;line-height:1.1}
+.note{font-size:var(--fs-sm);color:var(--muted)}
+
+/* Botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:16px 30px;border-radius:var(--radius);font-size:15px;font-weight:600;border:1px solid transparent;transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease),transform .3s var(--ease);cursor:pointer;font-family:var(--font-body)}
+.btn-primary{background:var(--accent);color:var(--ink-deep)}
+.btn-primary:hover{background:var(--accent-bright)}
+.btn-ghost{border-color:var(--line);color:var(--mist);font-weight:500}
+.btn-ghost:hover{border-color:var(--accent);color:var(--white)}
+.btn .arr{transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+
+/* Header */
+.hdr{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s var(--ease),border-color .4s var(--ease);border-bottom:1px solid transparent}
+.hdr.is-solid{background:rgba(13,17,34,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line-soft)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:1.5rem}
+.logo{display:flex;align-items:center;gap:.9rem}
+.logo img{height:30px;width:auto}
+.logo .prod{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-left:.9rem;border-left:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:2rem;font-size:15px;color:var(--mist)}
+.nav a:not(.btn){position:relative}
+.nav a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a:not(.btn):hover::after{transform:scaleX(1)}
+.nav .btn{padding:12px 20px;font-weight:400;border-color:var(--line);color:var(--white)}
+.nav .btn:hover{border-color:var(--accent)}
+@media (max-width:900px){.nav a:not(.btn){display:none}.logo .prod{display:none}}
+
+/* Hero */
+.hero{min-height:100svh;display:flex;align-items:center;padding:140px 0 90px;overflow:hidden}
+.topo{position:absolute;inset:0;z-index:0;opacity:.55;pointer-events:none}
+.topo path{fill:none;stroke:#2a3558;stroke-width:1}
+.topo path.hl{stroke:#3a6d93}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 40%,transparent 0%,var(--ink) 85%);z-index:0;pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,5rem);align-items:center;width:100%}
+.hero h1{font-size:var(--fs-4xl);margin:1.5rem 0 1.75rem}
+.hero .lead{margin-bottom:2.5rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:1rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:1.75rem;margin-top:3rem;padding-top:1.75rem;border-top:1px solid var(--line-soft)}
+.hero-meta div{display:grid;gap:.2rem}
+.hero-meta b{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.hero-meta span{color:var(--mist);font-size:15px}
+@media (max-width:980px){.hero .wrap{grid-template-columns:1fr}.hero{padding-top:120px}}
+
+/* Trace card (hero) */
+.trace{background:linear-gradient(180deg,rgba(23,29,53,.92),rgba(18,23,43,.92));border:1px solid var(--line);border-radius:6px;padding:1.5rem;backdrop-filter:blur(6px);box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
+.trace-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:1rem;margin-bottom:1.25rem;border-bottom:1px solid var(--line)}
+.trace-top .mono{color:var(--muted)}
+.live{display:inline-flex;align-items:center;gap:.5rem;color:var(--accent-bright)}
+.live i{width:7px;height:7px;border-radius:50%;background:var(--accent-teal);box-shadow:0 0 0 0 rgba(93,184,177,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(93,184,177,.55)}70%{box-shadow:0 0 0 9px rgba(93,184,177,0)}100%{box-shadow:0 0 0 0 rgba(93,184,177,0)}}
+.steps{list-style:none;margin:0;padding:0;position:relative}
+.steps::before{content:"";position:absolute;left:11px;top:14px;bottom:14px;width:1px;background:var(--line)}
+.steps .rail{position:absolute;left:11px;top:14px;width:1px;height:0;background:var(--brand-gradient);transition:height .8s var(--ease-out)}
+.step{position:relative;display:grid;grid-template-columns:24px 1fr;gap:1rem;padding:.7rem 0;opacity:.38;transition:opacity .5s var(--ease)}
+.step.on{opacity:1}
+.step .dot{width:23px;height:23px;border-radius:50%;border:1px solid var(--line);background:var(--ink-soft);display:grid;place-items:center;font-family:var(--font-mono);font-size:10px;color:var(--muted);transition:all .5s var(--ease);position:relative;z-index:1}
+.step.on .dot{border-color:var(--accent);color:var(--ink-deep);background:var(--accent)}
+.step .k{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.step .v{color:var(--mist);font-size:14.5px;line-height:1.5;margin-top:.15rem}
+.tag{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:2px;border:1px solid currentColor;white-space:nowrap}
+.tag.ok{color:var(--ok)}.tag.partial{color:var(--partial)}.tag.fail{color:var(--fail)}.tag.none{color:var(--none)}.tag.acc{color:var(--accent-bright)}
+.trace-foot{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--line);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+/* Ticker */
+.ticker{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:var(--ink-deep);overflow:hidden;padding:1.1rem 0}
+.ticker-track{display:flex;gap:3rem;width:max-content;animation:tick 55s linear infinite}
+.ticker span{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:3rem;white-space:nowrap}
+.ticker span::after{content:"";width:5px;height:5px;background:var(--accent);transform:rotate(45deg);opacity:.7}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* Perguntas (problema) */
+.qgrid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.q{padding:2.25rem 2rem 2.25rem 0;border-right:1px solid var(--line)}
+.q+.q{padding-left:2rem}
+.q:last-child{border-right:0}
+.q .n{font-family:var(--font-mono);font-size:var(--fs-xs);color:var(--accent);letter-spacing:.1em}
+.q h3{font-family:var(--font-display);font-size:var(--fs-xl);letter-spacing:-.02em;line-height:1.15;margin:1rem 0 .9rem}
+@media (max-width:860px){.qgrid{grid-template-columns:1fr}.q,.q+.q{padding:2rem 0;border-right:0;border-bottom:1px solid var(--line)}}
+.audience{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:4rem}
+.aud{background:var(--ink);padding:2.25rem}
+.aud .mono{color:var(--accent-bright)}
+.aud p{margin-top:.9rem;color:var(--mist);font-size:var(--fs-md);line-height:1.55}
+@media (max-width:760px){.audience{grid-template-columns:1fr}}
+
+/* Demo de gate */
+.demo{display:grid;grid-template-columns:1.25fr .75fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.demo>div{background:var(--ink-soft)}
+.matrix{padding:1.5rem}
+.matrix-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;gap:1rem;flex-wrap:wrap}
+.matrix-head .mono{color:var(--muted)}
+.reset{background:none;border:1px solid var(--line);color:var(--mist);font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:6px 10px;border-radius:2px;cursor:pointer}
+.reset:hover{border-color:var(--accent)}
+.rows{display:grid;gap:4px}
+.row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem;padding:.7rem .9rem;background:var(--ink);border:1px solid var(--line-soft);border-radius:3px;cursor:pointer;transition:border-color .25s var(--ease),background .25s var(--ease);text-align:left;color:var(--mist);font:inherit;font-size:14.5px;width:100%}
+.row:hover{border-color:var(--line)}
+.row:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row .nm{display:flex;align-items:center;gap:.6rem}
+.row .crit{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;color:var(--fail);border:1px solid rgba(224,112,92,.45);padding:1px 5px;border-radius:2px}
+.row .bar{grid-column:1/-1;height:2px;background:var(--line-soft);border-radius:2px;overflow:hidden;margin-top:.1rem}
+.row .bar i{display:block;height:100%;transition:width .5s var(--ease-out),background .3s}
+.verdict{padding:1.75rem;display:flex;flex-direction:column;gap:1.5rem}
+.avg{display:grid;gap:.25rem}
+.avg .mono{color:var(--muted)}
+.avg .num{font-family:var(--font-display);font-size:clamp(3.25rem,6vw,4.75rem);line-height:1;letter-spacing:-.04em;color:var(--white);font-weight:300}
+.avg .num small{font-size:.42em;color:var(--muted);margin-left:.15em}
+.gauge{height:4px;background:var(--line);border-radius:4px;overflow:hidden}
+.gauge i{display:block;height:100%;background:var(--brand-gradient);transition:width .6s var(--ease-out)}
+.gate{border:1px solid var(--line);border-radius:4px;padding:1.25rem;background:var(--ink);transition:border-color .4s}
+.gate .mono{color:var(--muted)}
+.gate h4{font-family:var(--font-display);font-size:1.6rem;letter-spacing:-.02em;line-height:1.15;margin:.6rem 0 .6rem;transition:color .3s}
+.gate p{font-size:14px;line-height:1.55}
+.gate[data-s="go"]{border-color:rgba(93,184,177,.5)}.gate[data-s="go"] h4{color:var(--ok)}
+.gate[data-s="cond"]{border-color:rgba(216,176,79,.5)}.gate[data-s="cond"] h4{color:var(--partial)}
+.gate[data-s="wait"]{border-color:rgba(127,205,232,.5)}.gate[data-s="wait"] h4{color:var(--accent-bright)}
+.gate[data-s="stop"]{border-color:rgba(224,112,92,.55)}.gate[data-s="stop"] h4{color:var(--fail)}
+.legend{display:flex;flex-wrap:wrap;gap:.5rem}
+@media (max-width:900px){.demo{grid-template-columns:1fr}}
+
+/* Método */
+.method{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.mstep{background:var(--ink);padding:2rem 1.75rem 2.25rem;position:relative;transition:background .4s var(--ease)}
+.mstep:hover{background:var(--ink-soft)}
+.mstep .n{font-family:var(--font-display);font-size:3rem;line-height:1;color:transparent;-webkit-text-stroke:1px #3a4a73;font-weight:300}
+.mstep h3{font-size:1.125rem;font-weight:500;margin:1.5rem 0 .75rem;line-height:1.35}
+.mstep p{font-size:15px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+.split>div{border:1px solid var(--line);border-radius:4px;padding:1.5rem 1.75rem;display:grid;grid-template-columns:auto 1fr;gap:1.25rem;align-items:start}
+.split .ic{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--accent-bright)}
+.split h4{font-size:1rem;font-weight:500;margin-bottom:.35rem}
+.split p{font-size:15px}
+@media (max-width:980px){.method{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.method,.split{grid-template-columns:1fr}}
+
+/* FEL */
+.fel{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+.tabs{display:grid;gap:.5rem}
+.tab{display:grid;grid-template-columns:auto 1fr;gap:1.25rem;align-items:center;text-align:left;padding:1.25rem 1.5rem;background:transparent;border:1px solid var(--line-soft);border-radius:4px;color:var(--slate);font:inherit;cursor:pointer;transition:all .35s var(--ease)}
+.tab .t{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;color:var(--muted)}
+.tab .s{color:var(--mist);font-size:1.05rem}
+.tab:hover{border-color:var(--line)}
+.tab[aria-selected="true"]{border-color:var(--accent);background:var(--accent-dim)}
+.tab[aria-selected="true"] .t{color:var(--accent-bright)}
+.panel{border-left:1px solid var(--line);padding-left:clamp(1.5rem,4vw,3.5rem);min-height:280px}
+.panel .mono{color:var(--accent-bright)}
+.panel blockquote{margin:1.25rem 0 1.75rem;font-family:var(--font-display);font-size:var(--fs-xl);line-height:1.3;color:var(--white);letter-spacing:-.015em;font-weight:300}
+.panel .fade{animation:fadeUp .55s var(--ease-out)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.fel-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:1.5rem}
+.fel-bar i{height:3px;background:var(--line);transition:background .4s}
+.fel-bar i.on{background:var(--accent)}
+@media (max-width:860px){.fel{grid-template-columns:1fr}.panel{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:2rem;min-height:0}}
+
+/* Classificação */
+.classes{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:3rem}
+.cls{background:var(--ink-deep);padding:1.5rem 1.25rem}
+.cls .sw{width:100%;height:3px;margin-bottom:1.25rem}
+.cls h4{font-size:15px;font-weight:500;margin-bottom:.4rem}
+.cls p{font-size:13.5px;line-height:1.55}
+@media (max-width:900px){.classes{grid-template-columns:1fr 1fr}.cls:last-child{grid-column:1/-1}}
+.rule{margin-top:2rem;display:flex;gap:1rem;align-items:flex-start;padding:1.25rem 1.5rem;border:1px dashed var(--line);border-radius:4px;color:var(--mist);font-size:15px}
+.rule b{color:var(--white);font-weight:500}
+
+/* Entregas */
+.deliv{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
+.dcard{grid-column:span 2;border:1px solid var(--line);border-radius:4px;padding:1.75rem;background:linear-gradient(180deg,var(--ink-soft),var(--ink));transition:border-color .35s var(--ease),transform .35s var(--ease)}
+.dcard:hover{border-color:#34426b;transform:translateY(-2px)}
+.dcard .mono{color:var(--muted)}
+.dcard h3{font-size:1.2rem;font-weight:500;margin:1.1rem 0 .6rem}
+.dcard p{font-size:15px}
+@media (max-width:900px){.deliv{grid-template-columns:1fr}.dcard,.dcard:nth-child(4),.dcard:nth-child(5){grid-column:auto}}
+.valuebox{margin-top:3rem;display:grid;grid-template-columns:auto 1fr;gap:2rem;padding:2rem;border:1px solid var(--line);border-radius:4px;background:var(--ink-deep)}
+.valuebox h3{font-family:var(--font-display);font-size:var(--fs-lg);letter-spacing:-.015em;margin-bottom:.6rem}
+.valuebox .ic{width:52px;height:52px;border-radius:50%;background:var(--accent-dim);display:grid;place-items:center;color:var(--accent-bright)}
+@media (max-width:620px){.valuebox{grid-template-columns:1fr}}
+
+/* Portfólio */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;position:relative}
+.tier{border:1px solid var(--line);border-radius:6px;padding:2rem;display:flex;flex-direction:column;gap:1.25rem;background:var(--ink);position:relative;overflow:hidden;transition:border-color .4s var(--ease)}
+.tier::before{content:"";position:absolute;inset:0 0 auto;height:2px;background:var(--brand-gradient);transform:scaleX(.18);transform-origin:left;transition:transform .6s var(--ease-out)}
+.tier:hover{border-color:#34426b}
+.tier:hover::before{transform:scaleX(1)}
+.tier .top{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.tier .lvl{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+.tier h3{font-family:var(--font-display);font-size:var(--fs-xl);letter-spacing:-.02em;line-height:1.1}
+.tier h3 span{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-bright);margin-bottom:.6rem}
+.tier .ask{display:block;font-family:var(--font-display);font-style:italic;color:var(--mist);font-size:1.1rem;line-height:1.4;font-weight:300}
+.tier ul{list-style:none;margin:0;padding:1.25rem 0 0;border-top:1px solid var(--line-soft);display:grid;gap:.65rem;font-size:15px}
+.tier li{display:grid;grid-template-columns:14px 1fr;gap:.75rem;align-items:start}
+.tier li::before{content:"";width:6px;height:6px;margin-top:.6em;border:1px solid var(--accent);transform:rotate(45deg)}
+.tier .out{margin-top:auto;padding-top:1.25rem;border-top:1px solid var(--line-soft);font-size:14px}
+.tier .out b{display:block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:.3rem}
+.tier .out span{color:var(--mist)}
+.tier.feat{border-color:#2f4a70;background:linear-gradient(180deg,#131a33,var(--ink))}
+@media (max-width:980px){.tiers{grid-template-columns:1fr}}
+.flow{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.flow b{color:var(--mist);font-weight:500}
+.flow .ln{width:60px;height:1px;background:linear-gradient(90deg,var(--line),var(--accent),var(--line))}
+.flow-note{text-align:center;max-width:640px;margin:1rem auto 0}
+
+/* Fundos */
+.funds{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+.pipeline{display:grid;gap:14px;border:1px solid var(--line);border-radius:6px;padding:2rem;background:linear-gradient(180deg,var(--ink-soft),var(--ink))}
+.pl{display:grid;grid-template-columns:90px 1fr;align-items:center;gap:1rem}
+.pl .mono{color:var(--muted);font-size:11px}
+.pl .track{display:flex;gap:6px;flex-wrap:wrap}
+.pl .chip{height:38px;min-width:38px;border-radius:3px;border:1px solid var(--line);background:var(--ink-soft);display:grid;place-items:center;font-family:var(--font-mono);font-size:10px;color:var(--muted);padding:0 8px;opacity:0;transform:translateY(6px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.in .pl .chip{opacity:1;transform:none}
+.pl .chip.hl{border-color:var(--accent);color:var(--accent-bright);background:var(--accent-dim)}
+.pl .chip.st{border-color:rgba(224,112,92,.4);color:var(--fail)}
+.flist{list-style:none;margin:2rem 0 0;padding:0;display:grid;gap:0}
+.flist li{display:grid;grid-template-columns:auto 1fr;gap:1.25rem;padding:1.25rem 0;border-top:1px solid var(--line-soft)}
+.flist li:last-child{border-bottom:1px solid var(--line-soft)}
+.flist .mono{color:var(--accent);padding-top:.25rem}
+.flist h4{font-size:1rem;font-weight:500;margin-bottom:.25rem}
+.flist p{font-size:15px}
+@media (max-width:900px){.funds{grid-template-columns:1fr}}
+
+/* Princípios */
+.princ{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.pr{background:var(--ink-deep);padding:2rem 1.75rem}
+.pr h3{font-family:var(--font-display);font-size:1.45rem;line-height:1.2;letter-spacing:-.015em;margin-bottom:.9rem}
+.pr p{font-size:15px}
+@media (max-width:980px){.princ{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.princ{grid-template-columns:1fr}}
+
+/* CTA final */
+.final{padding:clamp(6rem,12vw,10rem) 0;text-align:center;overflow:hidden}
+.final .topo{opacity:.4}
+.final::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 50%,transparent,var(--ink) 80%);pointer-events:none}
+.final .wrap{position:relative;z-index:1}
+.final h2{font-family:var(--font-display);font-size:var(--fs-3xl);letter-spacing:-.03em;line-height:1.06;max-width:900px;margin:1.5rem auto}
+.final .lead{margin:0 auto 2.5rem}
+.final .cta-row{justify-content:center}
+
+/* Footer */
+.foot{border-top:1px solid var(--line-soft);background:var(--ink-deep);padding:3rem 0 2.5rem;font-size:13px;color:var(--muted)}
+.foot .wrap{display:grid;gap:1.75rem}
+.foot-top{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.foot-top img{height:26px;width:auto}
+.foot-top nav{display:flex;gap:1.5rem;flex-wrap:wrap}
+.foot-top nav a:hover{color:var(--white)}
+.disc{max-width:900px;line-height:1.6;font-size:12px;border-top:1px solid var(--line-soft);padding-top:1.5rem}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+  .pl .chip{opacity:1;transform:none}
+}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line-soft)}
+.stat{padding:2.75rem 2rem 2.5rem;border-right:1px solid var(--line-soft)}
+.stat:last-child{border-right:0}
+.stat .big{font-family:var(--font-display);font-weight:300;font-size:clamp(2.75rem,5vw,4.25rem);line-height:1;color:var(--white);letter-spacing:-.04em}
+.stat .big em{font-style:normal;background:var(--brand-gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat p{margin-top:.9rem;font-size:14.5px;max-width:26ch}
+.stats-cap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1rem 0 0;font-size:12px;color:var(--muted)}
+@media (max-width:860px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line-soft)}}
+@media (max-width:480px){.stat{padding:2rem 1rem 1.75rem 0}.stat+.stat{padding-left:1rem}.stat:nth-child(3){padding-left:0}}
+
+/* Exemplo representativo */
+.case{display:grid;grid-template-columns:1.3fr .7fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.case>div{background:var(--ink-soft)}
+.case-l{padding:1.5rem}
+.case-bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:3px;padding:3px;gap:3px;background:var(--ink)}
+.seg button{background:none;border:0;color:var(--muted);font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;border-radius:2px;cursor:pointer;transition:all .3s var(--ease)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--ink-deep)}
+.comp{margin-top:1.1rem}
+.comp:first-of-type{margin-top:0}
+.comp-h{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 .5rem;display:flex;justify-content:space-between}
+.pil{display:grid;grid-template-columns:26px 1fr 128px;gap:.75rem;align-items:center;width:100%;text-align:left;padding:.55rem .75rem;background:var(--ink);border:1px solid var(--line-soft);border-radius:3px;margin-bottom:3px;color:var(--mist);font:inherit;font-size:14px;cursor:pointer;transition:border-color .25s var(--ease),background .25s var(--ease),opacity .3s}
+.pil:hover{border-color:var(--line)}
+.pil:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pil .no{font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+.pil .nm{display:flex;align-items:center;gap:.5rem;min-width:0}
+.pil .nm span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pil .cs{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;color:var(--muted);border:1px solid var(--line);padding:1px 4px;border-radius:2px;flex:none}
+.pil .val{position:relative;height:22px;display:flex;align-items:center;justify-content:flex-end}
+.pil .meter{position:absolute;inset:auto 0 auto 0;height:3px;background:var(--line-soft);border-radius:3px;overflow:hidden;transition:opacity .35s}
+.pil .meter i{display:block;height:100%;background:var(--brand-gradient);transition:width .7s var(--ease-out)}
+.pil .pct{position:absolute;right:0;top:-12px;font-family:var(--font-mono);font-size:10px;color:var(--slate);transition:opacity .35s}
+.pil .lv{opacity:0;transition:opacity .35s;position:relative}
+.case[data-mode="nexial"] .pil .meter,.case[data-mode="nexial"] .pil .pct{opacity:0}
+.case[data-mode="nexial"] .pil .lv{opacity:1}
+.pil.sel{border-color:var(--accent);background:#111a33}
+.pil.dep{border-color:rgba(216,176,79,.6)}
+.pil.dim{opacity:.45}
+.case-r{padding:1.75rem;display:flex;flex-direction:column;gap:1.5rem}
+.case-r .mono{color:var(--muted)}
+.headline{font-family:var(--font-display);font-size:clamp(2.6rem,5vw,3.75rem);line-height:1;letter-spacing:-.035em;color:var(--white);font-weight:300;margin-top:.4rem}
+.headline.red{color:var(--fail)}
+.case-r .exp{font-size:14.5px;line-height:1.6}
+.focus{border:1px solid var(--line);border-radius:4px;padding:1.25rem;background:var(--ink)}
+.focus h4{font-size:1.05rem;font-weight:500;margin:.5rem 0 .5rem;line-height:1.35}
+.focus p{font-size:14px;line-height:1.55}
+.focus .row2{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem}
+.tag.dep{color:var(--partial)}
+@media (max-width:980px){.case{grid-template-columns:1fr}}
+@media (max-width:520px){.pil{grid-template-columns:22px 1fr 100px;font-size:13px}.pil .cs{display:none}.pil .nm span{white-space:normal;line-height:1.3}}
+
+/* Achados */
+.finds{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.find{border:1px solid var(--line);border-radius:4px;padding:1.6rem 1.6rem 1.5rem;background:var(--ink);display:flex;flex-direction:column;gap:1rem;transition:border-color .35s var(--ease)}
+.find:hover{border-color:#34426b}
+.find .top{display:flex;justify-content:space-between;gap:.75rem;align-items:center}
+.find .top .mono{color:var(--muted)}
+.find h3{font-family:var(--font-display);font-size:1.3rem;line-height:1.3;letter-spacing:-.01em}
+.find p{font-size:14.5px;margin-top:auto;padding-top:1rem;border-top:1px solid var(--line-soft)}
+.find p b{color:var(--mist);font-weight:500}
+@media (max-width:980px){.finds{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.finds{grid-template-columns:1fr}}
+
+/* Regras */
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:3.5rem}
+.rl{background:var(--ink);padding:1.75rem}
+.rl .mono{color:var(--accent)}
+.rl h4{font-size:1.05rem;font-weight:500;margin:.8rem 0 .5rem;line-height:1.35}
+.rl p{font-size:14.5px}
+@media (max-width:900px){.rules{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.rules{grid-template-columns:1fr}}
+
+/* Evidência A-D */
+.evid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1rem}
+.ev{background:var(--ink-deep);padding:1.25rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start}
+.ev b{font-family:var(--font-display);font-size:2rem;line-height:1;color:var(--white);font-weight:300}
+.ev h4{font-size:14px;font-weight:500;margin-bottom:.25rem}
+.ev p{font-size:13px;line-height:1.5}
+.ev .cap{display:inline-block;margin-top:.5rem;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-bright)}
+@media (max-width:900px){.evid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.evid{grid-template-columns:1fr}}
+.subh{margin-top:3rem;font-family:var(--font-mono);font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* Roteiro */
+.roteiro{margin-top:3rem;display:grid;grid-template-columns:1.35fr .65fr;gap:1.25rem}
+.rt{border:1px solid var(--line);border-radius:6px;background:var(--ink-soft);overflow:hidden}
+.rt-h{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1rem 1.5rem;border-bottom:1px solid var(--line);background:var(--ink)}
+.rt-h .mono{color:var(--muted)}
+.rt-b{display:grid;grid-template-columns:150px 1fr}
+.rt-b dt,.rt-b dd{margin:0;padding:.85rem 1.5rem;border-bottom:1px solid var(--line-soft);font-size:14px}
+.rt-b dt{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:1rem}
+.rt-b dd{color:var(--mist)}
+.rt-b dd.q{font-family:var(--font-display);font-size:1.15rem;line-height:1.4;color:var(--white);font-weight:300}
+.who{border:1px solid var(--line);border-radius:6px;padding:1.5rem;background:var(--ink-deep);display:flex;flex-direction:column;gap:1.25rem}
+.who .mono{color:var(--muted)}
+.wbar{display:flex;height:10px;border-radius:2px;overflow:hidden;gap:2px}
+.wbar i{display:block;height:100%}
+.wl{display:grid;gap:.6rem;font-size:14px}
+.wl div{display:flex;justify-content:space-between;gap:1rem;color:var(--mist)}
+.wl div span:first-child{display:flex;align-items:center;gap:.6rem}
+.wl i{width:9px;height:9px;border-radius:2px;display:inline-block}
+.wl b{font-family:var(--font-mono);font-weight:400;color:var(--white)}
+@media (max-width:900px){.roteiro{grid-template-columns:1fr}}
+@media (max-width:560px){.rt-b{grid-template-columns:1fr}.rt-b dt{border-bottom:0;padding-bottom:0}}
+
+
+.h2like{font-family:var(--font-display);font-size:var(--fs-2xl);letter-spacing:-.025em;line-height:1.1;font-weight:300}
+/* Para quem */
+.aud3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.who3{border:1px solid var(--line);border-radius:6px;padding:2rem;background:linear-gradient(180deg,var(--ink-soft),var(--ink));display:flex;flex-direction:column;gap:1rem;position:relative;overflow:hidden}
+.who3::before{content:"";position:absolute;inset:0 0 auto;height:2px;background:var(--brand-gradient);transform:scaleX(.18);transform-origin:left;transition:transform .6s var(--ease-out)}
+.who3:hover::before{transform:scaleX(1)}
+.who3 .mono{color:var(--accent-bright)}
+.who3 h3{font-family:var(--font-display);font-size:var(--fs-lg);line-height:1.2;letter-spacing:-.015em}
+.who3 .pain{font-size:15px;color:var(--muted);font-style:italic}
+.who3 .gain{font-size:15px;color:var(--mist);margin-top:auto;padding-top:1rem;border-top:1px solid var(--line-soft)}
+.who3 .gain b{color:var(--white);font-weight:500}
+@media (max-width:900px){.aud3{grid-template-columns:1fr}}
+/* Mercado */
+.mkt{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.mk{background:var(--ink-deep);padding:2rem 1.75rem;display:flex;flex-direction:column;gap:.9rem}
+.mk .big{font-family:var(--font-display);font-weight:300;font-size:clamp(2.1rem,3.6vw,3rem);line-height:1;color:var(--white);letter-spacing:-.03em}
+.mk .big small{font-size:.45em;color:var(--muted);margin:0 .2em}
+.mk p{font-size:15px}
+.mk .src{margin-top:auto;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:860px){.mkt{grid-template-columns:1fr}}
+.q4{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1rem}
+.q4>div{background:var(--ink);padding:1.75rem 1.5rem}
+.q4 .n{font-family:var(--font-mono);font-size:var(--fs-xs);color:var(--accent);letter-spacing:.1em}
+.q4 h3{font-family:var(--font-display);font-size:1.35rem;line-height:1.25;margin-top:.75rem;letter-spacing:-.01em}
+@media (max-width:900px){.q4{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.q4{grid-template-columns:1fr}}
+/* Benefícios */
+.bens{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.ben{background:var(--ink-deep);padding:2rem 1.75rem;display:flex;flex-direction:column;gap:.85rem;transition:background .35s var(--ease)}
+.ben:hover{background:var(--ink-soft)}
+.ben .mono{color:var(--accent)}
+.ben h3{font-family:var(--font-display);font-size:1.4rem;line-height:1.25;letter-spacing:-.015em}
+.ben p{font-size:15px}
+.ben .so{margin-top:auto;padding-top:.9rem;border-top:1px solid var(--line-soft);color:var(--mist)}
+.ben .so b{color:var(--accent-bright);font-weight:500}
+@media (max-width:980px){.bens{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.bens{grid-template-columns:1fr}}
+/* Fluxo de 5 etapas */
+.flow5{list-style:none;margin:0;padding:0;position:relative}
+.flow5::before{content:"";position:absolute;left:27px;top:28px;bottom:28px;width:1px;background:linear-gradient(180deg,var(--accent),var(--accent-teal) 60%,var(--line))}
+.f5{display:grid;grid-template-columns:56px 1fr;gap:1.5rem;padding-bottom:1.25rem}
+.f5-n span{width:56px;height:56px;border-radius:50%;border:1px solid var(--accent);background:var(--ink);display:grid;place-items:center;font-family:var(--font-display);font-size:1.35rem;color:var(--white);position:relative;z-index:1}
+.f5-b{border:1px solid var(--line);border-radius:6px;padding:1.5rem 1.75rem;background:var(--ink-soft)}
+.f5-b h3{font-size:1.15rem;font-weight:500;margin-bottom:1rem}
+.f5-b dl{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:0}
+.f5-b dt{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.f5-b dd{margin:0;font-size:15px;line-height:1.55}
+.f5-b dl>div{display:block}
+.f5-b dd b{color:var(--white);font-weight:500}
+.fork{display:flex;flex-wrap:wrap;gap:.4rem}
+@media (max-width:860px){.f5-b dl{grid-template-columns:1fr;gap:.9rem}}
+@media (max-width:520px){.f5{grid-template-columns:40px 1fr;gap:.9rem}.f5-n span{width:40px;height:40px;font-size:1rem}.flow5::before{left:19px}.f5-b{padding:1.25rem}}
+/* Linhas de oferta */
+.lines{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;align-items:start}
+.line{border:1px solid var(--line);border-radius:6px;background:var(--ink);overflow:hidden;position:relative}
+.line::before{content:"";position:absolute;inset:0 0 auto;height:2px;background:var(--brand-gradient)}
+.line.feat{border-color:#2f4a70}
+.line-h{padding:1.75rem 1.75rem 1.25rem;border-bottom:1px solid var(--line-soft)}
+.line-h .lvl{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.line-h h3{font-family:var(--font-display);font-size:var(--fs-xl);letter-spacing:-.02em;line-height:1.1;margin:.8rem 0 .5rem}
+.line-h h3 span{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-bright);margin-bottom:.5rem}
+.line-h p{font-size:15px;color:var(--mist)}
+.off{padding:1.25rem 1.75rem;border-bottom:1px solid var(--line-soft);display:grid;gap:.5rem}
+.off:last-child{border-bottom:0}
+.off-t{display:flex;justify-content:space-between;align-items:center;gap:.75rem;flex-wrap:wrap}
+.off h4{font-size:1rem;font-weight:500}
+.off .ask{font-family:var(--font-display);font-style:italic;font-weight:300;color:var(--mist);font-size:1.05rem;line-height:1.4}
+.off p{font-size:14.5px}
+@media (max-width:980px){.lines{grid-template-columns:1fr}}
+/* FAQ */
+.faqwrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+.faq{display:grid;gap:0}
+.faq details{border-bottom:1px solid var(--line-soft)}
+.faq details:first-of-type{border-top:1px solid var(--line-soft);margin-top:1rem}
+.faq summary{list-style:none;cursor:pointer;padding:1.15rem 2rem 1.15rem 0;color:var(--white);font-size:1.02rem;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:var(--font-mono);color:var(--accent);font-size:1.2rem;transition:transform .3s var(--ease)}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.faq details p{padding:0 0 1.25rem;font-size:15px}
+@media (max-width:900px){.faqwrap{grid-template-columns:1fr}}
+/* Como começar */
+.start{list-style:none;margin:0 auto 2.5rem;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:960px;text-align:left}
+.start li{border:1px solid var(--line);border-radius:6px;padding:1.5rem;background:rgba(18,23,43,.85);backdrop-filter:blur(4px)}
+.start span{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--ink-deep);font-weight:600;font-size:14px}
+.start h4{font-size:1.05rem;font-weight:500;margin:1rem 0 .4rem}
+.start p{font-size:14.5px}
+@media (max-width:760px){.start{grid-template-columns:1fr}}
+
+/* Revisão 10/11/2026 */
+.pgrid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(12,auto);grid-auto-flow:column;column-gap:6px}
+.pgrid .pil{grid-template-columns:24px 1fr 96px;font-size:13.5px}
+@media (max-width:1100px){.pgrid{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}}
+.rules.r8{grid-template-columns:repeat(4,1fr)}
+@media (max-width:1100px){.rules.r8{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.rules.r8{grid-template-columns:1fr}}
+.rules.r3{grid-template-columns:repeat(3,1fr);margin-top:1rem}
+@media (max-width:900px){.rules.r3{grid-template-columns:1fr}}
+.scales{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+.scale{border:1px solid var(--line);border-radius:4px;background:var(--ink-deep);padding:1.5rem}
+.scale h4{font-size:1rem;font-weight:500;margin-bottom:1rem}
+.scale ol{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.scale li{display:grid;grid-template-columns:40px 1fr;gap:.75rem;align-items:baseline;padding:.6rem 0;border-top:1px solid var(--line-soft);font-size:14.5px;color:var(--mist)}
+.scale li b{font-family:var(--font-display);font-size:1.5rem;line-height:1;color:var(--white);font-weight:300}
+.scale li em{font-style:normal;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-bright);margin-left:.4rem}
+@media (max-width:860px){.scales{grid-template-columns:1fr}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="https://nexialpartners.com/" aria-label="Nexial Partners — página inicial">
+      <img src="https://nexialpartners.com/assets/img/logo-nexial-white.png" alt="Nexial Partners">
+      <span class="prod">ValuePath</span>
+    </a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#para-quem">Para quem</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#ofertas">Ofertas</a>
+      <a href="#metodo">Método</a>
+      <a class="btn" href="#contato">Solicitar QuickCheck</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- 1. HERO — proposta de valor -->
+<section class="hero">
+  <svg class="topo" data-topo="hero" aria-hidden="true"></svg>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow rv">Nexial ValuePath · Inteligência técnica para investimentos minerais</span>
+      <h1 class="display rv d1">Saiba o que um projeto mineral sustenta <span class="grad">antes do próximo cheque.</span></h1>
+      <p class="lead rv d2">Para fundos, mineradoras e proprietários de ativos. Avaliamos maturidade, evidências e riscos e dizemos com clareza o que os dados atuais permitem decidir, o que falta e qual o caminho mais racional para resolver as incertezas que importam.</p>
+      <div class="cta-row rv d3">
+        <a class="btn btn-primary" href="https://nexialpartners.com/contato/">Solicitar QuickCheck gratuito <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="#como-funciona">Ver como funciona</a>
+      </div>
+      <div class="hero-meta rv d3">
+        <div><b>Para quem</b><span>Fundos · Mineradoras · Proprietários</span></div>
+        <div><b>Método</b><span>23 pilares · mais de 220 requisitos</span></div>
+        <div><b>Resultado</b><span>Avançar, desenvolver ou suspender</span></div>
+      </div>
+    </div>
+
+    <aside class="trace rv d2" aria-label="Exemplo de rastreabilidade de um requisito">
+      <div class="trace-top">
+        <span class="mono">Rastro de evidência · Pilar 6</span>
+        <span class="mono live"><i></i>Exemplo</span>
+      </div>
+      <ol class="steps" id="steps">
+        <span class="rail" id="rail"></span>
+        <li class="step"><span class="dot">01</span><div><div class="k">Requisito determinante</div><div class="v">Estabilidade de taludes por setor geotécnico</div></div></li>
+        <li class="step"><span class="dot">02</span><div><div class="k">Informação recebida</div><div class="v">Ângulo de talude informado em reunião, sem sondagem nem ensaio</div></div></li>
+        <li class="step"><span class="dot">03</span><div><div class="k">Evidência</div><div class="v">Natureza D (hipótese) · estado 1 (verbal). Fala não altera carimbo</div></div></li>
+        <li class="step"><span class="dot">04</span><div><div class="k">Carimbo FEL 1</div><div class="v"><span class="tag fail">Insuficiente</span>&nbsp; estado 1 abaixo do piso 2 do FEL 1 · situação técnica não demonstrada</div></div></li>
+        <li class="step"><span class="dot">05</span><div><div class="k">Ação para fechar a lacuna</div><div class="v">Sondagem geotécnica e ensaios de resistência por setor, com relatório revisado</div></div></li>
+      </ol>
+      <div class="trace-foot"><span>Cada conclusão aponta para a fonte que a sustenta.</span><span class="mono" style="font-size:10.5px">Pilar 6 · Lavra</span></div>
+    </aside>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- 2. PARA QUEM — isso é para mim? -->
+<section class="sec" id="para-quem">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow rv">Para quem é</span>
+      <h2 class="rv d1">Para quem precisa decidir sobre capital mineral com base em evidência.</h2>
+      <p class="lead rv d2">Três perfis, três decisões diferentes. Em todos, a pergunta de fundo é a mesma: este ativo está pronto para o próximo passo?</p>
+    </div>
+    <div class="aud3">
+      <article class="who3 rv">
+        <span class="mono">Fundos e gestores de ativos minerais</span>
+        <h3>Selecionar, avaliar e acompanhar uma carteira.</h3>
+        <p class="pain">Muitos ativos chegando, diligências caras e pouco tempo do comitê.</p>
+        <p class="gain"><b>Com o ValuePath:</b> triagem comparável entre ativos, foco da diligência onde ela faz diferença e acompanhamento dos riscos depois do investimento.</p>
+      </article>
+      <article class="who3 rv d1">
+        <span class="mono">Mineradoras de médio porte</span>
+        <h3>Priorizar expansão, aquisição e novos projetos.</h3>
+        <p class="pain">Orçamento para estudos existe, mas a equipe interna nem sempre cobre todas as disciplinas.</p>
+        <p class="gain"><b>Com o ValuePath:</b> leitura multidisciplinar da prontidão de cada investimento, com o que falta para levá-lo ao comitê.</p>
+      </article>
+      <article class="who3 rv d2">
+        <span class="mono">Proprietários e juniors capitalizados</span>
+        <h3>Preparar o ativo para desenvolvimento ou transação.</h3>
+        <p class="pain">Investidores pedem evidência, e o acervo técnico não conta a história de forma organizada.</p>
+        <p class="gain"><b>Com o ValuePath:</b> lacunas priorizadas, plano de estudos e informação consistente para interlocutores técnicos e financeiros.</p>
+      </article>
+    </div>
+    <p class="note rv" style="margin-top:1.5rem">Também apoiamos grupos industriais que avaliam fontes futuras de suprimento e financiadores que analisam riscos antes e durante o financiamento.</p>
+  </div>
+</section>
+
+<!-- 3. O PROBLEMA — por que isso importa agora? -->
+<section class="sec sec--deep" id="problema">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow rv">O desafio</span>
+      <h2 class="rv d1">O capital mineral entra por etapas. Cada etapa depende da qualidade da informação.</h2>
+      <p class="lead rv d2">O dinheiro existe, mas é aplicado de forma seletiva e progressiva. Quem decide precisa separar o que está demonstrado do que é apenas declarado.</p>
+    </div>
+    <div class="mkt">
+      <div class="mk rv"><div class="big">US$ 76,9 bi</div><p>em investimentos projetados para a mineração brasileira entre 2026 e 2030.</p><span class="src">IBRAM, fev. 2026</span></div>
+      <div class="mk rv d1"><div class="big">45% <small>vs</small> 21%</div><p>dos orçamentos globais de exploração em 2025 foram para minas existentes, contra 21% para exploração inicial. O capital prefere o que já é conhecido.</p><span class="src">S&amp;P Global, 2026</span></div>
+      <div class="mk rv d2"><div class="big">56 planos</div><p>de minerais estratégicos avançaram na chamada BNDES/Finep, somando R$ 45,8 bi estimados. Avançar na seleção ainda não é financiamento aprovado.</p><span class="src">Agência BNDES</span></div>
+    </div>
+    <p class="subh rv">As quatro perguntas que o ValuePath ajuda a responder</p>
+    <div class="q4">
+      <div class="rv"><span class="n">01</span><h3>Onde investir?</h3></div>
+      <div class="rv d1"><span class="n">02</span><h3>Quanto investir na próxima etapa?</h3></div>
+      <div class="rv d2"><span class="n">03</span><h3>Quais riscos precisam ser resolvidos?</h3></div>
+      <div class="rv d3"><span class="n">04</span><h3>Os recursos aplicados estão gerando a evidência esperada?</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. EXEMPLO — como é na prática? -->
+<section class="sec" id="demo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow rv">Veja na prática</span>
+      <h2 class="rv d1">Uma média alta pode esconder um projeto que ainda não está pronto.</h2>
+      <p class="lead rv d2">Neste exemplo, <span id="avgLead">77%</span> dos requisitos já atingem o primeiro gate. Pela regra do menor nível, o projeto ainda está abaixo dele. Alterne as leituras e clique em um pilar para ver de quem ele depende.</p>
+    </div>
+    <div class="case rv" id="case" data-mode="media">
+      <div class="case-l">
+        <div class="case-bar">
+          <div class="seg" role="group" aria-label="Modo de leitura">
+            <button type="button" data-m="media" aria-pressed="true">Leitura pela média</button>
+            <button type="button" data-m="nexial" aria-pressed="false">Leitura ValuePath</button>
+          </div>
+          <span class="mono" style="color:var(--muted)">23 pilares</span>
+        </div>
+        <div id="pillars"></div>
+      </div>
+      <div class="case-r">
+        <div>
+          <span class="mono" id="hLabel">Completude média do FEL 1 · todos os pilares</span>
+          <div class="headline" id="hVal">—</div>
+        </div>
+        <p class="exp" id="hExp"></p>
+        <div class="focus" id="focus" aria-live="polite"></div>
+        <p class="note">Pilares consultivos (título, licenciamento, social, financiamento, fiscal e ESG) são avaliados com parecer de especialista e entram no nível do projeto. Valores fictícios.</p>
+      </div>
+    </div>
+
+    <div class="sec-head" style="margin-top:clamp(4rem,8vw,6rem)">
+      <span class="eyebrow rv">O que a avaliação revela</span>
+      <h3 class="rv d1 h2like">Lacunas que mudam a conversa com o comitê.</h3>
+    </div>
+    <div class="finds">
+      <article class="find rv"><div class="top"><span class="mono">Lavra subterrânea</span><span class="tag fail">Insuficiente</span></div><h3>Equipamentos a diesel dimensionados sem a demanda de ar do circuito de ventilação.</h3><p><b>Ação:</b> Estudo de ventilação com vazões por frente, antes da lista de equipamentos.</p></article>
+      <article class="find rv d1"><div class="top"><span class="mono">Geotecnia</span><span class="tag fail">Insuficiente</span></div><h3>Ângulos de talude adotados por analogia, sem sondagem nos setores críticos.</h3><p><b>Ação:</b> Campanha geotécnica por setor e análise de estabilidade.</p></article>
+      <article class="find rv d2"><div class="top"><span class="mono">Explosivos</span><span class="tag fail">Insuficiente</span></div><h3>Paiol posicionado sem verificar a distância de segurança até a estrada de acesso.</h3><p><b>Ação:</b> Rever o local do paiol e o rito de autorização no cronograma.</p></article>
+      <article class="find rv"><div class="top"><span class="mono">Recurso</span><span class="tag partial">Divergência aberta</span></div><h3>Teor de corte do plano de lavra diferente do usado na estimativa de recurso.</h3><p><b>Ação:</b> Fixar um teor de corte e refazer o documento que diverge.</p></article>
+      <article class="find rv d1"><div class="top"><span class="mono">Logística</span><span class="tag fail">Insuficiente</span></div><h3>Frete marítimo de produto a granel estimado sem cotação.</h3><p><b>Ação:</b> Cotações com operadores e verificação da capacidade do porto.</p></article>
+      <article class="find rv d2"><div class="top"><span class="mono">Fechamento</span><span class="tag fail">Insuficiente</span></div><h3>Garantia financeira de fechamento exigida pelo financiador e ausente do plano.</h3><p><b>Ação:</b> Estimar o custo de fechamento e a garantia, e levá-los ao fluxo de caixa.</p></article>
+    </div>
+    <p class="note rv" style="margin-top:1.5rem">Descrições genéricas, sem relação com um projeto específico.</p>
+  </div>
+</section>
+
+<!-- 5. DIFERENCIAIS → BENEFÍCIOS — por que o ValuePath? -->
+<section class="sec sec--deep" id="diferenciais">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow rv">Por que o ValuePath</span>
+      <h2 class="rv d1">Menos retrabalho, decisões defensáveis e um caminho claro para a próxima etapa.</h2>
+    </div>
+    <div class="bens">
+      <article class="ben rv"><span class="mono">Continuidade</span><h3>A próxima avaliação começa do que já se sabe.</h3><p>Evidências, riscos, decisões e próximas atividades ficam organizados em uma estrutura única. Cada nova etapa parte desse histórico, e não do zero.</p><p class="so"><b>Para você:</b> menos retrabalho a cada rodada de diligência e um histórico que o comitê pode consultar.</p></article>
+      <article class="ben rv d1"><span class="mono">Rastreabilidade</span><h3>Cada conclusão aponta para o documento que a sustenta.</h3><p>Cada requisito aponta para o documento que o sustenta, com versão, autor, revisor e aprovador. A evidência é classificada pela natureza do dado e pelo estado de validação do documento. Divergências entre fontes são registradas, nunca resolvidas em silêncio.</p><p class="so"><b>Para você:</b> conclusões que resistem às perguntas do comitê e dos financiadores.</p></article>
+      <article class="ben rv d2"><span class="mono">Utilidade decisória</span><h3>Um parecer que diz o que pode ser decidido agora.</h3><p>O resultado não é um score solto. É uma recomendação de avançar, desenvolver ou suspender, com as condições de cada caminho.</p><p class="so"><b>Para você:</b> capital comprometido só quando as incertezas relevantes estão resolvidas.</p></article>
+      <article class="ben rv"><span class="mono">IA com revisão humana</span><h3>Velocidade na leitura, responsabilidade na conclusão.</h3><p>A IA acelera a leitura e indexação de documentos, a comparação de versões e a identificação de lacunas. Regras e cálculos usam componentes verificáveis. Conclusões técnicas são revisadas e aprovadas por profissionais.</p><p class="so"><b>Para você:</b> agilidade sem abrir mão de quem responde pelo parecer.</p></article>
+      <article class="ben rv d1"><span class="mono">Independência técnica</span><h3>Remunerados pelo serviço, não pelo capital do projeto.</h3><p>A Nexial não financia os ativos que avalia nem recebe parcela automática do capital ou do valor futuro. Quando o mandato exige revisão independente, conflitos são avaliados antes.</p><p class="so"><b>Para você:</b> uma leitura técnica sem interesse no resultado da transação.</p></article>
+      <article class="ben rv d2"><span class="mono">Escopo modular</span><h3>Contrate a profundidade que a decisão exige.</h3><p>Triagem, avaliação, plano de desenvolvimento e acompanhamento podem ser contratados separadamente ou combinados, por ativo ou por carteira.</p><p class="so"><b>Para você:</b> sem pagar por um estudo maior do que a decisão pede.</p></article>
+      <article class="ben rv"><span class="mono">Perfil do projeto</span><h3>Adaptado ao projeto</h3><p>O perfil do projeto (substância, tipo de depósito, método de lavra, rota de processo, produto, logística e bioma) ativa os requisitos que se aplicam. Uma mina subterrânea de ouro e uma operação de minério de ferro a céu aberto passam pelo mesmo método, com requisitos diferentes.</p><p class="so"><b>Para você:</b> uma avaliação que pergunta o que importa para o seu ativo.</p></article>
+      <article class="ben rv d1"><span class="mono">Proporcionalidade</span><h3>Exigência na medida da decisão</h3><p>Cada gate exige o mínimo necessário para a sua decisão, e não mais. Um estudo só é cobrado no gate em que muda a decisão.</p><p class="so"><b>Para você:</b> capital de estudos aplicado onde ele muda a decisão.</p></article>
+      <article class="ben rv d2"><span class="mono">Diagnóstico</span><h3>Problema ou falta de documento</h3><p>O painel separa impedimentos comprovados, em que a evidência mostra uma condição desfavorável, das lacunas de evidência, em que algo ainda não foi demonstrado. O primeiro pede redesenho ou suspensão; o segundo, estudo com custo e prazo.</p><p class="so"><b>Para você:</b> saber se o projeto tem um problema ou se só falta documento.</p></article>
+    </div>
+    <div class="stats" style="margin-top:3.5rem;border-top:1px solid var(--line-soft)">
+      <div class="stat rv"><div class="big"><em>23</em></div><p>pilares, do título minerário ao fechamento de mina</p></div>
+      <div class="stat rv d1"><div class="big">220+</div><p>requisitos, cada um com critério para FEL 1, FEL 2 e FEL 3</p></div>
+      <div class="stat rv d2"><div class="big">14</div><p>requisitos eliminatórios: se um falha, o gate fica bloqueado</p></div>
+      <div class="stat rv d3"><div class="big">0–5</div><p>escala de estado da evidência, com piso mínimo em cada gate</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. COMO FUNCIONA — o que acontece se eu contratar? -->
+<section class="sec" id="como-funciona">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow rv">Como funciona</span>
+      <h2 class="rv d1">Do primeiro contato à decisão de capital, em etapas que você controla.</h2>
+      <p class="lead rv d2">Cada etapa termina com uma entrega e uma decisão sua. Você pode parar, aprofundar ou seguir para a próxima.</p>
+    </div>
+    <ol class="flow5">
+      <li class="f5 rv">
+        <div class="f5-n"><span>01</span></div>
+        <div class="f5-b">
+          <h3>Qualificação · QuickCheck</h3>
+          <dl>
+            <div><dt>O que fazemos</dt><dd>Entendemos o objetivo, a decisão em jogo, os dados disponíveis e a titularidade preliminar.</dd></div>
+            <div><dt>Como</dt><dd>Leitura inicial do material enviado, com esforço e volume de documentos limitados.</dd></div>
+            <div><dt>Você recebe</dt><dd>Enquadramento preliminar e até três lacunas documentais. <b>Decide</b> se vale aprofundar.</dd></div>
+          </dl>
+        </div>
+      </li>
+      <li class="f5 rv">
+        <div class="f5-n"><span>02</span></div>
+        <div class="f5-b">
+          <h3>Avaliação · Investment Screening</h3>
+          <dl>
+            <div><dt>O que fazemos</dt><dd>Avaliamos maturidade, evidências, riscos e adequação à decisão nos pilares aplicáveis.</dd></div>
+            <div><dt>Como</dt><dd>A IA indexa e compara o acervo; especialistas carimbam cada requisito com documento e página. Entrevistamos sua equipe com roteiro por requisito.</dd></div>
+            <div><dt>Você recebe</dt><dd>Matriz de maturidade, painel com as três respostas por gate (maturidade, conformidade e prontidão técnica), impedimentos comprovados separados das lacunas de evidência, lacunas classificadas por tipo e severidade, registro de divergências, grandezas que sustentam a decisão com a maturidade de cada uma, e roteiro de entrevista com documentos a solicitar.</dd></div>
+          </dl>
+        </div>
+      </li>
+      <li class="f5 rv">
+        <div class="f5-n"><span>03</span></div>
+        <div class="f5-b">
+          <h3>Decisão · Investment Decision Brief</h3>
+          <dl>
+            <div><dt>O que fazemos</dt><dd>Traduzimos a avaliação no que pode ser decidido agora, no que falta e nas alternativas.</dd></div>
+            <div><dt>Como</dt><dd>Síntese executiva com questões críticas e condições para prosseguir, pronta para o comitê.</dd></div>
+            <div><dt>Você decide</dt><dd><span class="fork"><span class="tag ok">Avançar</span><span class="tag partial">Desenvolver</span><span class="tag fail">Suspender</span></span></dd></div>
+          </dl>
+        </div>
+      </li>
+      <li class="f5 rv">
+        <div class="f5-n"><span>04</span></div>
+        <div class="f5-b">
+          <h3>Desenvolvimento · Development Roadmap</h3>
+          <dl>
+            <div><dt>O que fazemos</dt><dd>Definimos a forma mais racional de resolver as incertezas relevantes.</dd></div>
+            <div><dt>Como</dt><dd>Cada lacuna vira uma ação, com dependências, responsável e critério de conclusão. Nas próximas versões: custo e prazo para atingir cada gate e valuation refeito em cada gate.</dd></div>
+            <div><dt>Você recebe</dt><dd>Programa de estudos priorizado. <b>Decide</b> o que contratar e em que ordem.</dd></div>
+          </dl>
+        </div>
+      </li>
+      <li class="f5 rv">
+        <div class="f5-n"><span>05</span></div>
+        <div class="f5-b">
+          <h3>Acompanhamento · Assurance</h3>
+          <dl>
+            <div><dt>O que fazemos</dt><dd>Verificamos se os estudos contratados estão produzindo as evidências necessárias.</dd></div>
+            <div><dt>Como</dt><dd>Revisão de novas evidências e marcos técnicos, sobre o mesmo histórico da avaliação.</dd></div>
+            <div><dt>Você decide</dt><dd>Se as condições técnicas para o próximo compromisso de capital foram atendidas.</dd></div>
+          </dl>
+        </div>
+      </li>
+    </ol>
+    <p class="note rv" style="margin-top:1rem">Desenvolvimento e acompanhamento podem ser contratados separadamente ou em paralelo. A decisão financeira permanece sempre com o investidor.</p>
+
+    <div class="roteiro">
+      <div class="rt rv">
+        <div class="rt-h"><span class="mono">Exemplo de entregável · Roteiro de entrevista</span><span style="display:flex;gap:.5rem;flex-wrap:wrap"><span class="tag fail">Hoje abaixo do FEL 1</span><span class="tag ok">Meta FEL 2</span></span></div>
+        <dl class="rt-b">
+          <dt>Requisito</dt><dd>Estabilidade de taludes por setor geotécnico · determinante</dd>
+          <dt>Critério da meta</dt><dd>Ângulos por setor, com sondagem e ensaios de resistência</dd>
+          <dt>Pergunta</dt><dd class="q">Quais ângulos de talude foram definidos por setor geotécnico, e com base em que sondagens e ensaios?</dd>
+          <dt>Documentos</dt><dd>Relatório geotécnico de taludes, com versão, autor e revisor; análise de estabilidade</dd>
+          <dt>Quem age</dt><dd>Empreendedor fornece; Nexial lê e analisa</dd>
+        </dl>
+      </div>
+      <div class="who rv d1">
+        <span class="mono">Quem age</span>
+        <div class="wbar"><i style="flex:3;background:var(--accent)"></i><i style="flex:1.4;background:var(--accent-teal)"></i><i style="flex:.4;background:var(--slate)"></i></div>
+        <div class="wl">
+          <div><span><i style="background:var(--accent)"></i>Empreendedor fornece ou decide</span></div>
+          <div><span><i style="background:var(--accent-teal)"></i>Ação conjunta</span></div>
+          <div><span><i style="background:var(--slate)"></i>Nexial lê, analisa ou levanta</span></div>
+        </div>
+        <p class="note">Cada ação do roteiro tem um responsável. A pauta de cada reunião sai pronta: o que perguntar, o que pedir e a quem. Proporções ilustrativas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. CRITÉRIOS — posso confiar no método? -->
+<section class="sec sec--deep" id="metodo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow rv">Critérios que o comitê pode auditar</span>
+      <h2 class="rv d1">Regras explícitas, do requisito ao nível do projeto.</h2>
+      <p class="lead rv d2">Front End Loading organiza a maturidade em gates. Em cada um, a pergunta é se há base suficiente para a decisão pretendida, e não apenas se os documentos existem.</p>
+    </div>
+    <div class="fel rv" id="maturidade">
+      <div class="tabs" role="tablist" aria-label="Estágios FEL">
+        <button class="tab" role="tab" aria-selected="true" data-i="0"><span class="t">FEL 1</span><span class="s">Confirmar o caso de negócio e triar alternativas · Capex classe 5</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-i="1"><span class="t">FEL 2</span><span class="s">Selecionar a alternativa · classe 4</span></button>
+        <button class="tab" role="tab" aria-selected="false" data-i="2"><span class="t">FEL 3</span><span class="s">Definir o escopo para a decisão de investimento · classe 3</span></button>
+      </div>
+      <div class="panel" role="tabpanel" id="felPanel"></div>
+    </div>
+    <div class="rules r8">
+      <div class="rl rv"><span class="mono">Regra 01</span><h4>Só documento muda carimbo.</h4><p>Resposta verbal é registrada, mas o carimbo vem do documento lido e citado.</p></div>
+      <div class="rl rv d1"><span class="mono">Regra 02</span><h4>Evidência tem piso por gate.</h4><p>FEL 1 exige documento emitido; FEL 2, revisado; FEL 3, aprovado pelo responsável. Documento de autoridade ou contraparte vale o estado máximo.</p></div>
+      <div class="rl rv d2"><span class="mono">Regra 03</span><h4>Eliminatório bloqueia o gate.</h4><p>Eliminatório falho bloqueia o gate em qualquer pilar. Determinante trava o pilar. Complementar gera ação. Cada eliminatório tem um tipo: legal, segurança, técnico ou decisório.</p></div>
+      <div class="rl rv d3"><span class="mono">Regra 04</span><h4>O pilar vale o seu requisito determinante mais fraco.</h4><p>O nível do pilar é o menor entre os eliminatórios e determinantes. Complementares geram ação, mas não definem o nível.</p></div>
+      <div class="rl rv"><span class="mono">Regra 05</span><h4>Pilares dependem uns dos outros.</h4><p>Lavra depende de recurso; Capex depende de lavra, planta, rejeitos e infraestrutura.</p></div>
+      <div class="rl rv d1"><span class="mono">Regra 06</span><h4>O projeto vale o menor pilar.</h4><p>Inclusive os consultivos. Não há média.</p></div>
+      <div class="rl rv d2"><span class="mono">Regra 07</span><h4>Cada gate exige o suficiente.</h4><p>O critério pede o necessário para a decisão daquele gate, e não mais.</p></div>
+      <div class="rl rv d3"><span class="mono">Regra 08</span><h4>Documento maduro não é projeto maduro.</h4><p>A avaliação separa o estado do documento da situação técnica que ele mostra: favorável, desfavorável ou não demonstrada. Impedimento comprovado nunca se confunde com falta de evidência.</p></div>
+    </div>
+    <p class="subh rv">Maturidade da evidência · duas escalas lidas juntas</p>
+    <div class="scales">
+      <div class="scale rv"><h4>Natureza do dado</h4><ol>
+        <li><b>A</b><span>Medido ou documento oficial</span></li>
+        <li><b>B</b><span>Premissa de projeto adotada</span></li>
+        <li><b>C</b><span>Estimativa ou fatorada</span></li>
+        <li><b>D</b><span>Hipótese ou divergente</span></li>
+      </ol></div>
+      <div class="scale rv d1"><h4>Estado do documento</h4><ol>
+        <li><b>0</b><span>Inexistente</span></li>
+        <li><b>1</b><span>Verbal ou rascunho</span></li>
+        <li><b>2</b><span>Emitido<em>Piso do FEL 1</em></span></li>
+        <li><b>3</b><span>Revisado<em>Piso do FEL 2</em></span></li>
+        <li><b>4</b><span>Aprovado pelo responsável<em>Piso do FEL 3</em></span></li>
+        <li><b>5</b><span>Verificado por terceiro, ou emitido por autoridade ou contraparte</span></li>
+      </ol></div>
+    </div>
+    <p class="subh rv">Três respostas por gate</p>
+    <div class="rules r3">
+      <div class="rl rv"><span class="mono">01</span><h4>Maturidade</h4><p>Onde o projeto está.</p></div>
+      <div class="rl rv d1"><span class="mono">02</span><h4>Conformidade</h4><p>Atende, atende com condições ou não atende.</p></div>
+      <div class="rl rv d2"><span class="mono">03</span><h4>Prontidão técnica para a decisão</h4><p>Conformidade, eliminatórios atendidos sem impedimento comprovado, plano e orçamento da etapa seguinte, e condições aceitas pela governança.</p></div>
+    </div>
+    <p class="note rv" style="margin-top:1.25rem">A decisão de investimento é do investidor e inclui fatores econômicos, financeiros, estratégicos e de governança.</p>
+  </div>
+</section>
+
+<!-- 8. OFERTAS — o que eu contrato? -->
+<section class="sec" id="ofertas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow rv">Ofertas</span>
+      <h2 class="rv d1">Selecionar, desenvolver, acompanhar. Contrate o que a sua decisão pede.</h2>
+      <p class="lead rv d2">Três linhas sobre a mesma metodologia e o mesmo histórico de evidências. Cada oferta responde a uma pergunta.</p>
+    </div>
+    <div class="lines">
+      <article class="line rv">
+        <div class="line-h"><span class="lvl">Linha 01</span><h3><span>Nexial ValuePath</span>Select</h3><p>Selecionar e avaliar oportunidades.</p></div>
+        <div class="off"><div class="off-t"><h4>QuickCheck</h4><span class="tag ok">Gratuito</span></div><p class="ask">Há informação e necessidade que justifiquem aprofundar a análise?</p><p>Enquadramento preliminar e até três lacunas documentais.</p></div>
+        <div class="off"><div class="off-t"><h4>Investment Screening</h4><span class="tag acc">Escopo fechado</span></div><p class="ask">O que sabemos, o que desconhecemos e quais decisões os dados atuais permitem apoiar?</p><p>Avaliação modular de maturidade, evidências, riscos e prontidão decisória.</p></div>
+        <div class="off"><div class="off-t"><h4>Portfolio Intelligence</h4><span class="tag none">Carteiras</span></div><p class="ask">Quais ativos da carteira merecem nossa atenção e nossos recursos?</p><p>Triagem, comparação e acompanhamento de múltiplos ativos.</p></div>
+      </article>
+      <article class="line feat rv d1">
+        <div class="line-h"><span class="lvl">Linha 02</span><h3><span>Nexial ValuePath</span>Develop</h3><p>Transformar incertezas em programa de desenvolvimento.</p></div>
+        <div class="off"><div class="off-t"><h4>Development Roadmap</h4><span class="tag acc">Por escopo</span></div><p class="ask">Qual é a maneira mais racional de resolver as incertezas relevantes?</p><p>Programa de estudos e ações priorizados, com marcos e critérios de conclusão.</p></div>
+        <div class="off"><div class="off-t"><h4>Technical Development Office</h4><span class="tag none">Por período ou marco</span></div><p class="ask">Os estudos contratados estão produzindo as evidências necessárias?</p><p>Coordenação e revisão técnica do desenvolvimento contratado.</p></div>
+      </article>
+      <article class="line rv d2">
+        <div class="line-h"><span class="lvl">Linha 03</span><h3><span>Nexial ValuePath</span>Assure</h3><p>Acompanhar riscos, compromissos e decisões de capital.</p></div>
+        <div class="off"><div class="off-t"><h4>Capital Deployment Assurance</h4><span class="tag none">Contínuo</span></div><p class="ask">As condições técnicas para o próximo compromisso de capital foram atendidas?</p><p>Monitoramento técnico de marcos, riscos e evidências, com revisões em marcos específicos.</p></div>
+      </article>
+    </div>
+    <div class="flow rv"><b>QuickCheck</b><span class="ln"></span><b>Screening</b><span class="ln"></span><b>Develop</b><span class="ln"></span><b>Assure</b></div>
+    <p class="note flow-note rv">O QuickCheck abre a conversa. O Screening mostra o que os dados sustentam. O Develop organiza a redução das incertezas. O Assure acompanha o capital. Nenhuma etapa obriga a seguinte.</p>
+  </div>
+</section>
+
+<!-- 9. CARTEIRAS — e se eu tenho muitos ativos? -->
+<section class="sec sec--deep" id="fundos">
+  <div class="wrap funds">
+    <div>
+      <span class="eyebrow rv">Para carteiras · Portfolio Intelligence</span>
+      <h2 class="rv d1 h2like" style="margin:1.25rem 0">Concentre a diligência nos ativos que merecem o comitê.</h2>
+      <p class="lead rv d2">Estágio, qualidade dos dados, riscos materiais e necessidade de estudos lado a lado, sem misturar ativos de maturidade diferente em um ranking sem contexto.</p>
+      <ul class="flist">
+        <li class="rv"><span class="mono">A</span><div><h4>Implantação</h4><p>Configuramos os critérios do seu mandato, a governança de dados e o formato dos relatórios.</p></div></li>
+        <li class="rv d1"><span class="mono">B</span><div><h4>Capacidade reservada</h4><p>Volume, complexidade e prazo das avaliações definidos em contrato, para o seu fluxo de oportunidades.</p></div></li>
+        <li class="rv d2"><span class="mono">C</span><div><h4>Acompanhamento</h4><p>O que mudou, quais premissas perderam validade e se as lacunas foram de fato resolvidas.</p></div></li>
+      </ul>
+    </div>
+    <div class="pipeline rv" id="pipe" aria-label="Ilustração do fluxo de ativos">
+      <div class="pl"><span class="mono">Carteira</span><div class="track" data-n="9"></div></div>
+      <div class="pl"><span class="mono">QuickCheck</span><div class="track" data-n="6" data-st="3"></div></div>
+      <div class="pl"><span class="mono">Screening</span><div class="track" data-n="3" data-hl="1"></div></div>
+      <div class="pl"><span class="mono">Assure</span><div class="track" data-n="1" data-hl="1"></div></div>
+      <p class="note" style="margin-top:1rem">Ilustração do afunilamento. Ativos encerrados na triagem aparecem em vermelho.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. COMPROMISSOS + FAQ — e as minhas dúvidas? -->
+<section class="sec" id="faq">
+  <div class="wrap faqwrap">
+    <div>
+      <span class="eyebrow rv">Compromissos</span>
+      <h2 class="rv d1 h2like" style="margin:1.25rem 0 2rem">Suporte técnico à decisão, com responsabilidade explícita.</h2>
+      <ul class="flist" style="margin-top:0">
+        <li class="rv"><span class="mono">01</span><div><h4>Livres para dizer não.</h4><p>Um parecer pode recomendar suspender ou encerrar a análise. Isso faz parte do trabalho.</p></div></li>
+        <li class="rv d1"><span class="mono">02</span><div><h4>A decisão é sua.</h4><p>Entregamos informação e avaliação técnica. A decisão financeira permanece com o investidor e os demais responsáveis.</p></div></li>
+        <li class="rv d2"><span class="mono">03</span><div><h4>Dados protegidos.</h4><p>Controle de acesso, segregação e regras de uso definidas em contrato. Nada é reutilizado sem autorização.</p></div></li>
+      </ul>
+    </div>
+    <div class="faq rv">
+      <span class="mono" style="color:var(--muted)">Perguntas frequentes</span>
+      <details open><summary>A Nexial recomenda investimentos?</summary><p>Não. O ValuePath produz avaliação técnica para apoiar decisões. Não fazemos gestão de recursos, distribuição ou recomendação de valores mobiliários.</p></details>
+      <details><summary>Preciso contratar todas as etapas?</summary><p>Não. Cada oferta pode ser contratada separadamente. Uma triagem desfavorável pode encerrar o processo, sem obrigação de seguir para a próxima etapa.</p></details>
+      <details><summary>A IA faz a avaliação?</summary><p>A IA acelera leitura, comparação e identificação de lacunas. As conclusões técnicas são revisadas e aprovadas por profissionais, com autores e revisores identificados.</p></details>
+      <details><summary>O que é preciso para o QuickCheck?</summary><p>Uma descrição da decisão em jogo e a documentação disponível do ativo. O QuickCheck é gratuito e tem limite de documentos e de esforço.</p></details>
+      <details><summary>O método serve para qualquer substância e método de lavra?</summary><p>Sim. O perfil do projeto ativa os requisitos aplicáveis a cada substância, método de lavra, rota de processo e contexto, como lavra subterrânea, céu aberto, aluvião, dragagem, lixiviação, cianeto, logística de granel ou material radioativo de ocorrência natural.</p></details>
+      <details><summary>Um estudo aprovado basta?</summary><p>Não. O carimbo exige conteúdo que atende ao critério técnico do gate e documento no estado exigido. A situação técnica que o estudo mostra é registrada à parte.</p></details>
+      <details><summary>Vocês avaliam projetos fora do Brasil?</summary><p>Nosso foco atual são projetos no Brasil e investidores que atuam no país. Fale conosco para avaliarmos outros casos.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 11. COMO COMEÇAR -->
+<section class="final" id="contato">
+  <svg class="topo" data-topo="final" aria-hidden="true"></svg>
+  <div class="wrap">
+    <span class="eyebrow rv">Como começar</span>
+    <h2 class="rv d1">Comece pelo QuickCheck. <span class="grad">Sem custo.</span></h2>
+    <p class="lead rv d2">Em três passos você sabe se o seu ativo justifica aprofundar a análise e o que falta para isso.</p>
+    <ol class="start">
+      <li class="rv"><span>1</span><h4>Conte a decisão</h4><p>Qual ativo, qual decisão e qual prazo.</p></li>
+      <li class="rv d1"><span>2</span><h4>Envie o que tem</h4><p>Fazemos o enquadramento e apontamos até três lacunas documentais.</p></li>
+      <li class="rv d2"><span>3</span><h4>Receba a proposta</h4><p>Se fizer sentido aprofundar, escopo e condições definidos para a sua decisão.</p></li>
+    </ol>
+    <div class="cta-row rv d3">
+      <a class="btn btn-primary" href="https://nexialpartners.com/contato/">Solicitar QuickCheck gratuito <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="#ofertas">Ver as ofertas</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <img src="https://nexialpartners.com/assets/img/logo-nexial-white.png" alt="Nexial Partners">
+      <nav aria-label="Rodapé">
+        <a href="#para-quem">Para quem</a><a href="#como-funciona">Como funciona</a><a href="#ofertas">Ofertas</a><a href="#metodo">Método</a><a href="#faq">Perguntas</a><a href="https://nexialpartners.com/">nexialpartners.com</a>
+      </nav>
+    </div>
+    <p class="disc">Nexial ValuePath fornece suporte técnico à decisão e não constitui recomendação de investimento. Escopo, responsáveis técnicos, entregáveis, prazos e condições comerciais são definidos em cada contratação. Aceitação por financiadores e emissão de relatórios sujeitos a requisitos específicos dependem da finalidade e do escopo acordados. A execução de sondagens, ensaios ou estudos de engenharia requer contratação própria quando não incluída no mandato. Dados de mercado: IBRAM (fev. 2026), S&amp;P Global (2026) e Agência BNDES; não representam receita ou resultado da Nexial. Os exemplos desta página usam dados fictícios.</p>
+    <p>© <span id="yr"></span> Nexial Partners · Belo Horizonte, MG</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Header
+  const hdr = document.getElementById('hdr');
+  const onScroll = () => hdr.classList.toggle('is-solid', window.scrollY > 24);
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  // Fundo topográfico (curvas de nível geradas)
+  function topo(svg, seed){
+    const W = 1600, H = 1000;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+    let s = seed; const rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+    const centers = [[W*0.78, H*0.42, 13], [W*0.18, H*0.85, 9], [W*0.5, H*-0.05, 7]];
+    let out = '';
+    centers.forEach(([cx, cy, n]) => {
+      const ph = [rnd()*6.28, rnd()*6.28, rnd()*6.28];
+      for (let i = 1; i <= n; i++){
+        const r = i * 46 + rnd()*6, pts = [];
+        for (let a = 0; a <= 64; a++){
+          const t = a / 64 * Math.PI * 2;
+          const k = 1 + 0.16*Math.sin(3*t + ph[0] + i*0.13) + 0.09*Math.sin(5*t + ph[1]) + 0.05*Math.sin(7*t + ph[2] + i*0.2);
+          pts.push([cx + Math.cos(t)*r*k*1.35, cy + Math.sin(t)*r*k]);
+        }
+        let d = `M${pts[0][0].toFixed(1)},${pts[0][1].toFixed(1)}`;
+        for (let j = 1; j < pts.length; j++){
+          const p0 = pts[j-1], p1 = pts[j];
+          d += ` Q${p0[0].toFixed(1)},${p0[1].toFixed(1)} ${((p0[0]+p1[0])/2).toFixed(1)},${((p0[1]+p1[1])/2).toFixed(1)}`;
+        }
+        out += `<path d="${d}Z"${i % 4 === 0 ? ' class="hl"' : ''}/>`;
+      }
+    });
+    svg.innerHTML = out;
+  }
+  document.querySelectorAll('svg[data-topo]').forEach((s, i) => topo(s, 17 + i*31));
+
+  // Ticker de disciplinas
+  const disc = ['Direito minerário','Sítio e acesso','Meio ambiente e licenciamento','Social e fundiário','Geologia e recursos','Lavra','Beneficiamento','Metalurgia de processo','Rejeitos e estéril','Infraestrutura e logística','Capex e Opex','Execução e contratação','Capital e financiamento','Governança e riscos','Caso de negócio','Mercado','Fiscal e tributário','ESG e institucional','Operação e pessoas','Manutenção e suprimentos','Comissionamento e prontidão','Fechamento de mina','Transporte externo e porto'];
+  const tk = document.getElementById('ticker');
+  tk.innerHTML = [...disc, ...disc].map(d => `<span>${d}</span>`).join('');
+
+  // Reveal
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.14, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // Rastro de evidência (hero)
+  const steps = [...document.querySelectorAll('#steps .step')], rail = document.getElementById('rail');
+  let cur = -1;
+  function advance(){
+    cur = cur >= steps.length + 1 ? 0 : cur + 1;
+    const n = Math.min(cur, steps.length - 1);
+    steps.forEach((s, i) => s.classList.toggle('on', cur < steps.length + 1 && i <= cur));
+    rail.style.height = cur >= steps.length + 1 ? '0' : (steps[n].offsetTop + 2) + 'px';
+  }
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce){ steps.forEach(s => s.classList.add('on')); }
+  else { setTimeout(() => { advance(); setInterval(advance, 1300); }, 600); }
+
+  // Exemplo com dados fictícios — 23 pilares (não existe pilar 21)
+  // [n, nome, consultivo, completude FEL1, nível próprio, nível efetivo, dependências]
+  // níveis: 1 FEL 1 · 0 abaixo do FEL 1 · -1 indeterminado
+  const P = [
+    [1,'Direito minerário e titularidade',1,86,1,1,[]],
+    [2,'Sítio e condições de acesso',0,78,1,1,[]],
+    [3,'Meio ambiente e licenciamento',1,64,0,0,[]],
+    [4,'Social, fundiário e comunidades',1,80,1,1,[]],
+    [5,'Geologia e recursos',0,83,1,1,[]],
+    [6,'Lavra e plano de produção',0,72,0,0,[5]],
+    [7,'Beneficiamento',0,88,1,1,[8]],
+    [8,'Metalurgia de processo',0,75,1,1,[]],
+    [9,'Rejeitos e estéril',0,70,1,1,[2]],
+    [10,'Infraestrutura e logística',0,82,1,1,[2]],
+    [11,'Estimativa de Capex e Opex',0,80,1,0,[6,7,9,10]],
+    [12,'Execução e contratação',0,67,0,0,[]],
+    [13,'Capital e financiamento',1,71,1,1,[]],
+    [14,'Equipe, governança e riscos',0,78,1,1,[]],
+    [15,'Caso de negócio e alternativas',0,100,1,0,[5,11,16]],
+    [16,'Mercado e comercialização',0,73,1,1,[]],
+    [17,'Fiscal e tributário',1,75,1,1,[]],
+    [18,'Político, institucional e ESG',1,62,-1,-1,[]],
+    [19,'Operação e pessoas',0,71,1,1,[]],
+    [20,'Manutenção e suprimentos',0,60,0,0,[]],
+    [22,'Comissionamento e prontidão',0,100,1,1,[]],
+    [23,'Fechamento de mina',0,75,1,1,[]],
+    [24,'Transporte externo e porto',0,80,1,1,[]]
+  ];
+  const LV = v => v === 1 ? '<span class="tag ok">FEL 1</span>' : v === 0 ? '<span class="tag fail">Abaixo FEL 1</span>' : '<span class="tag none">Indeterminado</span>';
+  const caseEl = document.getElementById('case'), pilEl = document.getElementById('pillars');
+  const AVG = Math.round(P.reduce((s, p) => s + p[3], 0) / P.length);
+  const OWN = P.filter(p => p[4] === 0).length, DEP = P.filter(p => p[4] === 1 && p[5] === 0).length;
+  const BELOW = P.filter(p => p[5] === 0).length, IND = P.filter(p => p[5] === -1);
+  const PROJ = BELOW > 0 ? 0 : (IND.length ? -1 : 1);
+  const EXT = ['zero','um','dois','três','quatro','cinco','seis','sete','oito','nove','dez'];
+  const ext = n => n <= 10 ? EXT[n] : String(n);
+  const cap = t => t.charAt(0).toUpperCase() + t.slice(1);
+  document.getElementById('avgLead').textContent = AVG + '%';
+  let sel = 15;
+  pilEl.innerHTML = '<div class="pgrid">' + P.map(p => `
+      <button class="pil" type="button" data-n="${p[0]}" aria-label="Pilar ${p[0]}, ${p[1]}${p[2] ? ', consultivo' : ''}">
+        <span class="no">${String(p[0]).padStart(2,'0')}</span>
+        <span class="nm"><span>${p[1]}</span>${p[2] ? '<em class="cs">CONS.</em>' : ''}</span>
+        <span class="val"><span class="meter"><i style="width:0" data-w="${p[3]}"></i></span><span class="pct">${p[3]}%</span><span class="lv">${LV(p[5])}</span></span>
+      </button>`).join('') + '</div>';
+  const pils = [...pilEl.querySelectorAll('.pil')];
+  function drawFocus(){
+    const p = P.find(q => q[0] === sel), deps = p[6];
+    pils.forEach(b => { const n = +b.dataset.n; b.classList.toggle('sel', n === sel); b.classList.toggle('dep', deps.includes(n)); });
+    let msg;
+    if (p[2] === 1) msg = 'Pilar consultivo: avaliado com parecer de especialista. Entra no nível do projeto.';
+    else if (p[4] === 1 && p[5] === 0) msg = `Atinge o FEL 1 por conta própria, mas depende de pilares que estão abaixo do FEL 1. O nível efetivo cai junto com eles.`;
+    else if (p[4] === 0 && deps.length) msg = `Tem lacuna própria em requisito determinante e ainda depende de outros pilares. O nível efetivo é o menor entre o próprio e o deles.`;
+    else if (p[5] === 1) msg = deps.length ? 'Todos os requisitos determinantes atingem o FEL 1, e os pilares de que depende também.' : 'Todos os requisitos determinantes atingem o FEL 1 e não há dependência que o limite.';
+    else msg = `Ao menos um requisito determinante não atinge o FEL 1, mesmo com ${p[3]}% de completude.`;
+    document.getElementById('focus').innerHTML = `<span class="mono">Pilar ${p[0]}${p[2] ? ' · Consultivo' : ''}</span><h4>${p[1]}</h4><p>${msg}</p>
+      <div class="row2"><span class="tag acc">Completude ${p[3]}%</span>${LV(p[5])}${deps.length ? `<span class="tag dep">Depende de ${deps.join(', ')}</span>` : ''}</div>`;
+  }
+  pilEl.addEventListener('click', e => { const b = e.target.closest('.pil'); if (!b) return; sel = +b.dataset.n; drawFocus(); });
+  function setMode(m){
+    caseEl.dataset.mode = m;
+    document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.m === m));
+    const v = document.getElementById('hVal');
+    if (m === 'media'){
+      document.getElementById('hLabel').textContent = 'Completude média do FEL 1 · todos os pilares';
+      v.textContent = AVG + '%'; v.classList.remove('red');
+      document.getElementById('hExp').textContent = `Em média, ${AVG}% dos requisitos já atingem o FEL 1. Lida assim, a avaliação recomendaria avançar.`;
+    } else {
+      document.getElementById('hLabel').textContent = 'Nível do projeto · menor nível efetivo';
+      v.textContent = PROJ === 0 ? 'Abaixo do FEL 1' : PROJ === 1 ? 'FEL 1' : 'Indeterminado';
+      v.classList.toggle('red', PROJ === 0);
+      document.getElementById('hExp').textContent = `${cap(ext(BELOW))} dos ${P.length} pilares ficam abaixo do FEL 1, e o projeto vale o menor deles. ${cap(ext(OWN))} por lacuna própria em requisito determinante; ${ext(DEP)} porque dependem de pilares que ainda não chegaram lá.` + (IND.length ? ` O pilar ${IND.map(p => p[0]).join(', ')} segue indeterminado.` : '');
+    }
+  }
+  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => setMode(b.dataset.m)));
+  setMode('media');
+  drawFocus();
+  const cio = new IntersectionObserver(es => { if (es[0].isIntersecting){ pilEl.querySelectorAll('.meter i').forEach(i => i.style.width = i.dataset.w + '%'); cio.disconnect(); } }, {threshold:.2});
+  cio.observe(caseEl);
+
+  // FEL tabs
+  const FEL = [
+    {q:'Há base suficiente para justificar o estudo da oportunidade, explicitar hipóteses e comparar alternativas iniciais?', f:['Hipóteses geológicas e de mercado explícitas','Alternativas iniciais identificadas','Fatores impeditivos conhecidos mapeados']},
+    {q:'As alternativas relevantes foram comparadas e existe fundamento técnico e econômico para aprofundar a opção selecionada?', f:['Critérios de seleção documentados','Comparação técnica e econômica das rotas','Riscos da alternativa escolhida qualificados']},
+    {q:'O projeto dispõe de definição e evidências compatíveis com a decisão pretendida, incluindo riscos residuais, custos e plano de execução?', f:['Definição de engenharia compatível com a decisão','Custos e cronograma com base declarada','Riscos residuais e plano de execução']}
+  ];
+  const tabs = [...document.querySelectorAll('.tab')], panel = document.getElementById('felPanel');
+  function showFel(i){
+    tabs.forEach((t, j) => t.setAttribute('aria-selected', j === i));
+    const d = FEL[i];
+    panel.innerHTML = `<div class="fade">
+      <div class="fel-bar">${[0,1,2].map(j => `<i class="${j <= i ? 'on' : ''}"></i>`).join('')}</div>
+      <span class="mono">Pergunta de decisão · FEL ${i+1}</span>
+      <blockquote>${d.q}</blockquote>
+      <ul class="flist" style="margin-top:0">${d.f.map((x, k) => `<li><span class="mono">0${k+1}</span><div><p style="color:var(--mist)">${x}</p></div></li>`).join('')}</ul>
+      <p class="note" style="margin-top:1.25rem">Critérios calibrados ao empreendimento. A correspondência com estudos conceituais, pré-viabilidade ou viabilidade não é automática.</p>
+    </div>`;
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => showFel(i));
+    t.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight'){ e.preventDefault(); const n = (i+1)%3; tabs[n].focus(); showFel(n); }
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft'){ e.preventDefault(); const n = (i+2)%3; tabs[n].focus(); showFel(n); }
+    });
+  });
+  showFel(0);
+
+  // Pipeline
+  document.querySelectorAll('#pipe .track').forEach((tr, r) => {
+    const n = +tr.dataset.n, st = +(tr.dataset.st || 0), hl = tr.dataset.hl;
+    let h = '';
+    for (let i = 0; i < n; i++){
+      const cls = hl ? 'hl' : (i >= n - st ? 'st' : '');
+      h += `<span class="chip ${cls}" style="transition-delay:${(r*0.25 + i*0.05).toFixed(2)}s">${String(i+1).padStart(2,'0')}</span>`;
+    }
+    tr.innerHTML = h;
+  });
+})();
+</script>
+</body>
+</html>

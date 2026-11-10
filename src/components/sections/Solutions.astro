@@ -1,0 +1,127 @@
+---
+import { t } from '../../i18n/dict.js';
+import { asset } from '../../i18n/utils.js';
+
+/**
+ * Chamada para as duas soluções proprietárias.
+ *
+ * As landings são páginas estáticas próprias, servidas de /public em
+ * /geointelligence/ e /valuepath/. Têm desenho e navegação próprios, pensados
+ * para campanha — por isso o link é direto, e não uma rota do Astro.
+ *
+ * Os links não levam `lang`: as landings existem só em português por ora.
+ */
+const { lang = 'pt', semCabecalho = false } = Astro.props;
+---
+
+<section class="section section-alt" id="solucoes">
+  <div class="wrap">
+    {!semCabecalho && (
+      <header class="section-head" data-reveal>
+        <div class="rule"></div>
+        <p class="eyebrow">{t.solutions.eyebrow[lang]}</p>
+        <h2>{t.solutions.title[lang]}</h2>
+      </header>
+    )}
+
+    <ul class="solucoes">
+      {t.solutions.items.map((s, i) => (
+        <li class="solucao" data-reveal style={`--reveal-delay:${i * 90}ms`}>
+          <a href={asset(`${s.slug}/`)}>
+            <span class="topo">
+              <span class="nome">{s.name}</span>
+              <span class="tagline">{s.tagline[lang]}</span>
+            </span>
+
+            <span class="texto">{s.text[lang]}</span>
+
+            <span class="rodape">
+              <span class="partida">
+                <span class="rotulo">{t.solutions.rotulo[lang]}</span>
+                <span class="valor">{s.pontoDePartida[lang]}</span>
+              </span>
+              <span class="ver">
+                {t.solutions.cta[lang]}<span class="arrow" aria-hidden="true">&rarr;</span>
+              </span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .solucoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .solucao a {
+    display: flex; flex-direction: column; height: 100%;
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    border: 1px solid var(--line-soft);
+    border-radius: 6px;
+    background: linear-gradient(165deg, var(--surface) 0%, var(--ink-soft) 100%);
+    transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+  }
+  .solucao a:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+  .topo { display: block; margin-bottom: 1.5rem; }
+  .nome {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--fs-xl);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--white);
+  }
+  .tagline {
+    display: block;
+    margin-top: 0.375rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    line-height: 1.6;
+  }
+
+  .texto {
+    display: block;
+    font-size: 0.9375rem;
+    line-height: 1.64;
+    color: var(--slate);
+    text-wrap: pretty;
+  }
+
+  /* Encostado no rodapé do cartão: os dois alinham mesmo com textos
+     de alturas diferentes. */
+  .rodape {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 1.25rem; flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 1.75rem;
+  }
+  .partida { display: block; }
+  .rotulo {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+  .valor { display: block; font-size: 0.875rem; color: var(--mist); }
+
+  .ver {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.9375rem;
+    color: var(--accent-bright);
+    white-space: nowrap;
+  }
+  .ver .arrow { transition: transform 0.25s var(--ease); }
+  .solucao a:hover .ver .arrow { transform: translateX(4px); }
+</style>

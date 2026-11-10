@@ -30,7 +30,13 @@ export default defineConfig({
     },
   },
 
-  integrations: [sitemap({ i18n: { defaultLocale: 'pt', locales: { pt: 'pt-BR', en: 'en-US' } } })],
+  integrations: [sitemap({
+    // As duas landings vivem em /public e nao sao rotas do Astro, entao
+    // precisam ser declaradas para entrar no sitemap.
+    customPages: [
+      `${SITE}${BASE === '/' ? '' : BASE}/geointelligence/`,
+      `${SITE}${BASE === '/' ? '' : BASE}/valuepath/`,
+    ], i18n: { defaultLocale: 'pt', locales: { pt: 'pt-BR', en: 'en-US' } } })],
 
   build: {
     // um .css por página seria pior aqui: a folha é pequena e compartilhada

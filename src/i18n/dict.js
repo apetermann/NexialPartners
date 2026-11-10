@@ -18,6 +18,7 @@ export const ROUTES = {
   modelo:    { pt: 'modelo',     en: 'model' },
   servicos:  { pt: 'servicos',   en: 'services' },
   mineracao: { pt: 'mineracao',  en: 'mining' },
+  solucoes:  { pt: 'solucoes',   en: 'solutions' },
   projetos:  { pt: 'projetos',   en: 'projects' },
   lagoaAzul: { pt: 'projetos/lagoa-azul', en: 'projects/lagoa-azul' },
   partners:  { pt: 'partners',   en: 'partners' },
@@ -32,6 +33,7 @@ export const t = {
     modelo:    { pt: 'O Modelo',   en: 'The Model' },
     servicos:  { pt: 'Serviços',   en: 'Services' },
     mineracao: { pt: 'Mineração',  en: 'Mining' },
+    solucoes:  { pt: 'Soluções',   en: 'Solutions' },
     projetos:  { pt: 'Projetos',   en: 'Projects' },
     partners:  { pt: 'Partners',   en: 'Partners' },
     contato:   { pt: 'Contato',    en: 'Contact' },
@@ -387,6 +389,56 @@ export const t = {
       pt: 'Cobrimos a mesma cadeia de valor de ponta a ponta: recurso, estudo, execução, digitalização e capital. Como as cinco competências decidem juntas desde o primeiro estudo, risco técnico e custo de capital entram na conta ao mesmo tempo, em vez de aparecerem em revisões sucessivas.',
       en: 'We cover the same value chain end to end: resource, study, execution, digitalisation and capital. Because the five competencies decide together from the very first study, technical risk and cost of capital enter the equation at the same time, instead of surfacing in successive revisions.',
     },
+  },
+
+  /* ════════════════════════════════════════════════════════ soluções */
+  /* As duas landings sao paginas estaticas proprias, servidas de /public.
+     Aqui fica so a chamada que leva ate elas a partir do site. */
+  solutions: {
+    metaTitle: { pt: 'Soluções — Nexial Partners', en: 'Solutions — Nexial Partners' },
+    metaDesc: {
+      pt: 'GeoIntelligence AI e ValuePath: duas soluções de Inteligência Artificial proprietária da Nexial Partners para decisão sobre ativos minerais.',
+      en: 'GeoIntelligence AI and ValuePath: two proprietary Artificial Intelligence solutions from Nexial Partners for decisions on mineral assets.',
+    },
+    lead: {
+      pt: 'Uma começa onde não existe dado próprio. A outra começa onde o dado existe e precisa ser validado.',
+      en: 'One starts where there is no data of your own. The other starts where data exists and needs validating.',
+    },
+    eyebrow: { pt: 'Soluções proprietárias', en: 'Proprietary solutions' },
+    title: {
+      pt: 'Duas soluções, um mesmo rigor. O que muda é o ponto de partida',
+      en: 'Two solutions, the same rigour. What changes is the starting point',
+    },
+    cta: { pt: 'Conhecer', en: 'Learn more' },
+    items: [
+      {
+        slug: 'geointelligence',
+        name: 'GeoIntelligence AI',
+        tagline: {
+          pt: 'Inteligência geológica para exploração mineral',
+          en: 'Geological intelligence for mineral exploration',
+        },
+        text: {
+          pt: 'Para áreas sem sondagem, sem ensaio e sem campanha própria. Cruza o acervo geocientífico público do Brasil e transforma dado disperso em uma tese exploratória defensável, com fonte e nível de confiança em cada conclusão.',
+          en: 'For areas with no drilling, no assays and no campaign of their own. It cross-references Brazil’s public geoscientific record and turns scattered data into a defensible exploration thesis, with a source and a confidence level behind every conclusion.',
+        },
+        pontoDePartida: { pt: 'Áreas sem dado próprio', en: 'Areas with no data of their own' },
+      },
+      {
+        slug: 'valuepath',
+        name: 'ValuePath',
+        tagline: {
+          pt: 'Inteligência técnica para investimentos minerais',
+          en: 'Technical intelligence for mineral investment',
+        },
+        text: {
+          pt: 'Para fundos, mineradoras e proprietários de ativos. Avalia maturidade, evidências e riscos, e diz com clareza o que os dados atuais permitem decidir, o que falta e qual o caminho mais racional para resolver as incertezas que importam.',
+          en: 'For funds, mining companies and asset owners. It assesses maturity, evidence and risk, and states clearly what current data supports deciding, what is missing, and the most rational path to resolving the uncertainties that matter.',
+        },
+        pontoDePartida: { pt: 'Projetos com dado a validar', en: 'Projects with data to validate' },
+      },
+    ],
+    rotulo: { pt: 'Ponto de partida', en: 'Starting point' },
   },
 
   /* ═════════════════════════════════════════ parceiros e clientes */
