@@ -132,8 +132,8 @@ export const t = {
     aboutEyebrow: { pt: 'Quem somos', en: 'Who we are' },
     aboutTitle:   { pt: 'Experiência potencializada por IA', en: 'Experience amplified by AI' },
     aboutP1: {
-      pt: 'A Nexial reúne cinco especialistas com experiência internacional em engenharia, mineração, infraestrutura, transformação digital e desenvolvimento de negócios.',
-      en: 'Nexial brings together five specialists with international experience in engineering, mining, infrastructure, digital transformation and business development.',
+      pt: 'A Nexial reúne quatro especialistas com experiência internacional em engenharia, mineração, infraestrutura, transformação digital e desenvolvimento de negócios.',
+      en: 'Nexial brings together four specialists with international experience in engineering, mining, infrastructure, digital transformation and business development.',
     },
     aboutP2: {
       pt: 'A Inteligência Artificial não substitui décadas de experiência. Ela potencializa a capacidade dos melhores especialistas.',
@@ -320,14 +320,14 @@ export const t = {
   partners: {
     metaTitle: { pt: 'Partners — Nexial Partners', en: 'Partners — Nexial Partners' },
     metaDesc: {
-      pt: 'Cinco especialistas com experiência internacional em engenharia, mineração, transformação digital e mercado de capitais.',
-      en: 'Five specialists with international experience in engineering, mining, digital transformation and capital markets.',
+      pt: 'Quatro especialistas com experiência internacional em engenharia, mineração, transformação digital e mercado de capitais.',
+      en: 'Four specialists with international experience in engineering, mining, digital transformation and capital markets.',
     },
     eyebrow: { pt: 'Os partners', en: 'The partners' },
     title:   { pt: 'Experiência com nome e sobrenome', en: 'Experience with a name attached' },
     lead: {
-      pt: 'Cinco sócios, cada um com décadas de decisão tomada em obra. Quem conduz o projeto é quem assina.',
-      en: 'Five partners, each with decades of decisions made on site. Whoever leads the project is the one who signs it.',
+      pt: 'Quatro sócios, cada um com décadas de decisão tomada em obra. Quem conduz o projeto é quem assina.',
+      en: 'Four partners, each with decades of decisions made on site. Whoever leads the project is the one who signs it.',
     },
     /* Ordem alfabética pelo nome como aparece na página.
        `linkedin` vazio não renderiza link. As URLs vieram do teaser
@@ -370,15 +370,6 @@ export const t = {
           en: 'Iran Zan is a geologist from UNICAMP and a QP through FAusIMM. Since 2009 in exploration and evaluation of gold, porphyry copper, heavy minerals and lithium. Pioneering co-founder of Sigma Lithium.',
         },
       },
-      {
-        name: 'Noeber Orsine',
-        photo: 'noeber-orsine',
-        linkedin: 'https://www.linkedin.com/in/noeber-orsine',
-        bio: {
-          pt: 'Engenheiro de minas e executivo com mais de 35 anos em projetos de mineração, da viabilidade à operação. Liderou estratégia, implantação e logística em várias commodities no Brasil, África e Austrália.',
-          en: 'Mining engineer and executive with over 35 years in mining projects, from feasibility through to operation. Has led strategy, implementation and logistics across several commodities in Brazil, Africa and Australia.',
-        },
-      },
     ],
     linkedinCta: { pt: 'Perfil no LinkedIn', en: 'LinkedIn profile' },
     complementLabel: {
@@ -386,8 +377,8 @@ export const t = {
       en: 'How they complement each other',
     },
     complementText: {
-      pt: 'Cobrimos a mesma cadeia de valor de ponta a ponta: recurso, estudo, execução, digitalização e capital. Como as cinco competências decidem juntas desde o primeiro estudo, risco técnico e custo de capital entram na conta ao mesmo tempo, em vez de aparecerem em revisões sucessivas.',
-      en: 'We cover the same value chain end to end: resource, study, execution, digitalisation and capital. Because the five competencies decide together from the very first study, technical risk and cost of capital enter the equation at the same time, instead of surfacing in successive revisions.',
+      pt: 'Cobrimos a mesma cadeia de valor de ponta a ponta: recurso, estudo, execução, digitalização e capital. Como as quatro competências decidem juntas desde o primeiro estudo, risco técnico e custo de capital entram na conta ao mesmo tempo, em vez de aparecerem em revisões sucessivas.',
+      en: 'We cover the same value chain end to end: resource, study, execution, digitalisation and capital. Because the four competencies decide together from the very first study, technical risk and cost of capital enter the equation at the same time, instead of surfacing in successive revisions.',
     },
   },
 
