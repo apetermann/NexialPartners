@@ -536,7 +536,7 @@ section{position:relative}
 .pcard dt{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
 .pcard dd{margin:0;font-size:15px;color:var(--mist)}
 .pmid{display:grid;place-items:center;padding:0 1.25rem}
-.pmid span{display:grid;gap:.5rem;justify-items:center;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center;max-width:110px}
+.pmid span{display:grid;gap:.6rem;justify-items:center;font-size:13px;line-height:1.45;color:var(--muted);text-align:center;max-width:190px}
 .pmid b{width:46px;height:46px;border-radius:50%;border:1px solid var(--accent);display:grid;place-items:center;color:var(--accent-bright);font-weight:400;font-size:18px}
 @media (max-width:900px){.pair{grid-template-columns:1fr}.pmid{padding:1rem 0}.pmid b{transform:rotate(90deg)}}
 .chain{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.75rem 1rem;margin-top:2.5rem;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -648,8 +648,8 @@ section{position:relative}
 @media (max-width:560px){.arch{grid-template-columns:1fr}.ar::after{display:none}}
 
 /* Roteiro de desenvolvimento */
-.road{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;position:relative;padding-top:56px}
-.road::before{content:"";position:absolute;left:10%;right:10%;top:22px;height:1px;background:linear-gradient(90deg,var(--accent-teal) 0%,var(--accent-teal) 45%,var(--line) 55%,var(--line) 100%)}
+.road{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;position:relative;padding-top:56px}
+.road::before{content:"";position:absolute;left:8.33%;right:8.33%;top:22px;height:1px;background:linear-gradient(90deg,var(--accent-teal) 0%,var(--accent-teal) 35%,var(--line) 45%,var(--line) 100%)}
 .rs{border:1px solid var(--line);border-radius:4px;padding:1.4rem 1.25rem;background:var(--ink);position:relative;text-align:center;display:flex;flex-direction:column;gap:.7rem;align-items:center}
 .rs .nd{position:absolute;top:-56px;left:50%;transform:translateX(-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-mono);font-size:13px;border:1px solid var(--line);background:var(--ink);color:var(--muted)}
 .rs.done .nd{background:var(--accent-teal);border-color:var(--accent-teal);color:var(--ink-deep)}
@@ -723,7 +723,7 @@ section{position:relative}
         <li class="step"><span class="dot">01</span><div><div class="k">Área de interesse</div><div class="v">Processo ativo na ANM · alvo terras raras e lítio</div></div></li>
         <li class="step"><span class="dot">02</span><div><div class="k">Entorno · raio de 50 km</div><div class="v">966 processos minerários cruzados com a geologia</div></div></li>
         <li class="step"><span class="dot">03</span><div><div class="k">Contexto geológico</div><div class="v">102 processos mineralizados sobre a mesma suíte granítica</div></div></li>
-        <li class="step"><span class="dot">04</span><div><div class="k">Potencial do modelo</div><div class="v"><span class="tag ok">Alto</span>&nbsp; analogia direta com vizinho</div></div></li>
+        <li class="step"><span class="dot">04</span><div><div class="k">Potencial do modelo</div><div class="v"><span class="tag ok">Alto (por analogia)</span>&nbsp; mesmas rochas do vizinho</div></div></li>
         <li class="step"><span class="dot">05</span><div><div class="k">Conteúdo da área</div><div class="v"><span class="tag none">Desconhecido</span>&nbsp; nenhum teor de terceiros transferido</div></div></li>
         <li class="step"><span class="dot">06</span><div><div class="k">Próximo passo</div><div class="v">Programa mínimo de baixo custo para converter potencial em dado</div></div></li>
       </ol>
@@ -754,7 +754,7 @@ section{position:relative}
           <div><dt>Entrega</dt><dd>Tese exploratória com nível de confiança, lacunas explícitas e programa mínimo para gerar o primeiro dado.</dd></div>
         </dl>
       </article>
-      <div class="pmid rv d1" aria-hidden="true"><span><b>→</b>O primeiro dado abre a próxima etapa</span></div>
+      <div class="pmid rv d1"><span><b aria-hidden="true">→</b>A tese e o programa mínimo do GeoIntelligence alimentam a etapa seguinte, já no ValuePath.</span></div>
       <article class="pcard rv d2">
         <span class="mono">Área com dado, pouco ou muito</span>
         <h3>Nexial ValuePath</h3>
@@ -893,7 +893,7 @@ section{position:relative}
         <span class="mono" id="evHead">Leitura da área · 0 de 5 camadas</span>
         <ul class="evl" id="evl" aria-live="polite"></ul>
         <div class="vv">
-          <div class="vbox" id="vPot" data-s="read"><span class="mono">Potencial do modelo</span><h4>Em leitura</h4><p></p></div>
+          <div class="vbox" id="vPot" data-s="read"><span class="mono">Potencial do modelo</span><h4>Alto (por analogia)</h4><p></p></div>
           <div class="vbox" id="vCont" data-s="unk"><span class="mono">Conteúdo da área</span><h4>Desconhecido</h4><p>Não há sondagem nem ensaio público na poligonal.</p></div>
         </div>
         <p class="note">Ilustração construída a partir da estrutura do caso-piloto, com área anonimizada e geometrias fictícias. Quantidades conforme o caso-piloto; posições ilustrativas.</p>
@@ -909,7 +909,7 @@ section{position:relative}
     <div class="stats-cap"><span>Caso-piloto · área com alvo de terras raras e lítio no sudeste do Brasil, em processo minerário ativo na ANM.</span></div>
 
     <div class="verdict-line">
-      <div class="vl hi rv"><span class="mono">Potencial do modelo</span><h3>Alto</h3><p>Em superfície, saprolito caulinizado sobre leucogranito: o hospedeiro do modelo de terras raras em argila iônica. Um projeto vizinho, de empresa listada em bolsa, tem recurso declarado nesse modelo, sobre as mesmas rochas.</p></div>
+      <div class="vl hi rv"><span class="mono">Potencial do modelo</span><h3>Alto (por analogia)</h3><p>Em superfície, saprolito caulinizado sobre leucogranito: o hospedeiro do modelo de terras raras em argila iônica. Um projeto vizinho, de empresa listada em bolsa, tem recurso declarado nesse modelo, sobre as mesmas rochas.</p></div>
       <div class="vl rv d1"><span class="mono">Conteúdo da área</span><h3>Desconhecido</h3><p>Não há sondagem nem ensaio público na poligonal. Os números do vizinho são dele, não da área-piloto, e a plataforma não os transfere.</p></div>
     </div>
     <p class="subh rv">Programa mínimo de baixo custo para converter potencial em dado · caso-piloto</p>
@@ -932,8 +932,8 @@ section{position:relative}
       <p class="lead rv d2">Duas formas de leitura, sempre separadas. O que é medido sobre a área é dado; o que vem dos vizinhos é analogia, com o grau de confiança e as lacunas declarados.</p>
     </div>
     <div class="types">
-      <article class="ty rv"><span class="mono">Tipo A</span><h3>Medir o que cobre a poligonal.</h3><p>Geologia, radiometria, geoquímica e mapas de favorabilidade passam por cima da área. A plataforma lê o valor dentro da poligonal e compara com os vizinhos mineralizados. É dado medido, não conjectura.</p></article>
-      <article class="ty rv d1"><span class="mono">Tipo B</span><h3>Inferir por analogia.</h3><p>Quando a área compartilha rocha, estrutura e contexto com vizinhos mineralizados, ela é classificada como prospectiva, sempre com o grau de confiança e as lacunas explicitados.</p></article>
+      <article class="ty rv"><span class="mono">Medido</span><h3>Medir o que cobre a poligonal.</h3><p>Dado obtido na própria área, por sondagem, ensaio ou documento oficial. Geologia, radiometria, geoquímica e mapas de favorabilidade passam por cima da área. A plataforma lê o valor dentro da poligonal e compara com os vizinhos mineralizados. É dado medido, não conjectura.</p></article>
+      <article class="ty rv d1"><span class="mono">Analogia</span><h3>Inferir por analogia.</h3><p>Inferência a partir de áreas vizinhas com a mesma geologia, sem transferir teor. Quando a área compartilha rocha, estrutura e contexto com vizinhos mineralizados, ela é classificada como prospectiva, sempre com o grau de confiança e as lacunas explicitados.</p></article>
       <article class="ty ai rv d2"><span class="mono">Papel da IA</span><h3>Ler, cruzar e explicitar a incerteza.</h3><p>Ler e sintetizar centenas de documentos, extrair o que torna os vizinhos férteis e cruzar as camadas. Cada leitura termina numa matriz de confiança e numa lista do que falta.</p></article>
     </div>
     <div class="rule rv"><span class="mono" style="color:var(--fail)">✕</span><span><b>O que não fazemos:</b> interpolar (krigar) teores de um vizinho através da divisa, nem transferir números de terceiros. Teor só existe onde foi medido.</span></div>
@@ -943,7 +943,7 @@ section{position:relative}
       <div class="rl rv"><span class="mono">01</span><h4>Procedência sempre.</h4><p>Todo dado carrega de onde veio e quando foi coletado.</p></div>
       <div class="rl rv d1"><span class="mono">02</span><h4>Originais imutáveis.</h4><p>Os dados de fonte nunca são editados; o que é derivado fica separado.</p></div>
       <div class="rl rv d2"><span class="mono">03</span><h4>Fato × interpretação.</h4><p>Nunca se mistura o que o documento diz com o que é inferido.</p></div>
-      <div class="rl rv"><span class="mono">04</span><h4>Potencial ≠ recurso ≠ viabilidade.</h4><p>Linguagem honesta sobre o nível de confiança.</p></div>
+      <div class="rl rv"><span class="mono">04</span><h4>Potencial ≠ recurso ≠ reserva ≠ viabilidade.</h4><p>Linguagem honesta sobre o nível de confiança.</p></div>
       <div class="rl rv d1"><span class="mono">05</span><h4>Sem contornar bloqueios.</h4><p>Nada de burlar autenticação, licenciamento ou barreiras técnicas.</p></div>
       <div class="rl rv d2"><span class="mono">06</span><h4>Sem transferir teores.</h4><p>O resultado de um vizinho não vira o resultado da área-alvo.</p></div>
     </div>
@@ -996,6 +996,7 @@ section{position:relative}
       <div class="rs now rv d2"><span class="nd">2</span><span class="tag acc">Em curso</span><h3>Aprofundar o piloto</h3><p>Indexação, evidências, analogia e cockpit.</p></div>
       <div class="rs rv d3"><span class="nd">3</span><span class="tag none">Próximo</span><h3>Generalizar o molde</h3><p>O mesmo pipeline rodando em novas áreas.</p></div>
       <div class="rs rv d3"><span class="nd">4</span><span class="tag none">Próximo</span><h3>Projeto maior</h3><p>Triagem de áreas, portfólio e múltiplas substâncias.</p></div>
+      <div class="rs rv d3"><span class="nd">5</span><span class="tag none">Próximo</span><h3>Integração com o ValuePath</h3><p>Escala comum de evidência e saída como entrada da etapa seguinte.</p></div>
     </div>
   </div>
 </section>
@@ -1169,9 +1170,9 @@ section{position:relative}
 
   const L = {
     anm:{k:'Cadastro minerário · ANM / SIGMINE', t:'<span class="tag none">Contexto</span>', p:'966 processos num raio de 50 km, cruzados com a geologia.'},
-    geo:{k:'Geologia · SGB', t:'<span class="tag ok">Tipo A · medido</span>', p:'A poligonal está sobre a mesma suíte granítica de 102 processos mineralizados.'},
-    rad:{k:'Aerogeofísica · SGB', t:'<span class="tag ok">Tipo A · medido</span>', p:'Resposta radiométrica lida dentro da poligonal e comparada à dos vizinhos mineralizados.'},
-    doc:{k:'Acervo técnico · RIGeo / GeoBusca', t:'<span class="tag acc">Tipo B · analogia</span>', p:'82 documentos mapeados, 62 indexados. Saprolito caulinizado sobre leucogranito descrito em superfície: o hospedeiro do modelo em argila iônica.'},
+    geo:{k:'Geologia · SGB', t:'<span class="tag ok">Medido</span>', p:'A poligonal está sobre a mesma suíte granítica de 102 processos mineralizados.'},
+    rad:{k:'Aerogeofísica · SGB', t:'<span class="tag ok">Medido</span>', p:'Resposta radiométrica lida dentro da poligonal e comparada à dos vizinhos mineralizados.'},
+    doc:{k:'Acervo técnico · RIGeo / GeoBusca', t:'<span class="tag acc">Analogia</span>', p:'82 documentos mapeados, 62 indexados. Saprolito caulinizado sobre leucogranito descrito em superfície: o hospedeiro do modelo em argila iônica.'},
     viz:{k:'Divulgação de empresa listada', t:'<span class="tag dep">Não transferido</span>', p:'Projeto vizinho com recurso declarado no mesmo modelo. Os números são dele, não da área-alvo.'}
   };
   const ORDER = ['anm','geo','rad','doc','viz'];
@@ -1188,10 +1189,10 @@ section{position:relative}
     const need = ['geo','doc','viz'].filter(l => !on.has(l));
     const vp = document.getElementById('vPot');
     if (!need.length){
-      vp.dataset.s = 'hi'; vp.querySelector('h4').textContent = 'Alto';
+      vp.dataset.s = 'hi'; vp.querySelector('h4').textContent = 'Alto (por analogia)';
       vp.querySelector('p').textContent = 'Analogia direta com o vizinho sobre as mesmas rochas e hospedeiro documentado em superfície.';
     } else {
-      vp.dataset.s = 'read'; vp.querySelector('h4').textContent = 'Em leitura';
+      vp.dataset.s = 'read'; vp.querySelector('h4').textContent = 'Alto (por analogia)';
       vp.querySelector('p').textContent = 'Falta cruzar: ' + need.map(l => NAMES[l]).join(', ') + '.';
     }
     document.querySelector('#vCont p').textContent = on.has('viz')
