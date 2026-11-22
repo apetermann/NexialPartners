@@ -383,22 +383,22 @@ export const t = {
   },
 
   /* ════════════════════════════════════════════════════════ soluções */
-  /* As duas landings sao paginas estaticas proprias, servidas de /public.
+  /* As tres landings sao paginas estaticas proprias, servidas de /public.
      Aqui fica so a chamada que leva ate elas a partir do site. */
   solutions: {
     metaTitle: { pt: 'Soluções — Nexial Partners', en: 'Solutions — Nexial Partners' },
     metaDesc: {
-      pt: 'GeoIntelligence AI e ValuePath: duas soluções de Inteligência Artificial proprietária da Nexial Partners para decisão sobre ativos minerais.',
-      en: 'GeoIntelligence AI and ValuePath: two proprietary Artificial Intelligence solutions from Nexial Partners for decisions on mineral assets.',
+      pt: 'GeoIntelligence AI, ValuePath e DueDiligencePro: três soluções proprietárias da Nexial Partners para decisão sobre ativos minerais, da área sem dado à operação.',
+      en: 'GeoIntelligence AI, ValuePath and DueDiligencePro: three proprietary Nexial Partners solutions for decisions on mineral assets, from the area with no data to the operating mine.',
     },
     lead: {
-      pt: 'Uma começa onde não existe dado próprio. A outra começa onde o dado existe e precisa ser validado.',
-      en: 'One starts where there is no data of your own. The other starts where data exists and needs validating.',
+      pt: 'Uma começa onde não existe dado próprio. Outra, onde o dado existe e precisa ser validado. A terceira começa depois da decisão de investimento e mede se o ativo entrega o que foi previsto.',
+      en: 'One starts where there is no data of your own. Another, where data exists and needs validating. The third starts after the investment decision and measures whether the asset delivers what was planned.',
     },
     eyebrow: { pt: 'Soluções proprietárias', en: 'Proprietary solutions' },
     title: {
-      pt: 'Duas soluções, um mesmo rigor. O que muda é o ponto de partida',
-      en: 'Two solutions, the same rigour. What changes is the starting point',
+      pt: 'Três soluções, um mesmo rigor. O que muda é o ponto de partida',
+      en: 'Three solutions, the same rigour. What changes is the starting point',
     },
     cta: { pt: 'Conhecer', en: 'Learn more' },
     items: [
@@ -427,6 +427,19 @@ export const t = {
           en: 'For funds, mining companies and asset owners. It assesses maturity, evidence and risk, and states clearly what current data supports deciding, what is missing, and the most rational path to resolving the uncertainties that matter.',
         },
         pontoDePartida: { pt: 'Projetos com dado a validar', en: 'Projects with data to validate' },
+      },
+      {
+        slug: 'duediligencepro',
+        name: 'DueDiligencePro',
+        tagline: {
+          pt: 'Inteligência operacional para ativos minerais',
+          en: 'Operational intelligence for mineral assets',
+        },
+        text: {
+          pt: 'Para quem compra, financia ou opera um ativo depois da decisão de investimento. Mede o realizado contra uma referência explícita, separa o que impede a operação do que é ineficiência e converte cada lacuna em reais por ano.',
+          en: 'For those who buy, finance or operate an asset after the investment decision. It measures actual performance against an explicit reference, separates what stops the operation from what is inefficiency, and turns each gap into value per year.',
+        },
+        pontoDePartida: { pt: 'Ativos em implantação ou operação', en: 'Assets in construction or operation' },
       },
     ],
     rotulo: { pt: 'Ponto de partida', en: 'Starting point' },

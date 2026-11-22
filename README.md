@@ -137,14 +137,15 @@ Para trocar por fotos reais de obra, basta substituir os arquivos em
 `src/assets/bg/` mantendo os nomes e as duas larguras. O tratamento de
 cor pode então ser dispensado — imagem real de ativo dispensa estilização.
 
-### Soluções (GeoIntelligence AI e ValuePath)
+### Soluções (GeoIntelligence AI, ValuePath e DueDiligencePro)
 
-As duas landings são **páginas estáticas autônomas**, não rotas do Astro. Ficam
-em `public/geointelligence/` e `public/valuepath/`, com CSS, script e navegação
-próprios — foram desenhadas para campanha e já usam a tipografia da marca.
+As três landings são **páginas estáticas autônomas**, não rotas do Astro. Ficam
+em `public/geointelligence/`, `public/valuepath/` e `public/duediligencepro/`,
+com CSS, script e navegação próprios — foram desenhadas para campanha e já usam
+a tipografia da marca.
 
 O Astro copia `public/` sem tocar, então elas são servidas em
-`nexialpartners.com/geointelligence/` e `/valuepath/`.
+`nexialpartners.com/geointelligence/`, `/valuepath/` e `/duediligencepro/`.
 
 Para atualizar, substitua o `index.html` da pasta correspondente. Duas coisas
 precisam ser refeitas a cada substituição, porque não estavam no arquivo
@@ -158,8 +159,13 @@ original:
 
 As imagens de preview ficam em `public/assets/img/og-<slug>.png`, 1200×630.
 
+A landing do **DueDiligencePro** foi feita aqui, a partir do CSS e do script da
+GeoIntelligence, e já nasceu com o link `/contato/` e as tags de preview. A
+simulação da seção "Na prática" (índice contra nominal, plano e benchmark) usa
+valores fictícios definidos no array `R` do script da própria página.
+
 A página `/solucoes/` (e `/en/solutions/`) é uma rota normal do Astro e serve
-de porta de entrada para as duas, aparecendo no menu. A seção `Solutions.astro`
+de porta de entrada para as três, aparecendo no menu. A seção `Solutions.astro`
 também entra na home e na página de serviços.
 
 > As landings existem **só em português** por ora. A versão em inglês do site

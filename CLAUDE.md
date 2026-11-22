@@ -39,6 +39,9 @@ publicação). Este arquivo guarda o que foi decidido e o que já deu errado.
    `Header.astro`), na proporção do teaser.
 7. O halo do ponteiro é discreto. Já foi reduzido uma vez.
 8. O repositório fica público.
+9. No GeoIntelligence e no DueDiligencePro, não usar FEL, "Scoping Study",
+   "natureza A–D", "estado 0–5" nem "uso interno". A passagem entre o ValuePath
+   e o DueDiligencePro se chama "decisão de investimento".
 
 ## Armadilhas já pagas
 
@@ -53,7 +56,8 @@ publicação). Este arquivo guarda o que foi decidido e o que já deu errado.
 - **Menu mobile:** ancora em `--header-h`. Não fixar altura.
 - **`.stat` fica fora de `CARTOES`** no `PointerFx.astro`, senão perde o
   `position: sticky`.
-- **Ao substituir uma landing em `public/`** (`geointelligence`, `valuepath`):
+- **Ao substituir uma landing em `public/`** (`geointelligence`, `valuepath`,
+  `duediligencepro`):
   refazer o link `#contato` → `/contato/` e as tags `canonical`/`og:*`/
   `twitter:card`. Sem elas o LinkedIn publica o link sem preview.
 - **Contagem de sócios por extenso** ("quatro sócios" etc.) aparece em vários
