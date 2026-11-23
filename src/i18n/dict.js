@@ -388,11 +388,11 @@ export const t = {
   solutions: {
     metaTitle: { pt: 'Soluções — Nexial Partners', en: 'Solutions — Nexial Partners' },
     metaDesc: {
-      pt: 'GeoIntelligence AI, ValuePath e DueDiligencePro: três soluções proprietárias da Nexial Partners para decisão sobre ativos minerais, da área sem dado à operação.',
+      pt: 'GeoIntelligence AI, ValuePath e DueDiligencePro: três soluções proprietárias da Nexial Partners para decisão sobre ativos minerais, da área sem informação à operação.',
       en: 'GeoIntelligence AI, ValuePath and DueDiligencePro: three proprietary Nexial Partners solutions for decisions on mineral assets, from the area with no data to the operating mine.',
     },
     lead: {
-      pt: 'Uma começa onde não existe dado próprio. Outra, onde o dado existe e precisa ser validado. A terceira começa depois da decisão de investimento e mede se o ativo entrega o que foi previsto.',
+      pt: 'Uma começa onde não existe informação própria. Outra, onde a informação existe e precisa ser validada. A terceira começa depois da decisão de investimento e mede se o ativo entrega o que foi previsto.',
       en: 'One starts where there is no data of your own. Another, where data exists and needs validating. The third starts after the investment decision and measures whether the asset delivers what was planned.',
     },
     eyebrow: { pt: 'Soluções proprietárias', en: 'Proprietary solutions' },
@@ -410,10 +410,10 @@ export const t = {
           en: 'Geological intelligence for mineral exploration',
         },
         text: {
-          pt: 'Para áreas sem sondagem, sem ensaio e sem campanha própria. Cruza o acervo geocientífico público do Brasil e transforma dado disperso em uma tese exploratória defensável, com fonte e nível de confiança em cada conclusão.',
+          pt: 'Para áreas sem sondagem, sem ensaio e sem campanha própria. Cruza o acervo geocientífico público do Brasil e transforma informação dispersa em uma tese exploratória defensável, com fonte e nível de confiança em cada conclusão.',
           en: 'For areas with no drilling, no assays and no campaign of their own. It cross-references Brazil’s public geoscientific record and turns scattered data into a defensible exploration thesis, with a source and a confidence level behind every conclusion.',
         },
-        pontoDePartida: { pt: 'Áreas sem dado próprio', en: 'Areas with no data of their own' },
+        pontoDePartida: { pt: 'Áreas sem informação própria', en: 'Areas with no data of their own' },
       },
       {
         slug: 'valuepath',
@@ -423,10 +423,10 @@ export const t = {
           en: 'Technical intelligence for mineral investment',
         },
         text: {
-          pt: 'Para fundos, mineradoras e proprietários de ativos. Avalia maturidade, evidências e riscos, e diz com clareza o que os dados atuais permitem decidir, o que falta e qual o caminho mais racional para resolver as incertezas que importam.',
+          pt: 'Para fundos, mineradoras e proprietários de ativos. Avalia maturidade, evidências e riscos, e diz com clareza o que as informações atuais permitem decidir, o que falta e qual o caminho mais racional para resolver as incertezas que importam.',
           en: 'For funds, mining companies and asset owners. It assesses maturity, evidence and risk, and states clearly what current data supports deciding, what is missing, and the most rational path to resolving the uncertainties that matter.',
         },
-        pontoDePartida: { pt: 'Projetos com dado a validar', en: 'Projects with data to validate' },
+        pontoDePartida: { pt: 'Projetos com informação a validar', en: 'Projects with data to validate' },
       },
       {
         slug: 'duediligencepro',
