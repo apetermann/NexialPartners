@@ -649,7 +649,7 @@ section{position:relative}
 
 /* Roteiro de desenvolvimento */
 .road{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;position:relative;padding-top:56px}
-.road::before{content:"";position:absolute;left:8.33%;right:8.33%;top:22px;height:1px;background:linear-gradient(90deg,var(--accent-teal) 0%,var(--accent-teal) 35%,var(--line) 45%,var(--line) 100%)}
+.road::before{content:"";position:absolute;left:8.33%;right:8.33%;top:22px;height:1px;background:linear-gradient(90deg,var(--accent-teal) 0%,var(--accent-teal) 60%,var(--line) 70%,var(--line) 100%)}
 .rs{border:1px solid var(--line);border-radius:4px;padding:1.4rem 1.25rem;background:var(--ink);position:relative;text-align:center;display:flex;flex-direction:column;gap:.7rem;align-items:center}
 .rs .nd{position:absolute;top:-56px;left:50%;transform:translateX(-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-mono);font-size:13px;border:1px solid var(--line);background:var(--ink);color:var(--muted)}
 .rs.done .nd{background:var(--accent-teal);border-color:var(--accent-teal);color:var(--ink-deep)}
@@ -709,7 +709,6 @@ section{position:relative}
         <div><b>Ponto de partida</b><span>Áreas sem dado próprio</span></div>
         <div><b>Base</b><span>ANM · SGB · IBGE · bolsas</span></div>
         <div><b>Resultado</b><span>Onde vale a pena olhar</span></div>
-        <div><b>Status</b><span class="devtag"><i></i>Em desenvolvimento</span></div>
       </div>
     </div>
 
@@ -796,7 +795,7 @@ section{position:relative}
         <p class="gain"><b>Com a GeoIntelligence AI:</b> a mesma análise aplicada a cada área, com o nível de confiança sempre explícito.</p>
       </article>
     </div>
-    <p class="note rv" style="margin-top:1.5rem">A triagem de múltiplas áreas e carteiras faz parte das próximas etapas do roteiro de desenvolvimento.</p>
+    <p class="note rv" style="margin-top:1.5rem">A triagem de múltiplas áreas e carteiras é a próxima etapa de evolução da plataforma.</p>
   </div>
 </section>
 
@@ -986,15 +985,15 @@ section{position:relative}
 <section class="sec" id="roteiro">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow rv">Roteiro de desenvolvimento</span>
+      <span class="eyebrow rv">Evolução da plataforma</span>
       <h2 class="rv d1">Do piloto ao projeto maior.</h2>
-      <p class="lead rv d2">A GeoIntelligence AI está em desenvolvimento. A base e a organização estão prontas, o caso-piloto está sendo aprofundado, e generalizar o molde para qualquer área nova é o que abre o projeto maior.</p>
+      <p class="lead rv d2">A GeoIntelligence AI está em operação. Base, organização e caso-piloto estão concluídos, e o mesmo molde já roda em qualquer área nova. As próximas etapas ampliam a escala.</p>
     </div>
     <div class="road">
       <div class="rs done rv"><span class="nd">0</span><span class="tag ok">Feito</span><h3>Base</h3><p>Webapp, piloto no mapa e acervo do SGB.</p></div>
       <div class="rs done rv d1"><span class="nd">1</span><span class="tag ok">Feito</span><h3>Organização</h3><p>Banco único, dicionário de dados e substância-alvo do piloto.</p></div>
-      <div class="rs now rv d2"><span class="nd">2</span><span class="tag acc">Em curso</span><h3>Aprofundar o piloto</h3><p>Indexação, evidências, analogia e cockpit.</p></div>
-      <div class="rs rv d3"><span class="nd">3</span><span class="tag none">Próximo</span><h3>Generalizar o molde</h3><p>O mesmo pipeline rodando em novas áreas.</p></div>
+      <div class="rs done rv d2"><span class="nd">2</span><span class="tag ok">Feito</span><h3>Aprofundar o piloto</h3><p>Indexação, evidências, analogia e cockpit.</p></div>
+      <div class="rs done rv d3"><span class="nd">3</span><span class="tag ok">Feito</span><h3>Generalizar o molde</h3><p>O mesmo pipeline rodando em novas áreas.</p></div>
       <div class="rs rv d3"><span class="nd">4</span><span class="tag none">Próximo</span><h3>Projeto maior</h3><p>Triagem de áreas, portfólio e múltiplas substâncias.</p></div>
       <div class="rs rv d3"><span class="nd">5</span><span class="tag none">Próximo</span><h3>Integração com o ValuePath</h3><p>Escala comum de evidência e saída como entrada da etapa seguinte.</p></div>
     </div>
@@ -1038,7 +1037,7 @@ section{position:relative}
         <details open><summary>Qual a diferença para o Nexial ValuePath?</summary><p>O ValuePath avalia o que os dados de um projeto sustentam, sejam eles poucos ou muitos. A GeoIntelligence AI atua antes, quando a área não tem dado próprio, e usa o acervo público para dizer onde vale a pena olhar. As duas se complementam: o programa mínimo gera o primeiro dado, e o ValuePath passa a avaliá-lo.</p></details>
         <details><summary>A plataforma estima recurso ou teor da área?</summary><p>Não. Entrega potencial com nível de confiança. Potencial, recurso e viabilidade são coisas diferentes, e teor só existe onde foi medido. Os números de projetos vizinhos nunca são atribuídos à área-alvo.</p></details>
         <details><summary>Funciona para qual substância?</summary><p>Para qualquer bem mineral com acervo público e modelo geológico de referência. O caso-piloto teve foco em terras raras e lítio; ouro, cobre e outras substâncias usam o mesmo pipeline com modelos e indicadores próprios.</p></details>
-        <details><summary>A plataforma já está disponível?</summary><p>Está em desenvolvimento. Base e organização estão concluídas, o caso-piloto está sendo aprofundado e a generalização para novas áreas é a próxima etapa. Se você tem uma área que se encaixa, fale conosco.</p></details>
+        <details><summary>A plataforma já está disponível?</summary><p>Sim. A plataforma está em operação e lê qualquer área nova com acervo público. Se você tem uma área de interesse, fale conosco.</p></details>
         <details><summary>Quais dados são usados?</summary><p>O acervo público brasileiro (ANM, SGB e IBGE) e as divulgações de empresas listadas em bolsa. Nenhuma autenticação, licença ou barreira técnica é contornada. Onde o dado não está disponível, a lacuna é registrada.</p></details>
       </div>
     </div>
@@ -1055,7 +1054,7 @@ section{position:relative}
     <ol class="start">
       <li class="rv"><span>1</span><h4>Indique a área</h4><p>Número do processo na ANM ou a poligonal de interesse.</p></li>
       <li class="rv d1"><span>2</span><h4>Defina a substância-alvo</h4><p>Ela orienta os modelos de depósito e as camadas priorizadas.</p></li>
-      <li class="rv d2"><span>3</span><h4>Converse com a equipe</h4><p>Avaliamos juntos como a área pode ser lida na fase atual da plataforma.</p></li>
+      <li class="rv d2"><span>3</span><h4>Converse com a equipe</h4><p>Definimos juntos o escopo da leitura e o prazo de entrega.</p></li>
     </ol>
     <div class="cta-row rv d3">
       <a class="btn btn-primary" href="https://nexialpartners.com/contato/">Conversar sobre uma área <span class="arr">→</span></a>
@@ -1073,7 +1072,7 @@ section{position:relative}
         <a href="#encaixe">Onde se encaixa</a><a href="#demo">Na prática</a><a href="#metodo">Método</a><a href="#roteiro">Roteiro</a><a href="#faq">Perguntas</a><a href="https://nexialpartners.com/">nexialpartners.com</a>
       </nav>
     </div>
-    <p class="disc">Potencial ≠ recurso ≠ viabilidade. A Nexial GeoIntelligence AI está em desenvolvimento; funcionalidades, escopo e cronograma podem mudar. Este material é informativo e não constitui relatório certificado, declaração de recurso ou reserva, nem recomendação de investimento. A plataforma não substitui sondagem, ensaios laboratoriais ou relatório de pessoa competente. O caso-piloto é apresentado de forma anonimizada; o mapa é ilustrativo, com geometrias fictícias. Recursos declarados por terceiros são citados como contexto e não são atribuídos à área-alvo.</p>
+    <p class="disc">Potencial ≠ recurso ≠ reserva ≠ viabilidade. Escopo, entregáveis e prazos são definidos em cada contratação. Este material é informativo e não constitui relatório certificado, declaração de recurso ou reserva, nem recomendação de investimento. A plataforma não substitui sondagem, ensaios laboratoriais ou relatório de pessoa competente. O caso-piloto é apresentado de forma anonimizada; o mapa é ilustrativo, com geometrias fictícias. Recursos declarados por terceiros são citados como contexto e não são atribuídos à área-alvo.</p>
     <p>© <span id="yr"></span> Nexial Partners · Belo Horizonte, MG</p>
   </div>
 </footer>
