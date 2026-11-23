@@ -16,9 +16,9 @@ publicação). Este arquivo guarda o que foi decidido e o que já deu errado.
 
 1. `npm run build` antes de cada commit: pega rota quebrada, imagem não
    importada e chave faltando no dicionário.
-2. **Commit automático, push não.** Cada etapa é commitada sem perguntar, com
-   mensagem em português e a linha de coautoria. `git push` e qualquer
-   publicação esperam Alex dizer "pode subir para o ar".
+2. **Commit e publicação automáticos.** Cada alteração é commitada com
+   mensagem em português e a linha de coautoria e já enviada para a `main`
+   (`git push`), sem pedir aprovação. Decisão de Alex em 23/11/2026.
 3. Depois do push, conferir o deploy (`gh run list --limit 1`) e o endereço
    público. Depois de trocar uma imagem, o teste mais confiável é ver o hash
    novo no nome do arquivo no HTML publicado.
